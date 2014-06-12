@@ -1,4 +1,4 @@
-DarkRP-Leveling-System
+DarkRP Leveling System
 ======================
 For DarkRP 2.5.0 and above.
 Previously released on Coderhire, amassing 240 purchases. I've decided to release it for free. 
@@ -27,7 +27,7 @@ Features
 
 
 Installation
-======================
+-------
 To start with, you must have the DarkRP Modification Addon installed on your server, which enables you to add custom content without editing core files. 
 If you don’t have this, go here: https://github.com/FPtje/darkrpmodification/ 
 
@@ -35,3 +35,4 @@ Next, drag and drop everything inside this folder into your servers garrysmod fo
 You’ve installed the system. Woohoo! If you restart your server, everything should work!
 
 Feel free to push changes.
+
