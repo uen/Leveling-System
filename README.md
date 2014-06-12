@@ -1,13 +1,11 @@
 DarkRP-Leveling-System
 ======================
 For DarkRP 2.5.0 and above.
+Previously released on Coderhire, amassing 240 purchases. I've decided to release it for free. 
+You can still buy the prestige DLC here: http://coderhire.com/scripts/view/1082
+
 
 If you bought this script before I gave it away for free, I am very sorry. Consider it a donation to a poor dev :)
-
-Description
-======================
-A DarkRP leveling system. Previously released on Coderhire, amassing 240 purchases. I've decided to release it for free. 
-You can still buy the prestige DLC here: [[http://coderhire.com/scripts/view/1082]]
 
 Features
 -------
