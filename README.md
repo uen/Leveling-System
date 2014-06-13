@@ -7,6 +7,8 @@ You can still buy the prestige DLC here: http://coderhire.com/scripts/view/1082
 
 If you bought this script before I gave it away for free, I am very sorry. Consider it a donation to a poor dev :)
 
+Also, please don't rip off the code and try and sell it. Don't be a dick.
+
 Features
 -------
 **7 Money Printers** - You can buy them and they give you money like normal printers, but they also give you XP. The printers could be an addon by themselves as you can add new ones with around 10 lines. No annoying copy/pasting like other printer addons.
