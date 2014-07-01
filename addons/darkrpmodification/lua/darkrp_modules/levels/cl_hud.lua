@@ -68,7 +68,7 @@ local function HUDPaint()
 	local PlayerXP = LocalPlayer():getDarkRPVar('xp')
 	
 	// Draw the XP Bar
-	local percent = ((PlayerXP or 0)/(((10+(((PlayerLevel or 1)*((PlayerLevel or 1)+1)*90)))))) // Gets the accurate level up percentage
+	local percent = ((PlayerXP or 0)/(((10+(((PlayerLevel or 1)*((PlayerLevel or 1)+1)*90))))*LevelSystemConfiguration.XPMult)) // Gets the accurate level up percentage
 	
 	local drawXP = Lerp(8*FrameTime(),OldXP,percent)
 	OldXP = drawXP
