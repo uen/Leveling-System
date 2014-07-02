@@ -7,7 +7,7 @@ function PlayerDeath(victim, weapon, killer)
 						if(killer:getDarkRPVar('level')<=victim:getDarkRPVar('level')) then
 								killer:addXP(10*(victim:getDarkRPVar('level') or 1), true)
 								killer:addMoney(LevelSystemConfiguration.TakeAwayMoneyAmount)
-								local xpgot = 100*(victim:getDarkRPVar('level') or 1)
+								local xpgot = 10*(victim:getDarkRPVar('level') or 1)
 								DarkRP.notify(killer, 0,4,'You got '..xpgot..'XP and '..LevelSystemConfiguration.TakeAwayMoneyAmount..'$ for killing '..victim:Nick())
 								victim:addMoney(-1000)
 								DarkRP.notify(victim, 0,4,'You died and lost $'..LevelSystemConfiguration.TakeAwayMoneyAmount..'!')					
@@ -17,8 +17,7 @@ function PlayerDeath(victim, weapon, killer)
 					else
 						killer:addXP(10*(victim:getDarkRPVar('level') or 1),true)
 						killer:addMoney(LevelSystemConfiguration.TakeAwayMoneyAmount)
-						killer:addXP(10*(victim:getDarkRPVar('level') or 1), true)
-						local xpgot = 100*(victim:getDarkRPVar('level') or 1)
+						local xpgot = 10*(victim:getDarkRPVar('level') or 1)
 						DarkRP.notify(killer, 0,4,'You got '..xpgot..'XP for killing '..victim:Nick())
 					end
 						
