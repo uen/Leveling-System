@@ -4,7 +4,7 @@ function PlayerDeath(victim, weapon, killer)
 		if(victim != killer) then // Not a suicide
 			if(killer:IsPlayer()) then
 					if(LevelSystemConfiguration.Friendly) then
-						if(killer:getDarkRPVar('level')<=victim:getDarkRPVar('level')) then
+						if((killer:getDarkRPVar('level') or 1)<=(victim:getDarkRPVar('level') or 1)) then
 								killer:addXP(10*(victim:getDarkRPVar('level') or 1), true)
 								killer:addMoney(LevelSystemConfiguration.TakeAwayMoneyAmount)
 								local xpgot = 10*(victim:getDarkRPVar('level') or 1)
