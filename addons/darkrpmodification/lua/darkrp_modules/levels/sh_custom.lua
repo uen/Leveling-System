@@ -169,6 +169,7 @@ Book.Level = 1 // The level required to purchase it
 Book.Price = 10000 // The price of the book
 Book.Allowed = {} // The teams allowed to purchase the book. 
 Book.Type = 'yourbookname' // A unique identifier (NO SPACES!)
+Book.CustomCheck = function() end // Some custom check here. For VIP books and stuff. 
 Book.Prestige = 0 // The prestige required to purchase the book. Only works with my prestige DLC.
 table.insert(XPBooks,Book) // Leave this :)
 
@@ -219,6 +220,7 @@ table.insert(XPBooks,Book)
 			cmd=v.Type,
 			max = 4,
 			prestige=(v.Prestige or 0),
+			customCheck = (v.CustomCheck or function() end),
 			GiveXPAmountOnUse = v.XPOnUse,
 		})
 	end
