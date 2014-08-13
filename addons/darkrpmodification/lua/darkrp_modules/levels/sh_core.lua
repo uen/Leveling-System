@@ -198,7 +198,7 @@ function ButtonColors()
 	end)
 end
 hook.Add('F4MenuTabs', 'ssslawlda', ButtonColors)
-hook.Add('PlayerLevelChanged', 'ilovesophiealsoiamgoingtofuckhertodaybecausesheissatnextome123update:totallyhadanal:update:no', ButtonColors)
+hook.Add('PlayerLevelChanged', 'okayletsremovethiswebrokeuplol', ButtonColors)
 
 end
 
@@ -211,3 +211,10 @@ end
 hook.Add('PlayerInitialSpawn', 'plyspwnxxxxin',PlayerInitialSpawn)
 
 
+
+
+
+
+DarkRP.registerDarkRPVar("level", function(val) net.WriteInt(val, 32) end, function(val) return net.ReadInt(32) end)
+DarkRP.registerDarkRPVar("xp", function(val) net.WriteInt(val, 32) end, function(val) return net.ReadInt(32) end)
+DarkRP.registerDarkRPVar("prestige", function(val) net.WriteInt(val, 32) end, function(val) return net.ReadInt(32) end)
