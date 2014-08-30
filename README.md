@@ -7,7 +7,6 @@ You can still buy the prestige DLC here: http://coderhire.com/scripts/view/1082
 
 If you bought this script before I gave it away for free, I am very sorry. Consider it a donation to a poor dev :)
 
-Also, please don't rip off the code and try and sell it. Don't be a dick.
 
 Features
 -------
@@ -35,6 +34,4 @@ If you don’t have this, go here: https://github.com/FPtje/darkrpmodification/
 
 Next, drag and drop everything inside this folder into your servers garrysmod folder. (It should merge into the current folders. If you don’t know what this means, you’ve probably still done it right).
 You’ve installed the system. Woohoo! If you restart your server, everything should work!
-
-Feel free to push changes.
 
