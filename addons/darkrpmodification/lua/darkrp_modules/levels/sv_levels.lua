@@ -19,7 +19,11 @@ function meta:addXP(amount, anal)
 	if not(anal) then
 		DarkRP.notify(self,0,4,'You got '..amount..' XP!')
 	end
-
+	
+	
+	if(self.VXScaleXP) then
+		amount=(amount*self.VXScaleXP)	
+	end
 	local PlayerLevel = (self:getDarkRPVar('level') or 1)
 	local PlayerXP = (self:getDarkRPVar('xp') or 1)
 	local TotalXP = PlayerXP + amount
@@ -76,11 +80,7 @@ function meta:hasLevel(level)
 end
 
 // Please do not remove or edit this:
+concommand.Add("levels", function(ply)
+	DarkRP.notify(ply,0,10,"Leveling System by @vrondakis")
 
-concommand.Add("levels", function() 
-	print('--------------------')
-	print('--LEVELING SYSTEM---')
-	print('----BY VRONDAKIS----')
-	print('-----@vrondakis-----')
-	print('--------------------')
 end)
