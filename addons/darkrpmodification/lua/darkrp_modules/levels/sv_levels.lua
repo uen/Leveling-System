@@ -44,9 +44,9 @@ function meta:addXP(amount, anal)
 		end
 		self:setDarkRPVar('level', PlayerLevel)
 		self:setDarkRPVar('xp',0)
-		DarkRP.storeXPData(self,PlayerLevel,0)
+		DarkRP.storeXPData(self.PlayerLevel,0)
 	else
-		DarkRP.storeXPData(self,PlayerLevel,(TotalXP or 0))
+		DarkRP.storeXPData(self.PlayerLevel,(TotalXP or 0))
 		self:setDarkRPVar('xp', math.max(0,TotalXP))
 
 	end
