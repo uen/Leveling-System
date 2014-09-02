@@ -214,7 +214,3 @@ hook.Add('PlayerInitialSpawn', 'plyspwnxxxxin',PlayerInitialSpawn)
 
 
 
-
-DarkRP.registerDarkRPVar("level", function(val) net.WriteInt(val, 32) end, function(val) return net.ReadInt(32) end)
-DarkRP.registerDarkRPVar("xp", function(val) net.WriteInt(val, 32) end, function(val) return net.ReadInt(32) end)
-DarkRP.registerDarkRPVar("prestige", function(val) net.WriteInt(val, 32) end, function(val) return net.ReadInt(32) end)
