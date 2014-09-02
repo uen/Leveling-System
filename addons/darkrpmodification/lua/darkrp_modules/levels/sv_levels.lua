@@ -74,6 +74,32 @@ function meta:getMaxXP()
 	return (((10+(((self:getDarkRPVar('level') or 1)*((self:getDarkRPVar('level') or 1)+1)*90))))*LevelSystemConfiguration.XPMult)
 end
 
+function meta:addLevels(levels)
+	if(self:getDarkRPVar('level') == LevelSystemConfiguration.MaxLevel) then
+			return ""
+	end
+	if((self:getDarkRPVar('level') +levels)>LevelSystemConfiguration.MaxLevel) then
+		// Determine how many levels we can add.
+		local LevelsCan = (((self:getDarkRPVar('level')+levels))-LevelSystemConfiguration.MaxLevel)
+		if(LevelsCan==0) then
+			return 'maxlevelalreadyreached'	
+		else
+			DarkRP.storeXPData(LevelSystemConfiguration.MaxLevel,0)
+			self:setDarkRPVar('xp',0)
+			self:setDarkRPVar('level', LevelSystemConfiguration.MaxLevel)
+			return 'cannotaddlevelmax'	
+		end
+		
+	else
+		DarkRP.storeXPData((self:getDarkRPVar('level') +levels),0)
+		self:setDarkRPVar('xp',0)
+		self:setDarkRPVar('level',(self:getDarkRPVar('level') +levels))
+		return 'addedlevels'	
+	end
+	
+		
+end
+
 function meta:hasLevel(level)
 	if(self:getDarkRPVar('level')) >= level then return true
 	else return false end
