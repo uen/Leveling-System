@@ -15,15 +15,16 @@ function meta:addXP(amount, anal)
 	if(self:getDarkRPVar('level') == LevelSystemConfiguration.MaxLevel) then
 			return ""
 	end
+	
+	if(self.VXScaleXP) then
+		amount=(amount*self.VXScaleXP)	
+	end
 
 	if not(anal) then
 		DarkRP.notify(self,0,4,'You got '..amount..' XP!')
 	end
 	
-	
-	if(self.VXScaleXP) then
-		amount=(amount*self.VXScaleXP)	
-	end
+
 	local PlayerLevel = (self:getDarkRPVar('level') or 1)
 	local PlayerXP = (self:getDarkRPVar('xp') or 1)
 	local TotalXP = PlayerXP + amount
