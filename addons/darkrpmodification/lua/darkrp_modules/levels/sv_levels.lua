@@ -44,9 +44,9 @@ function meta:addXP(amount, anal)
 		end
 		self:setDarkRPVar('level', PlayerLevel)
 		self:setDarkRPVar('xp',0)
-		DarkRP.storeXPData(self.PlayerLevel,0)
+		DarkRP.storeXPData(self,PlayerLevel,0)
 	else
-		DarkRP.storeXPData(self.PlayerLevel,(TotalXP or 0))
+		DarkRP.storeXPData(self,PlayerLevel,(TotalXP or 0))
 		self:setDarkRPVar('xp', math.max(0,TotalXP))
 
 	end
@@ -82,19 +82,19 @@ function meta:addLevels(levels)
 		// Determine how many levels we can add.
 		local LevelsCan = (((self:getDarkRPVar('level')+levels))-LevelSystemConfiguration.MaxLevel)
 		if(LevelsCan==0) then
-			return 'maxlevelalreadyreached'	
+			return 0
 		else
-			DarkRP.storeXPData(LevelSystemConfiguration.MaxLevel,0)
+			DarkRP.storeXPData(self, LevelSystemConfiguration.MaxLevel,0)
 			self:setDarkRPVar('xp',0)
 			self:setDarkRPVar('level', LevelSystemConfiguration.MaxLevel)
-			return 'cannotaddlevelmax'	
+			return LevelsCan
 		end
 		
 	else
-		DarkRP.storeXPData((self:getDarkRPVar('level') +levels),0)
+		DarkRP.storeXPData(self,(self:getDarkRPVar('level') +levels),0)
 		self:setDarkRPVar('xp',0)
 		self:setDarkRPVar('level',(self:getDarkRPVar('level') +levels))
-		return 'addedlevels'	
+		return levels
 	end
 	
 		
