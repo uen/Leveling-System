@@ -1,35 +1,36 @@
-// Love Manolis Vrondakis. @vrondakis
 resource.AddSingleFile('materials/vrondakis/xp_bar.png')
 resource.AddSingleFile('resource/fonts/FrancoisOne.ttf')
 local meta = FindMetaTable("Player")
-function meta:addXP(amount, anal)
-	if not IsValid(self) then return false end
-	if not amount then return false end
+
+function meta:setLevel(level)
+	if not (level or self:IsPlayer()) then return end
+	return self:setDarkRPVar('level', level)
+end
+
+function meta:setXP(xp)
+	if not (xp or self:IsPlayer()) then return end
+	return self:setDarkRPVar('xp', xp)
+end
+
+
+
+function meta:addXP(amount, notify)
+	local PlayerLevel = (self:getDarkRPVar('level'))
+	local PlayerXP = (self:getDarkRPVar('xp'))
 	amount = tonumber(amount)
+	if not ((amount) or (IsValid(self)) or (not amount) or (not PlayerLevel) or (not PlayerXP) or (PlayerLevel == LevelSystemConfiguration.MaxLevel)) then return false end
 
-	if(!self:getDarkRPVar('xp')) then
-		DarkRP.notify(self,0,5,'XP not set. Err..')
-			return ""
-	end
-
-	if(self:getDarkRPVar('level') == LevelSystemConfiguration.MaxLevel) then
-			return ""
-	end
-	
 	if(self.VXScaleXP) then
 		amount=(amount*self.VXScaleXP)	
 	end
 
-	if not(anal) then
+	if not(notify) then
 		DarkRP.notify(self,0,4,'You got '..amount..' XP!')
 	end
 	
-
-	local PlayerLevel = (self:getDarkRPVar('level') or 1)
-	local PlayerXP = (self:getDarkRPVar('xp') or 1)
 	local TotalXP = PlayerXP + amount
 
-	if(TotalXP>=self:getMaxXP()) then
+	if(TotalXP>=self:getMaxXP()) then // Level up!
 		PlayerLevel = PlayerLevel + 1
 		DarkRP.notifyAll(0,3,self:Name() .. ' reached level '..PlayerLevel..'!')
 		hook.Call( "PlayerLevelChanged" )
@@ -37,18 +38,20 @@ function meta:addXP(amount, anal)
 		local RemainingXP = (TotalXP-self:getMaxXP())
 		if(LevelSystemConfiguration.ContinueXP) then
 			if(RemainingXP>0) then
-				self:setDarkRPVar('xp',0)
-				self:setDarkRPVar('level',PlayerLevel)
+				self:setXP(0)
+				self:setLevel(PlayerLevel)
 				self:addXP(RemainingXP,true)
 				return
 			end
 		end
-		self:setDarkRPVar('level', PlayerLevel)
-		self:setDarkRPVar('xp',0)
+		
+		self:setLevel(PlayerLevel)
+		self:setXP(0)
+		
 		DarkRP.storeXPData(self,PlayerLevel,0)
 	else
 		DarkRP.storeXPData(self,PlayerLevel,(TotalXP or 0))
-		self:setDarkRPVar('xp', math.max(0,TotalXP))
+		self:setXP(math.max(0,TotalXP))
 
 	end
 end
@@ -58,17 +61,8 @@ function meta:getLevel()
 	return self:getDarkRPVar('level')
 end
 
-function meta:setLevel(level)
-	if not level then return end
-	return self:setDarkRPVar('level', level)
-end
-
 function meta:getXP()
 	return self:getDarkRPVar('xp')
-end
-
-function meta:setXP(xp)
-	return self:setDarkRPVar('xp', xp)
 end
 
 function meta:getMaxXP()
@@ -77,7 +71,7 @@ end
 
 function meta:addLevels(levels)
 	if(self:getDarkRPVar('level') == LevelSystemConfiguration.MaxLevel) then
-			return ""
+			return false
 	end
 	if((self:getDarkRPVar('level') +levels)>LevelSystemConfiguration.MaxLevel) then
 		// Determine how many levels we can add.
@@ -102,12 +96,10 @@ function meta:addLevels(levels)
 end
 
 function meta:hasLevel(level)
-	if(self:getDarkRPVar('level')) >= level then return true
-	else return false end
+	return ((self:getDarkRPVar('level')) >= level)
 end
 
 // Please do not remove or edit this:
 concommand.Add("levels", function(ply)
 	DarkRP.notify(ply,0,10,"Leveling System by @vrondakis")
-
 end)
