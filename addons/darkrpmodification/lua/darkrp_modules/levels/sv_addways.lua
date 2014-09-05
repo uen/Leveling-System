@@ -9,8 +9,10 @@ function PlayerDeath(victim, weapon, killer)
 								killer:addMoney(LevelSystemConfiguration.TakeAwayMoneyAmount)
 								local xpgot = 10*(victim:getDarkRPVar('level') or 1)
 								DarkRP.notify(killer, 0,4,'You got '..xpgot..'XP and '..LevelSystemConfiguration.TakeAwayMoneyAmount..'$ for killing '..victim:Nick())
-								victim:addMoney(-1000)
-								DarkRP.notify(victim, 0,4,'You died and lost $'..LevelSystemConfiguration.TakeAwayMoneyAmount..'!')					
+								if(victim:canAfford(LevelSystemConfiguration.TakeAwayMoneyAmount) then
+									victim:addMoney(-LevelSystemConfiguration.TakeAwayMoneyAmount)
+									DarkRP.notify(victim, 0,4,'You died and lost $'..LevelSystemConfiguration.TakeAwayMoneyAmount..'!')					
+								end
 						else 
 							DarkRP.notify(killer,0,4,'You killed '..victim:Nick())
 						end
