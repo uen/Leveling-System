@@ -1,4 +1,2 @@
 Copyright (C) 2014+ Manolis Vrondakis
-
-Everyone is permitted to use and change this script.
-You may not sell it, no matter how much it is edited. 
+I'm not a lawyer, do what you want. I'd prefer if you didn't steal my hard work though. 
