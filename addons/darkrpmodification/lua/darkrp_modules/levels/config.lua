@@ -1,12 +1,5 @@
-// Love Manolis Vrondakis - @vrondakis - manolisvrondakis.com
-// This is the configuration file, believe it or not.
-// If you like this script, you can support me by buying my prestige system - http://coderhire.com/scripts/view/1082
-// Or donating through Paypal: manolisvrondakis@gmail.com
-
-// You may do what you want with this code, as long as you do not sell it and credit the original author (me)
-
-LevelSystemConfiguration = {} // Leave this :)
-local Printers = {} // This too
+LevelSystemConfiguration = {} // Leave this line.
+local Printers = {} // Leave this line.
 local XPBooks = {} // And this
 
 
