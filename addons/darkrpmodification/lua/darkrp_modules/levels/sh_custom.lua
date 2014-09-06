@@ -35,7 +35,7 @@ LevelSystemConfiguration.PrinterTime = 120
 LevelSystemConfiguration.KeepThisToTrue = true
 LevelSystemConfiguration.Epilepsy = false
 
-
+AddCSLuaFile('config.lua')
 include('config.lua')
 
 
