@@ -1,4 +1,3 @@
-// Love Manolis Vrondakis. @vrondakis
 function PlayerDeath(victim, weapon, killer)
 	if(LevelSystemConfiguration.KillModule) then
 		if(victim != killer) then // Not a suicide
@@ -9,7 +8,7 @@ function PlayerDeath(victim, weapon, killer)
 								killer:addMoney(LevelSystemConfiguration.TakeAwayMoneyAmount)
 								local xpgot = 10*(victim:getDarkRPVar('level') or 1)
 								DarkRP.notify(killer, 0,4,'You got '..xpgot..'XP and '..LevelSystemConfiguration.TakeAwayMoneyAmount..'$ for killing '..victim:Nick())
-								if(victim:canAfford(LevelSystemConfiguration.TakeAwayMoneyAmount) then
+								if(victim:canAfford(LevelSystemConfiguration.TakeAwayMoneyAmount)) then
 									victim:addMoney(-LevelSystemConfiguration.TakeAwayMoneyAmount)
 									DarkRP.notify(victim, 0,4,'You died and lost $'..LevelSystemConfiguration.TakeAwayMoneyAmount..'!')					
 								end
