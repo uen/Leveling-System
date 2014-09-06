@@ -26,5 +26,8 @@ Features
 Installation
 -------
 Drag and drop all 3 folders inside this folder into your servers garrysmod folder. (It should merge into the current folders. If you don’t know what this means, you’ve probably still done it right).
-You’ve installed the system. Woohoo! If you restart your server, everything should work!
+
+To configure the system, you need to edit config.lua
+
+To edit printers and books, please edit printers.lua and books.lua
 
