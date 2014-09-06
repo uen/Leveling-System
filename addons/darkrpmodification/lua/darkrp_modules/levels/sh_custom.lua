@@ -9,7 +9,7 @@ LevelSystemConfiguration.EnableHUD = true
 LevelSystemConfiguration.LevelColor = Color(255,255,255,255)
 LevelSystemConfiguration.XPTextColor = Color(255,255,255,255) 
 LevelSystemConfiguration.LevelBarColor = {6,116,255} 
-LevelSystemConfiguration.LevelTextPos = {1.5, 170} 
+LevelSystemConfiguration.LevelTextPos = {1.5, 180} 
 
 LevelSystemConfiguration.GreenJobBars = true 
 LevelSystemConfiguration.GreenAllBars = true
