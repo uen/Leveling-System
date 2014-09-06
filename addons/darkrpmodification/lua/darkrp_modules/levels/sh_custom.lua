@@ -39,7 +39,14 @@ AddCSLuaFile('config.lua')
 include('config.lua')
 
 
-for k,v in pairs(XPBooks) do
+AddCSLuaFile('printers.lua')
+AddCSLuaFile('books.lua')
+
+include('books.lua')
+include('printers.lua')
+
+hook.Add("loadCustomDarkRPItems", "Levels:CustomLoad", function()
+	for k,v in pairs(XPBooks) do
 		local Errors = {}
 		if not type(v.Name) == 'string' then table.insert(Errors, 'The name of an XP Book is INVALID!') end
 		if not type(v.Type) == 'string' then table.insert(Errors, 'The name of an XP Book is INVALID!') end
@@ -70,7 +77,7 @@ for k,v in pairs(XPBooks) do
 	end
 
 
-for k,v in pairs(Printers) do
+	for k,v in pairs(Printers) do
 		local Errors = {}
 		if not type(v.Name) == 'string' then table.insert(Errors, 'The name of a printer is INVALID!') end
 		if not type(v.Type) == 'string' then table.insert(Errors, 'The type of a printer is INVALID!') end
@@ -110,6 +117,9 @@ for k,v in pairs(Printers) do
 			vrondakisEpileptic = LevelSystemConfiguration.Epilepsy
 		})
 
-end
+	end
+
+end)
+
 
 
