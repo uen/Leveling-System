@@ -3,6 +3,7 @@
 
 LevelSystemConfiguration = {}
 LevelSystemPrestigeConfiguration = {}
+
 Printers = {} 
 XPBooks = {}
 
@@ -40,6 +41,14 @@ LevelSystemPrestigeConfiguration.MaxPresiges = 1
 LevelSystemPrestigeConfiguration.CashReward = 100000
 LevelSystemPrestigeConfiguration.CashMult = true
 LevelSystemPrestigeConfiguration.LevelBarPrestige = true
+LevelSystemPrestigeConfiguration.DefaultColor = Color(100,100,255)
+LevelSystemPrestigeConfiguration.HealthModule = true
+LevelSystemPrestigeConfiguration.HealthModuleScale = 1 
+LevelSystemPrestigeConfiguration.DamageModule = true 
+LevelSystemPrestigeConfiguration.DamageModuleScale = 1
+LevelSystemPrestigeConfiguration.RunSpeedModule = true
+LevelSystemPrestigeConfiguration.RunSpeedModuleScale = 10
+LevelSystemPrestigeConfiguration.GravityModule = false
 LevelSystemPrestigeConfiguration.XPColors = {
 	Color(192, 57, 43),
 	Color(41, 128, 185),
@@ -49,15 +58,6 @@ LevelSystemPrestigeConfiguration.XPColors = {
 	Color(39, 174, 96),
 	Color(39, 174, 96)
 }
-LevelSystemPrestigeConfiguration.DefaultColor = Color(100,100,255)
-LevelSystemPrestigeConfiguration.HealthModule = true
-LevelSystemPrestigeConfiguration.HealthModuleScale = 1 
-LevelSystemPrestigeConfiguration.DamageModule = true 
-LevelSystemPrestigeConfiguration.DamageModuleScale = 1
-LevelSystemPrestigeConfiguration.RunSpeedModule = true
-LevelSystemPrestigeConfiguration.RunSpeedModuleScale = 10
-LevelSystemPrestigeConfiguration.GravityModule = false
-
 
 
 AddCSLuaFile('config.lua')
