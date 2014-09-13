@@ -30,10 +30,10 @@ function ENT:Initialize()
 		self.sound:PlayEx(1, 100)
 	end
 
-	self:SetNWInt('PrinterName', self.DarkRPItem.name)
-	self:SetNWInt('MoneyPerPrint', self.DarkRPItem.vrondakisMoneyPerPrint)
+	self:SetNWInt('PrinterName', (self.DarkRPItem.name or 'Unknown'))
+	self:SetNWInt('MoneyPerPrint', self.DarkRPItem.vrondakisMoneyPerPrint or 0)
 	self:SetNWInt('MoneyAmount', 0)
-	self:SetNWInt('MaxConfig',self.DarkRPItem.PrinterMaxP)
+	self:SetNWInt('MaxConfig',self.DarkRPItem.PrinterMaxP or 1)
 
 	self:SetUseType(SIMPLE_USE)
 
