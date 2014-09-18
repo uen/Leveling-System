@@ -96,7 +96,7 @@ hook.Add("loadCustomDarkRPItems", "Levels:CustomLoad", function()
 			cmd=v.Type,
 			max = 4,
 			prestige=(v.Prestige or 0),
-			customCheck = (v.CustomCheck or function() end),
+			customCheck = (v.CustomCheck or function() return true end),
 			GiveXPAmountOnUse = v.XPOnUse,
 		})
 	end
