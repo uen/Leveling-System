@@ -17,7 +17,7 @@ LevelSystemConfiguration.NPCXPAmount = 10 // Amount of XP to give when an NPC is
 LevelSystemConfiguration.TimerModule = true // Give XP to everybody every howeverlong
 LevelSystemConfiguration.Timertime = 100 // How much time (in seconds) until everybody gets given XP
 LevelSystemConfiguration.TimerXPAmount = 100 // How much XP to give each time it goes off
-LevelSystemConfiguration.YourServerName = "on the server" // The notifcation text ish. "You got 100XP for playing on this server."
+LevelSystemConfiguration.YourServerName = "on the server" // The notifcation text ish. "You got 100XP for playing on the server."
 
 LevelSystemConfiguration.XPMult = 1 // How hard it is to level up. 2 would require twice as much XP, ect.
 LevelSystemConfiguration.MaxLevel = 99 // The max level
