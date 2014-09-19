@@ -67,10 +67,6 @@ if CLIENT then
 function LevelPrompts()
 	timer.Simple(0.1,function()
 
-		if(LevelSystemPrestigeConfiguration) then
-			return // My sexy system.
-		end
-
 		for k,v in pairs(DarkRPEntities) do
 			v.label = v.name
 			if v.level then
@@ -124,9 +120,6 @@ if CLIENT then
 
 function ButtonColors()
 	timer.Simple(0.1, function()
-		if(LevelSystemPrestigeConfiguration) then
-			return // My sexy system.
-		end
 
 		if(LevelSystemConfiguration.GreenAllBars) then
 			for k,v in pairs(DarkRPEntities) do 
