@@ -18,8 +18,8 @@ function meta:addXP(amount, notify)
 	local PlayerLevel = (self:getDarkRPVar('level'))
 	local PlayerXP = (self:getDarkRPVar('xp'))
 	amount = tonumber(amount)
-	if not ((amount) or (IsValid(self)) or (not amount) or (not PlayerLevel) or (not PlayerXP) or (PlayerLevel == LevelSystemConfiguration.MaxLevel)) then return false end
 
+	if((not amount) or (not IsValid(self)) or (not PlayerLevel) or (not PlayerXP) or (PlayerLevel>=LevelSystemConfiguration.MaxLevel)) then return false end
 	if(self.VXScaleXP) then
 		amount=(amount*self.VXScaleXP)	
 	end
