@@ -1,6 +1,6 @@
 // Love Manolis Vrondakis. @vrondakis
 if SERVER then 
-hook.Add('canBuyPistol', 'cnbypistl', function(ply, entity) 
+hook.Add('canBuyPistol', 'MVLevels:PistolBuy', function(ply, entity) 
 	if (entity.level) then
 			if not ((ply:getDarkRPVar('level') or 0) >= (entity.level)) then
 				DarkRP.notify(ply, 1, 4, 'You\'re not the right level to buy this!')
@@ -10,7 +10,7 @@ hook.Add('canBuyPistol', 'cnbypistl', function(ply, entity)
 end)
 
 
-hook.Add('canBuyAmmo', 'cnbyam0l', function(ply, entity) 
+hook.Add('canBuyAmmo', 'MVLevels:AmmoBuy', function(ply, entity) 
 	if (entity.level) then
 			if not ((ply:getDarkRPVar('level') or 0) >= (entity.level)) then
 				DarkRP.notify(ply, 1, 4, 'You\'re not the right level to buy this!')
@@ -19,7 +19,7 @@ hook.Add('canBuyAmmo', 'cnbyam0l', function(ply, entity)
 	end
 end)
 
-hook.Add('canBuyShipment', 'cnbyshipmentalsomanolisissexy', function(ply, entity) 
+hook.Add('canBuyShipment', 'MVLevels:ShipmentBuy', function(ply, entity) 
 	if (entity.level) then
 			if not ((ply:getDarkRPVar('level') or 0) >= (entity.level)) then
 				DarkRP.notify(ply, 1, 4, 'You\'re not the right level to buy this!')
@@ -28,7 +28,7 @@ hook.Add('canBuyShipment', 'cnbyshipmentalsomanolisissexy', function(ply, entity
 	end
 end)
 
-hook.Add('canBuyVehicle', 'cnbyshipmentalsomanolisissex2y', function(ply, entity) 
+hook.Add('canBuyVehicle', 'MVLevels:VehiclesBuy', function(ply, entity) 
 	if (entity.level) then
 			if not ((ply:getDarkRPVar('level') or 0) >= (entity.level)) then
 				DarkRP.notify(ply, 1, 4, 'You\'re not the right level to buy this!')
@@ -37,7 +37,7 @@ hook.Add('canBuyVehicle', 'cnbyshipmentalsomanolisissex2y', function(ply, entity
 	end
 end)
 
-hook.Add('canBuyCustomEntity', 'cnbycsnemtity2', function(ply, entity) 
+hook.Add('canBuyCustomEntity', 'MVLevels:CEntityBuy', function(ply, entity) 
 	if (entity.level) then
 			if not ((ply:getDarkRPVar('level') or 0) >= (entity.level)) then
 				DarkRP.notify(ply, 1, 4, 'You\'re not the right level to buy this!')
@@ -49,7 +49,7 @@ end)
 
 
 
-hook.Add('playerCanChangeTeam', 'cnchandsejob12313', function(ply, jobno) 
+hook.Add('playerCanChangeTeam', 'MVLevels:playerTeamChange', function(ply, jobno) 
 	// This one requires a little extra work
 	job = RPExtraTeams[jobno]
 	if (job.level) then
@@ -105,11 +105,11 @@ function LevelPrompts()
 
 end
 
-hook.Add( "InitPostEntity", "initdrpa", function()
+hook.Add( "InitPostEntity", "MVLevels:PostEntInit", function()
 	LevelPrompts()
 end) 
 
-hook.Add("OnReloaded", "alalaldoadoaoawdadadoaga", function()
+hook.Add("OnReloaded", "MVLevels:LuaReloadA", function()
 	LevelPrompts()
 end)
 
@@ -190,8 +190,8 @@ function ButtonColors()
 		end
 	end)
 end
-hook.Add('F4MenuTabs', 'ssslawlda', ButtonColors)
-hook.Add('PlayerLevelChanged', 'okayletsremovethiswebrokeuplol', ButtonColors)
+hook.Add('F4MenuTabs', 'MVLevels:FFourMenuTabs', ButtonColors)
+hook.Add('PlayerLevelChanged', 'MVLevels:PlayerLevelChangedA', ButtonColors)
 
 end
 
@@ -201,7 +201,7 @@ function PlayerInitialSpawn(ply)
 	end
 end
 
-hook.Add('PlayerInitialSpawn', 'plyspwnxxxxin',PlayerInitialSpawn)
+hook.Add('PlayerInitialSpawn', 'MVLevels:PlayerSpawnB',PlayerInitialSpawn)
 
 
 
