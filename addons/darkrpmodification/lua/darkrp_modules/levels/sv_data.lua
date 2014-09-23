@@ -8,7 +8,7 @@ function DarkRPInit()
 			);
 		]])
 end
-hook.Add("DarkRPDBInitialized", "drpinit", DarkRPInit)
+hook.Add("DarkRPDBInitialized", "manolis:MVLevels:DarkRPDBInitializedBB", DarkRPInit)
 
 function DarkRP.retrievePlayerLevelXP(ply, callback)
 	MySQLite.query("SELECT level,xp FROM darkrp_levels WHERE uid = ".. MySQLite.SQLStr(ply:UniqueID())..";", function(r)callback(r)end)
