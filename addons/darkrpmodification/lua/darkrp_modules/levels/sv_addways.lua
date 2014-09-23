@@ -27,7 +27,7 @@ function PlayerDeath(victim, weapon, killer)
 	end
 end
 
-hook.Add( "PlayerDeath", "plyded123", PlayerDeath )
+hook.Add( "PlayerDeath", "manolis:MVLevels:PlayerDeathBC", PlayerDeath )
 
 
 function NPCDeath(npc, killer,weapon)
@@ -41,7 +41,7 @@ function NPCDeath(npc, killer,weapon)
 	end
 end
 
-hook.Add( "OnNPCKilled", "enpcded123", NPCDeath )
+hook.Add( "OnNPCKilled", "manolis:MVLevels:OnNPCKilledBC", NPCDeath )
 
 local time = LevelSystemConfiguration.Timertime
 timer.Create( "PlayXP", time,0,function()
