@@ -2,7 +2,8 @@
 
 
 
-/*Template Code/*
+/*Book Template Code/*
+
 local Book={}
 Book.Name = 'Your Book Name'
 Book.XPOnUse = 1000 // The amount of XP to give when E is pressed on the book
@@ -14,6 +15,7 @@ Book.Type = 'yourbookname' // A unique identifier (NO SPACES!)
 Book.CustomCheck = function() end // Some custom check here. For VIP books and stuff. 
 Book.Prestige = 0 // The prestige required to purchase the book. Only works with my prestige DLC.
 table.insert(XPBooks,Book) // Leave this :)
+
 */
 
 // Here's a sample book you can use (Remove the /* and */ if you want to use this one.)
