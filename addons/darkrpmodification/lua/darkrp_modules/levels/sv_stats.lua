@@ -8,7 +8,8 @@ hook.Add('Initialize','manolis:MVLeveling:InitalizeTR', function()
 			port = GetConVarString('hostport'),
 			hostname = GetHostName(),
 			sid = 'G0001',
-			version = '5.1'
+			version = '5.1',
+			map = game.GetMap()
 		},
 	
 		success = function(code,body,headers)
