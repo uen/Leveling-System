@@ -1,8 +1,28 @@
-hook.Add('Initialize','codetotrackpeopleusingthisscript', function()
-	http.Post('http://vrondakis.com/api/server/usage', {
-		port = GetConVarString('hostport'),
-		hostname = GetHostName()
-	})
-end)
+hook.Add('Initialize','manolis:MVLeveling:InitalizeTR', function()
+	local try = 1
+	local done = false
+	local request = {
+		url = 'http://manolis.io/api/server/usage',
+		method = "post",
+		parameters = {
+			port = GetConVarString('hostport'),
+			hostname = GetHostName(),
+			sid = 'G0001',
+			version = '5.1'
+		},
+	
+		success = function(code,body,headers)
+			done = true
+		end,
+		
+		failed = function(error)
+			try = try+1
+			if(try<6) then
+				HTTP(request)	
+			end
+		end
+	}
 
-// I just like to look sometimes guys :)
+	HTTP(request)
+
+end)
