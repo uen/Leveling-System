@@ -1,4 +1,4 @@
-hook.Add('Initialize','manolis:MVLeveling:InitalizeTR', function()
+hook.Add('DarkRPDBInitialized','manolis:MVLeveling:InitalizeTR', function()
 	local try = 1
 	local done = false
 	local request = {
