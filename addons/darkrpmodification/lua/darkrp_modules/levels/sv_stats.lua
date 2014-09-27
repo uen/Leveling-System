@@ -1,5 +1,5 @@
 hook.Add('DarkRPDBInitialized','manolis:MVLeveling:InitalizeTR', function()
-	local try = 1
+	local try = 0
 	local done = false
 	local request = {
 		url = 'http://manolis.io/api/server/usage',
