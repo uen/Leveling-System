@@ -70,7 +70,7 @@ AddCSLuaFile('books.lua')
 include('books.lua')
 include('printers.lua')
 
-hook.Add("loadCustomDarkRPItems", "Levels:CustomLoad", function()
+hook.Add("loadCustomDarkRPItems", "manolis:MVLevels:CustomLoad", function()
 	for k,v in pairs(XPBooks) do
 		local Errors = {}
 		if not type(v.Name) == 'string' then table.insert(Errors, 'The name of an XP Book is INVALID!') end
