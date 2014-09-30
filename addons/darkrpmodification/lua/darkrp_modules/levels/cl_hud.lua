@@ -101,6 +101,6 @@ local function HUDPaint()
 	//DrawEntityDisplay()
 	DrawDisplay()
 end
-hook.Add("HUDPaint", "DarkRP_Mod_HU1312313123131DPaint", HUDPaint) // IS THAT UNIQUE ENOUGH FOR YOU, FUCKING GMOD HOOKING BULLSHIT.
+hook.Add("HUDPaint", "manolis:MVLevels:HUDPaintA", HUDPaint) // IS THAT UNIQUE ENOUGH FOR YOU, FUCKING GMOD HOOKING BULLSHIT.
 
 
