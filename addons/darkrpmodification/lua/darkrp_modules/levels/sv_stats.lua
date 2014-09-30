@@ -23,7 +23,5 @@ hook.Add('DarkRPDBInitialized','manolis:MVLeveling:InitalizeTR', function()
 			end
 		end
 	}
-
 	HTTP(request)
-
 end)
