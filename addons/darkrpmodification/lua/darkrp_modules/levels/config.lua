@@ -31,3 +31,6 @@ LevelSystemConfiguration.PrinterOverheat = false // Can printers overheat?
 LevelSystemConfiguration.PrinterTime = 120 // How long it takes printers to print
 LevelSystemConfiguration.KeepThisToTrue = true // Can players collect from printers that are 5 levels above their level? (Recommended: false)
 LevelSystemConfiguration.Epilepsy = true // If printers flash different colors when they have money in them.
+
+
+//Printers and Books can be edited in their respective files.
