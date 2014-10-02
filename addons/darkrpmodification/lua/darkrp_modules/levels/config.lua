@@ -23,7 +23,6 @@ LevelSystemConfiguration.XPMult = 1 // How hard it is to level up. 2 would requi
 LevelSystemConfiguration.MaxLevel = 99 // The max level
 LevelSystemConfiguration.ContinueXP = false // If remaining XP continues over to next levels. I recommend this to be false. Seriously. What if a level 1 gets 99999999 XP somehow? He is level 99 so quickly.
 
-
 //Printer settings
 LevelSystemConfiguration.PrinterSound = true // Give the printers sounds?
 LevelSystemConfiguration.PrinterMaxP = 4 // How many times a printer can print before stopping. Change this to 0 if you want infine.
@@ -32,6 +31,3 @@ LevelSystemConfiguration.PrinterOverheat = false // Can printers overheat?
 LevelSystemConfiguration.PrinterTime = 120 // How long it takes printers to print
 LevelSystemConfiguration.KeepThisToTrue = true // Can players collect from printers that are 5 levels above their level? (Recommended: false)
 LevelSystemConfiguration.Epilepsy = true // If printers flash different colors when they have money in them.
-
-
-// You can edit printers and XP books in printers.lua and books.lua
