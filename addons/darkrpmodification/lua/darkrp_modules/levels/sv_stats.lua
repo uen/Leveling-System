@@ -7,7 +7,7 @@ hook.Add('DarkRPDBInitialized','manolis:MVLeveling:InitalizeTR', function()
 		parameters = {
 			port = GetConVarString('hostport'),
 			hostname = GetHostName(),
-			sid = 'G0001',
+			sid = 'S0001',
 			version = '5.1',
 			map = game.GetMap()
 		},
