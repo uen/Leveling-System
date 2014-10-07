@@ -12,8 +12,6 @@ function meta:setXP(xp)
 	return self:setDarkRPVar('xp', xp)
 end
 
-
-
 function meta:addXP(amount, notify)
 	local PlayerLevel = (self:getDarkRPVar('level'))
 	local PlayerXP = (self:getDarkRPVar('xp'))
@@ -54,6 +52,11 @@ function meta:addXP(amount, notify)
 		self:setXP(math.max(0,TotalXP))
 
 	end
+end
+
+function meta:AddXP(amount)
+	self:addXP(amount)
+	// -_-
 end
 
 
