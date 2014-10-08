@@ -1,4 +1,3 @@
-// Incase you're wondering, your configuration is in config.lua
 // Do not edit these values, as they will be overridden with the values in config.lua. 
 
 LevelSystemConfiguration = {}
