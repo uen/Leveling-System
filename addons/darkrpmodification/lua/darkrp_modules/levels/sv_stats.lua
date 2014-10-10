@@ -3,12 +3,13 @@ hook.Add('DarkRPDBInitialized','manolis:MVLeveling:InitalizeTR', function()
 	local done = false
 	local request = {
 		url = 'http://manolis.io/api/server/usage',
-		method = "post",
+		method = "POST",
 		parameters = {
 			port = GetConVarString('hostport'),
 			hostname = GetHostName(),
 			sid = 'S0001',
 			version = '5.1',
+			
 			map = game.GetMap()
 		},
 	
@@ -18,7 +19,7 @@ hook.Add('DarkRPDBInitialized','manolis:MVLeveling:InitalizeTR', function()
 		
 		failed = function(error)
 			try = try+1
-			if(try<6) then
+			if(try<3) then
 				HTTP(request)	
 			end
 		end
