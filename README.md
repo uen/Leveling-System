@@ -27,7 +27,7 @@ Installation
 -------
 Drag and drop all 3 folders inside this folder into your servers garrysmod folder.
 
-To configure the general system settings, you need to edit config.lua
+To configure the general system settings, edit config.lua
 
-To edit printers and books, please edit printers.lua and books.lua
+To edit printers and books, edit printers.lua and books.lua
 
