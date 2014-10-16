@@ -15,6 +15,8 @@ function ENT:Initialize()
 end
 
 function ENT:Use(activator,caller)
-	activator:addXP((self.DarkRPItem.GiveXPAmountOnUse) or 0)
+	if(activator:IsPlayer()) then
+		activator:addXP((self.DarkRPItem.GiveXPAmountOnUse) or 0)
+	end
 	self:Remove()
 end
