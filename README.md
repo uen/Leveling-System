@@ -31,3 +31,6 @@ To configure the general system settings, edit config.lua
 
 To edit printers and books, edit printers.lua and books.lua
 
+
+Make sure you read the actual readme!
+
