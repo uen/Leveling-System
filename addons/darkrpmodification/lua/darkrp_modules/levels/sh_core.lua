@@ -3,7 +3,7 @@ if SERVER then
 hook.Add('canBuyPistol', 'manolis:MVLevels:PistolBuy', function(ply, entity) 
 	if (entity.level) then
 			if not ((ply:getDarkRPVar('level') or 0) >= (entity.level)) then
-				DarkRP.notify(ply, 1, 4, 'You\'re not the right level to buy this!')
+				DarkRP.notify(ply, 1, 2, 'You\'re not the right level to buy this!')
 				return false, true
 			end
 	end
@@ -13,7 +13,7 @@ end)
 hook.Add('canBuyAmmo', 'manolis:MVLevels:AmmoBuy', function(ply, entity) 
 	if (entity.level) then
 			if not ((ply:getDarkRPVar('level') or 0) >= (entity.level)) then
-				DarkRP.notify(ply, 1, 4, 'You\'re not the right level to buy this!')
+				DarkRP.notify(ply, 1, 2, 'You\'re not the right level to buy this!')
 				return false, true
 			end
 	end
@@ -22,7 +22,7 @@ end)
 hook.Add('canBuyShipment', 'manolis:MVLevels:ShipmentBuy', function(ply, entity) 
 	if (entity.level) then
 			if not ((ply:getDarkRPVar('level') or 0) >= (entity.level)) then
-				DarkRP.notify(ply, 1, 4, 'You\'re not the right level to buy this!')
+				DarkRP.notify(ply, 1, 2, 'You\'re not the right level to buy this!')
 				return false, true
 			end
 	end
@@ -31,7 +31,7 @@ end)
 hook.Add('canBuyVehicle', 'manolis:MVLevels:VehiclesBuy', function(ply, entity) 
 	if (entity.level) then
 			if not ((ply:getDarkRPVar('level') or 0) >= (entity.level)) then
-				DarkRP.notify(ply, 1, 4, 'You\'re not the right level to buy this!')
+				DarkRP.notify(ply, 1, 2, 'You\'re not the right level to buy this!')
 				return false, true
 			end
 	end
@@ -40,7 +40,7 @@ end)
 hook.Add('canBuyCustomEntity', 'manolis:MVLevels:CEntityBuy', function(ply, entity) 
 	if (entity.level) then
 			if not ((ply:getDarkRPVar('level') or 0) >= (entity.level)) then
-				DarkRP.notify(ply, 1, 4, 'You\'re not the right level to buy this!')
+				DarkRP.notify(ply, 1, 2, 'You\'re not the right level to buy this!')
 				return false, true
 			end
 	end
@@ -55,7 +55,7 @@ hook.Add('playerCanChangeTeam', 'manolis:MVLevels:playerTeamChange', function(pl
 	if (job.level) then
 			
 			if not ((ply:getDarkRPVar('level') or 0) >= (job.level)) then
-				DarkRP.notify(ply, 1, 4, 'You\'re not the right level to become this!')
+				DarkRP.notify(ply, 1, 2, 'You\'re not the right level to become this!')
 				return false, true
 			end
 	end
