@@ -113,6 +113,7 @@ hook.Add("loadCustomDarkRPItems", "manolis:MVLevels:CustomLoad", function()
 			vrondakisMoneyPerPrint = v.MoneyPerPrint,
 			vrondakisColor = v.Color,
 			vrondakisModel = v.Model,
+			customCheck = (v.CustomCheck or function() return true end),
 			vrondakisOverheat = LevelSystemConfiguration.PrinterOverheat,
 			PrinterMaxP = LevelSystemConfiguration.PrinterMaxP,
 			vrondakisPrinterTime = LevelSystemConfiguration.PrinterTime,
