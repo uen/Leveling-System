@@ -128,6 +128,7 @@ function ENT:CreateMoneybag()
 end
 
 function ENT:Use(activator,caller)
+	local xpAdded = 0
 	if(IsValid(activator)) then
 		if(activator:IsPlayer()) then
 			if(self.StoredMoney>0) then
@@ -138,7 +139,7 @@ function ENT:Use(activator,caller)
 					end
 
 					if not (self.StoredXP==0) then
-						activator:addXP(self.StoredXP,true)
+						xpAdded = activator:addXP(self.StoredXP,true)
 					end
 					self:SetNWInt('MoneyAmount', 0)
 					DarkRP.notify(activator,0,4,'You got '..self.StoredXP..'XP and '..self.StoredMoney..'$ from this printer.')
@@ -152,10 +153,10 @@ function ENT:Use(activator,caller)
 					end
 
 					if not (self.StoredXP==0) then
-						activator:addXP(self.StoredXP,true)
+						xpAdded = activator:addXP(self.StoredXP,true)
 					end
 					self:SetNWInt('MoneyAmount', 0)
-					DarkRP.notify(activator,0,4,'You got '..self.StoredXP..'XP and '..self.StoredMoney..'$ from this printer.')
+					DarkRP.notify(activator,0,4,'You got '..xpAdded..'XP and '..self.StoredMoney..'$ from this printer.')
 					self.StoredMoney = 0
 					self.StoredXP = 0
 				end
