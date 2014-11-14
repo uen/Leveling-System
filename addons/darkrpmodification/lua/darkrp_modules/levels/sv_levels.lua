@@ -52,6 +52,9 @@ function meta:addXP(amount, notify)
 		self:setXP(math.max(0,TotalXP))
 
 	end
+
+	return amount
+
 end
 
 function meta:AddXP(amount)
