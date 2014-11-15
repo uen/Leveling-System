@@ -70,7 +70,7 @@ hook.Add("loadCustomDarkRPItems", "manolis:MVLevels:CustomLoad", function()
 			model=v.Model,
 			price=v.Price,
 			level=v.Level,
-			allowed=v.Allowed,
+			allowed=table.Copy(v.Allowed),
 			cmd=v.Type,
 			max = 4,
 			prestige=(v.Prestige or 0),
