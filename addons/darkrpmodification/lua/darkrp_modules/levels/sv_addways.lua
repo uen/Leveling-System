@@ -4,9 +4,8 @@ function PlayerDeath(victim, weapon, killer)
 			if(killer:IsPlayer()) then
 					if(LevelSystemConfiguration.Friendly) then
 						if((killer:getDarkRPVar('level') or 1)<=(victim:getDarkRPVar('level') or 1)) then
-								killer:addXP(10*(victim:getDarkRPVar('level') or 1), true)
+								local xpgot=killer:addXP(10*(victim:getDarkRPVar('level') or 1), true)
 								killer:addMoney(LevelSystemConfiguration.TakeAwayMoneyAmount)
-								local xpgot = 10*(victim:getDarkRPVar('level') or 1)
 								DarkRP.notify(killer, 0,4,'You got '..xpgot..'XP and '..LevelSystemConfiguration.TakeAwayMoneyAmount..'$ for killing '..victim:Nick())
 								if(victim:canAfford(LevelSystemConfiguration.TakeAwayMoneyAmount)) then
 									victim:addMoney(-LevelSystemConfiguration.TakeAwayMoneyAmount)
@@ -16,9 +15,8 @@ function PlayerDeath(victim, weapon, killer)
 							DarkRP.notify(killer,0,4,'You killed '..victim:Nick())
 						end
 					else
-						killer:addXP(10*(victim:getDarkRPVar('level') or 1),true)
+						local xpgot = killer:addXP(10*(victim:getDarkRPVar('level') or 1),true)
 						killer:addMoney(LevelSystemConfiguration.TakeAwayMoneyAmount)
-						local xpgot = 10*(victim:getDarkRPVar('level') or 1)
 						DarkRP.notify(killer, 0,4,'You got '..xpgot..'XP for killing '..victim:Nick())
 					end
 						
@@ -34,8 +32,8 @@ function NPCDeath(npc, killer,weapon)
 	if(LevelSystemConfiguration.NPCXP) then
 		if(npc != killer) then // Not a suicide? Somehow.
 			if(killer:IsPlayer()) then
-				killer:addXP(LevelSystemConfiguration.NPCXPAmount, true)
-				DarkRP.notify(killer, 0,4,'You got '..LevelSystemConfiguration.NPCXPAmount..'XP for killing an NPC.')				
+				local XP = killer:addXP(LevelSystemConfiguration.NPCXPAmount, true)
+				DarkRP.notify(killer, 0,4,'You got '..XP..'XP for killing an NPC.')				
 			end
 		end
 	end
@@ -47,8 +45,8 @@ local time = LevelSystemConfiguration.Timertime
 timer.Create( "PlayXP", time,0,function()
 	if(LevelSystemConfiguration.TimerModule) then
 		for k,v in pairs(player.GetAll()) do 
-			DarkRP.notify(v,0,4,"You got "..LevelSystemConfiguration.TimerXPAmount.."XP for playing "..LevelSystemConfiguration.YourServerName) 
-			v:addXP(100,true)
+			local XP = v:addXP(100,true)
+			DarkRP.notify(v,0,4,"You got "..XP.."XP for playing "..LevelSystemConfiguration.YourServerName) 
 		end
 	end
 end)
