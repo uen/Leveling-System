@@ -1,7 +1,7 @@
 // Do not edit these values, as they will be overridden with the values in config.lua. 
 
 LevelSystemConfiguration = {}
-LevelSystemPrestigeConfiguration = {}
+
 
 Printers = {} 
 XPBooks = {}
