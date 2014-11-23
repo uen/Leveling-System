@@ -57,8 +57,8 @@ function meta:addXP(amount, notify)
 
 end
 
-function meta:AddXP(amount)
-	self:addXP(amount)
+function meta:AddXP(amount, notify)
+	self:addXP(amount, notify)
 	// -_-
 end
 
