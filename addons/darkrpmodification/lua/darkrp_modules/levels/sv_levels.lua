@@ -12,14 +12,16 @@ function meta:setXP(xp)
 	return self:setDarkRPVar('xp', xp)
 end
 
-function meta:addXP(amount, notify)
+function meta:addXP(amount, notify, carryOver)
 	local PlayerLevel = (self:getDarkRPVar('level'))
 	local PlayerXP = (self:getDarkRPVar('xp'))
 	amount = tonumber(amount)
 
 	if((not amount) or (not IsValid(self)) or (not PlayerLevel) or (not PlayerXP) or (PlayerLevel>=LevelSystemConfiguration.MaxLevel)) then return false end
-	if(self.VXScaleXP) then
-		amount=(amount*tonumber(self.VXScaleXP))
+	if(not carryOver) then
+		if(self.VXScaleXP) then
+			amount=(amount*tonumber(self.VXScaleXP))
+		end
 	end
 
 	if not(notify) then
@@ -38,7 +40,7 @@ function meta:addXP(amount, notify)
 			if(RemainingXP>0) then
 				self:setXP(0)
 				self:setLevel(PlayerLevel)
-				self:addXP(RemainingXP,true)
+				self:addXP(RemainingXP,true,true)
 				return
 			end
 		end
