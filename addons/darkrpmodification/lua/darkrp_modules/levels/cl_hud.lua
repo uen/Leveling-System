@@ -61,6 +61,7 @@ local shouldDraw, players = hook.Call("HUDShouldDraw", GAMEMODE, "DarkRP_EntityD
 
 end
 local OldXP = 0
+local t = Material("vrondakis/xp_bar.png"); 
 local function HUDPaint()
 	if not LevelSystemConfiguration then return end
 	if not LevelSystemConfiguration.EnableHUD then return end
@@ -86,7 +87,6 @@ local function HUDPaint()
 	surface.DrawRect(ScrW()/2-300,0,580*drawXP,25)
 
 	//Render the texture
-	local t = Material("vrondakis/xp_bar.png"); 
 	surface.SetMaterial( t );
 	surface.SetDrawColor(255,255,255,255)
 	surface.DrawTexturedRect( ScrW()/2-371, 0,  742,46);
