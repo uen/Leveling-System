@@ -126,4 +126,10 @@ hook.Add("loadCustomDarkRPItems", "manolis:MVLevels:CustomLoad", function()
 end)
 
 
+DarkRP.registerDarkRPVar("xp", net.WriteDouble, net.ReadDouble)
+DarkRP.registerDarkRPVar("level", net.WriteDouble, net.ReadDouble)
+DarkRP.registerDarkRPVar("prestige", net.WriteDouble, net.ReadDouble)
+
+
+
 
