@@ -18,8 +18,6 @@ Features
 
 **ULX Support** - Allows you to set levels and add/remove XP with ULX (optional)
 
-**XP Books** - You can buy XP Books and get XP from them. (Disabled by default)
-
 **Huge Configuration** - This script is VERY easy to customize. You can change everything from one file.  
 
 

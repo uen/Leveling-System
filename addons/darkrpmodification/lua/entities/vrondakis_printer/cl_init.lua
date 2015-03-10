@@ -8,8 +8,8 @@ surface.CreateFont('TargetID', {
 	antialias = true,
 })
 function ENT:Initialize()
-	self.PrinterName = self:GetNWInt('PrinterName') // Why is self.DarkRPItem not clientside?
-	self.PrinterType = self:GetNWInt('PrinterType')
+	self.PrinterName = self:GetNWString('PrinterName') // Why is self.DarkRPItem not clientside?
+	self.PrinterType = self:GetNWString('PrinterType')
 end
 
 
@@ -29,7 +29,7 @@ function ENT:Draw()
 	end
 
 	surface.SetFont("HUDNumber5")
-	local text = self:GetNWInt('PrinterName', 'Unknown')
+	local text = self:GetNWString('PrinterName', 'Unknown')
 	local TextWidth = surface.GetTextSize(text)
 	local TextWidth2 = surface.GetTextSize(owner)
 	local TextWidth3 = surface.GetTextSize(amount)
