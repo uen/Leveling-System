@@ -33,7 +33,9 @@ function NPCDeath(npc, killer,weapon)
 		if(npc != killer) then // Not a suicide? Somehow.
 			if(killer:IsPlayer()) then
 				local XP = killer:addXP(LevelSystemConfiguration.NPCXPAmount, true)
-				DarkRP.notify(killer, 0,4,'You got '..XP..'XP for killing an NPC.')				
+				if(XP) then
+					DarkRP.notify(killer, 0,4,'You got '..XP..'XP for killing an NPC.')
+				end
 			end
 		end
 	end
