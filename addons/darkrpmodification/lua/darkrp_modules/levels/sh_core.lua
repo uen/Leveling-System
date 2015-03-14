@@ -1,51 +1,19 @@
 // Love Manolis Vrondakis. @vrondakis
 if SERVER then 
-hook.Add('canBuyPistol', 'manolis:MVLevels:PistolBuy', function(ply, entity) 
-	if (entity.level) then
-			if not ((ply:getDarkRPVar('level') or 0) >= (entity.level)) then
-				DarkRP.notify(ply, 1, 2, 'You\'re not the right level to buy this!')
-				return false, true
-			end
+function checkLevel(ply,entity)
+	if(entity.level) then
+		if not((ply:getDarkRPVar('level') or 0) >= (entity.level)) then
+			DarkRP.notify(ply,1,2,'You\'re not the right level to buy this!')
+			return false,true
+		end
 	end
-end)
+end
 
-
-hook.Add('canBuyAmmo', 'manolis:MVLevels:AmmoBuy', function(ply, entity) 
-	if (entity.level) then
-			if not ((ply:getDarkRPVar('level') or 0) >= (entity.level)) then
-				DarkRP.notify(ply, 1, 2, 'You\'re not the right level to buy this!')
-				return false, true
-			end
-	end
-end)
-
-hook.Add('canBuyShipment', 'manolis:MVLevels:ShipmentBuy', function(ply, entity) 
-	if (entity.level) then
-			if not ((ply:getDarkRPVar('level') or 0) >= (entity.level)) then
-				DarkRP.notify(ply, 1, 2, 'You\'re not the right level to buy this!')
-				return false, true
-			end
-	end
-end)
-
-hook.Add('canBuyVehicle', 'manolis:MVLevels:VehiclesBuy', function(ply, entity) 
-	if (entity.level) then
-			if not ((ply:getDarkRPVar('level') or 0) >= (entity.level)) then
-				DarkRP.notify(ply, 1, 2, 'You\'re not the right level to buy this!')
-				return false, true
-			end
-	end
-end)
-
-hook.Add('canBuyCustomEntity', 'manolis:MVLevels:CEntityBuy', function(ply, entity) 
-	if (entity.level) then
-			if not ((ply:getDarkRPVar('level') or 0) >= (entity.level)) then
-				DarkRP.notify(ply, 1, 2, 'You\'re not the right level to buy this!')
-				return false, true
-			end
-	end
-end)
-
+hook.Add('canBuyPistol', 'manolis:MVLevels:PistolBuy', checkLevel)
+hook.Add('canBuyAmmo', 'manolis:MVLevels:AmmoBuy', checkLevel)
+hook.Add('canBuyShipment', 'manolis:MVLevels:ShipmentBuy', checkLevel)
+hook.Add('canBuyVehicle', 'manolis:MVLevels:VehiclesBuy', checkLevel)
+hook.Add('canBuyCustomEntity', 'manolis:MVLevels:CEntityBuy', checkLevel)
 
 
 
