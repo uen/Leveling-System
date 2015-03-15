@@ -9,7 +9,6 @@ ENT.StoredXP = 0
 
 local PrintMore
 function ENT:Initialize()
-	if not(LevelSystemConfiguration.PrinterSound) then return false end
 	self:SetModel(self.DarkRPItem.model)
 	self:SetColor(self.DarkRPItem.vrondakisColor)
 
