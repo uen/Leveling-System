@@ -33,7 +33,7 @@ end
 
 if CLIENT then
 function LevelPrompts()
-	timer.Simple(0.1,function()
+	timer.Simple(0.15,function()
 
 		for k,v in pairs(DarkRPEntities) do
 			v.label = v.name
