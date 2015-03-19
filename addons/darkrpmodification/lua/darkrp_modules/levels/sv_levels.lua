@@ -54,7 +54,7 @@ function meta:addXP(amount, notify, carryOver)
 		self:setXP(math.max(0,TotalXP))
 
 	end
-
+	if(type(amount) == 'number') then return 0 end
 	return amount
 
 end
