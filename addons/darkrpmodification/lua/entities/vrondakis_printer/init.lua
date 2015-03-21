@@ -138,7 +138,7 @@ function ENT:Use(activator,caller)
 					end
 
 					if not (self.StoredXP==0) then
-						 = activator:addXP(self.StoredXP,true)
+						activator:addXP(self.StoredXP,true)
 					end
 					self:SetNWInt('MoneyAmount', 0)
 					DarkRP.notify(activator,0,4,'You got '..self.StoredXP..'XP and '..self.StoredMoney..'$ from this printer.')
