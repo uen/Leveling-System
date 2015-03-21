@@ -81,22 +81,22 @@ function ENT:Fireball()
 	for k, v in pairs(ents.FindInSphere(self:GetPos(), dist)) do
 		if not v:IsPlayer() and not v:IsWeapon() and v:GetClass() ~= "predicted_viewmodel" and not v.IsMoneyPrinter then
 			v:Ignite(math.random(5, 22), 0)
-		elseif v:IsPlayer() then
-			local distance = v:GetPos():Distance(self:GetPos())
-			v:TakeDamage(distance / dist * 100, self, self)
+			elseif v:IsPlayer() then
+				local distance = v:GetPos():Distance(self:GetPos())
+				v:TakeDamage(distance / dist * 100, self, self)
+			end
 		end
+		self:Remove()
 	end
-	self:Remove()
-end
 
-PrintMore = function(ent)
+	PrintMore = function(ent)
 	if not IsValid(ent) then return end
 
 	ent.sparking = true
 	timer.Simple(1, function()
 		if not IsValid(ent) then return end
 		ent:CreateMoneybag()
-	end)
+		end)
 end
 
 function ENT:CreateMoneybag()
@@ -144,22 +144,25 @@ function ENT:Use(activator,caller)
 					DarkRP.notify(activator,0,4,'You got '..self.StoredXP..'XP and '..self.StoredMoney..'$ from this printer.')
 					self.StoredMoney = 0
 					self.StoredXP = 0
-				
+
 				else
 					if(activator:getDarkRPVar('level')<(self.DarkRPItem.level-5)) then return DarkRP.notify(activator,1 ,4, 'You need to be a higher level to use this!') end
-					if not(self.StoredMoney==0) then
-						activator:addMoney(self.StoredMoney)
-					end
 
 					if not (self.StoredXP==0) then
-						xpAdded = activator:addXP(self.StoredXP,true)
-					end
-					self:SetNWInt('MoneyAmount', 0)
-					if(xpAdded==math.floor(n)) then
+						local xpAdded = activator:addXP(self.StoredXP,true)
 						DarkRP.notify(activator,0,4,'You got '..xpAdded..'XP and '..self.StoredMoney..'$ from this printer.')
+						self.StoredXP = 0
 					end
-					self.StoredMoney = 0
-					self.StoredXP = 0
+
+					if not(self.StoredMoney==0) then
+						activator:addMoney(self.StoredMoney)
+						self.StoredMoney = 0
+					end
+
+					self:SetNWInt('MoneyAmount', 0)
+					
+					
+					
 				end
 			end
 			
