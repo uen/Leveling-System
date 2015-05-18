@@ -23,12 +23,25 @@ Features
 
 Installation
 -------
-Drag and drop all 3 folders inside this folder into your servers garrysmod folder.
-
-To configure the general system settings, edit config.lua
-
-To edit printers and books, edit printers.lua and books.lua
+Drag and drop all 3 folders inside this folder into your servers garrysmod folder. The folders should merge with your current ones.
 
 
-Make sure you read the actual readme!
+Level Requirements
+--------
+If you want to add required levels to jobs or entities or anything like that, add them as you normally would, but add a level parameter. Like this:
+
+![Leveling](http://i.imgur.com/sIputUy.png)
+
+It’s exactly the same for an entity, vehicle or shipment or anything.
+
+If you want to add/edit printers, add/edit books, change settings or anything like that, edit /addons/darkrpmodification/lua/darkrp_modules/sh_custom.lua
+
+You can change most things from that file, and also enable a lot of cool stuff
+
+
+ULX Support:
+---------------------
+If you want ULX support, go here:http://pastebin.com/raw.php?i=ywki03me
+Make a file called levels.lua in /addons/ULX/lua/ulx/modules/sh/ and put everything inside that. Then restart the server. If you don’t have ULX then you can’t set levels unless you make your own script or edit the database. 
+
 
