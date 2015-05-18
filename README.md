@@ -34,7 +34,7 @@ If you want to add required levels to jobs or entities or anything like that, ad
 
 It’s exactly the same for an entity, vehicle or shipment or anything.
 
-If you want to add/edit printers, add/edit books, change settings or anything like that, edit /addons/darkrpmodification/lua/darkrp_modules/sh_custom.lua
+If you want to add/edit printers, add/edit books, change settings or anything like that, edit /addons/darkrpmodification/lua/darkrp_modules/sh_config.lua
 
 You can change most things from that file, and also enable a lot of cool stuff
 
