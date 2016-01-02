@@ -8,7 +8,7 @@ surface.CreateFont( "HeadBar", { // XP Bar font
 	 scanlines = 0,
 } )
 
-surface.CreateFont("Boobss", { // Level prompt font
+surface.CreateFont("LevelPrompt", { // Level prompt font
 	font = "Francois One",
 	size = 70,
 	weight = 500,
@@ -73,16 +73,14 @@ local function HUDPaint()
 	
 	local drawXP = Lerp(8*FrameTime(),OldXP,percent)
 	OldXP = drawXP
-
-	
 	local percent2 = percent*100
 	percent2 = math.Round(percent2)
 	percent2 = math.Clamp(percent2, 0, 99) //Make sure it doesn't round past 100%
 
 	surface.SetDrawColor(0,0,0,200)
 	surface.DrawRect(ScrW()/2-300,0,580,25)
-	// Draw the XP Bar before the texture
 
+	// Draw the XP Bar before the texture
 	surface.SetDrawColor(LevelSystemConfiguration.LevelBarColor[1],LevelSystemConfiguration.LevelBarColor[2],LevelSystemConfiguration.LevelBarColor[3],255)
 	surface.DrawRect(ScrW()/2-300,0,580*drawXP,25)
 
@@ -91,14 +89,11 @@ local function HUDPaint()
 	surface.SetDrawColor(255,255,255,255)
 	surface.DrawTexturedRect( ScrW()/2-371, 0,  742,46);
 
-
-
 	// Render the text
 	draw.DrawText(percent2 ..'%', "HeadBar", ScrW()/2,7,(LevelSystemConfiguration.XPTextColor or Color(255,255,255,255)), TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER)
-	draw.SimpleText('Level: ' ..(LocalPlayer():getDarkRPVar('level') or 0), "Boobss", LevelSystemConfiguration.LevelTextPos[1],ScrH()-LevelSystemConfiguration.LevelTextPos[2],((Color(0,0,0,255))), TEXT_ALIGN_LEFT, TEXT_ALIGN_LEFT)
-	draw.SimpleText('Level: ' ..(LocalPlayer():getDarkRPVar('level') or 0), "Boobss", LevelSystemConfiguration.LevelTextPos[1]+1,ScrH()-LevelSystemConfiguration.LevelTextPos[2]-1,(LevelSystemConfiguration.LevelColor or (Color(0,0,0,255))), TEXT_ALIGN_LEFT, TEXT_ALIGN_LEFT)
+	draw.SimpleText('Level: ' ..(LocalPlayer():getDarkRPVar('level') or 0), "LevelPrompt", LevelSystemConfiguration.LevelTextPos[1],ScrH()-LevelSystemConfiguration.LevelTextPos[2],((Color(0,0,0,255))), TEXT_ALIGN_LEFT, TEXT_ALIGN_LEFT)
+	draw.SimpleText('Level: ' ..(LocalPlayer():getDarkRPVar('level') or 0), "LevelPrompt", LevelSystemConfiguration.LevelTextPos[1]+1,ScrH()-LevelSystemConfiguration.LevelTextPos[2]-1,(LevelSystemConfiguration.LevelColor or (Color(0,0,0,255))), TEXT_ALIGN_LEFT, TEXT_ALIGN_LEFT)
 
-	//DrawEntityDisplay()
 	DrawDisplay()
 end
 hook.Add("HUDPaint", "manolis:MVLevels:HUDPaintA", HUDPaint) // IS THAT UNIQUE ENOUGH FOR YOU, FUCKING GMOD HOOKING BULLSHIT.
