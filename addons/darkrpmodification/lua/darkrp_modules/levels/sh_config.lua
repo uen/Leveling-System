@@ -47,6 +47,7 @@ LevelSystemConfiguration.Epilepsy = true // If printers flash different colors w
 local Printer= {} // Leave this line
 Printer.Name = 'Your Printer Name'
 Printer.Type = 'yourprintername' // A UNIQUE identifier STRING, can be anything. NO SPACES! The player does not see this.
+Printer.Category = 'printers' // The category of the printer (See http://wiki.darkrp.com/index.php/DarkRP:Categories)
 Printer.XPPerPrint = 10 // How much XP to give a player every time they print.
 Printer.MoneyPerPrint = 50 // How much money to give a player every time they print.
 Printer.Color = Color(255,255,255,255) // The color of the printer. Setting it to (255,255,255,255) will make it the normal prop color.
@@ -159,6 +160,7 @@ hook.Add("loadCustomDarkRPItems", "manolis:MVLevels:CustomLoad", function()
 		if not type(v.Color) == 'table' then table.insert(Errors, 'The color of a printer is INVALID!') end
 		if not type(v.Model) == 'string' then table.insert(Errors, 'The model of a printer is INVALID!') end
 		if not type(v.Price) == 'number' then table.insert(Errors, 'The price of a printer is INVALID!') end
+		if not type(v.Category) == 'string' then v.Category='' end
 		if not type(v.Level) == 'number' then table.insert(Errors, 'The level of a printer is INVALID!') end
 		local ErrorCount = 0
 		for k,v in pairs(Errors) do
@@ -171,6 +173,7 @@ hook.Add("loadCustomDarkRPItems", "manolis:MVLevels:CustomLoad", function()
 		DarkRP.createEntity(v.Name,{
 			ent = "vrondakis_printer",
 			model = v.Model,
+			category = v.Category,
 			price = v.Price,
 			prestige = (v.Prestige or 0),
 			printer = true,
