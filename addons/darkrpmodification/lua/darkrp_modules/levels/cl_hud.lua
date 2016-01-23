@@ -61,7 +61,7 @@ local shouldDraw, players = hook.Call("HUDShouldDraw", GAMEMODE, "DarkRP_EntityD
 
 end
 local OldXP = 0
-local xp_bar = Material("vrondakis/xp_bar.png"); 
+local xp_bar = Material("vrondakis/xp_bar.png","noclamp smooth"); 
 local function HUDPaint()
 	if not LevelSystemConfiguration then return end
 	if not LevelSystemConfiguration.EnableHUD then return end
