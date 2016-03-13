@@ -1,7 +1,6 @@
 DarkRP Leveling System
 ======================
-For DarkRP 2.5.0 and above.
-The most popular (and best) leveling system for Garry's Mod!
+For DarkRP 2.5.0 and above. Adds leveling functionality and allows you to limit item purchasing based on a players level.
 
 
 Features
@@ -42,6 +41,7 @@ You can change most things from that file, and also enable a lot of cool stuff
 ULX Support:
 ---------------------
 If you want ULX support, go here:http://pastebin.com/raw.php?i=ywki03me
+
 Make a file called levels.lua in /addons/ULX/lua/ulx/modules/sh/ and put everything inside that. Then restart the server. If you don’t have ULX then you can’t set levels unless you make your own script or edit the database. 
 
 
