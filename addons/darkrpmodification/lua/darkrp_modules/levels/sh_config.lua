@@ -53,6 +53,7 @@ Printer.MoneyPerPrint = 50 // How much money to give a player every time they pr
 Printer.Color = Color(255,255,255,255) // The color of the printer. Setting it to (255,255,255,255) will make it the normal prop color.
 Printer.Model = 'models/props_lab/reciever01b.mdl' // The model of the printer. To find the path of a model, right click it in the spawn menu and click "Copy to Clipboard"
 Printer.Prestige = 0 // The prestige you have to be to buy the printer. Only works with the prestige DLC.
+Printer.Allowed = {} // Same as DarkRP .allowed
 table.insert(Printers,Printer) // Leave this line
 */
 
@@ -180,6 +181,7 @@ hook.Add("loadCustomDarkRPItems", "manolis:MVLevels:CustomLoad", function()
 			level = v.Level,
 			max = LevelSystemConfiguration.PrinterMax,
 			cmd = 'buyvrondakis'..v.Type..'printer',
+			allowed = v.Allowed,
 			vrondakisName = v.Name,
 			vrondakisType = v.Type,
 			vrondakisXPPerPrint = v.XPPerPrint,
