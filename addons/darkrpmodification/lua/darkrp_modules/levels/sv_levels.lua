@@ -33,7 +33,7 @@ function meta:addXP(amount, notify, carryOver)
 	if(TotalXP>=self:getMaxXP()) then // Level up!
 		PlayerLevel = PlayerLevel + 1
 		DarkRP.notifyAll(0,3,self:Name() .. ' reached level '..PlayerLevel..'!')
-		hook.Call( "PlayerLevelChanged", nil, self, PlayerLevel-1, PlayerLevel ) -- call the PlayerLevelChanged hook and pass player, old level and new level.
+		hook.Call( "PlayerLevelChanged", nil, self, PlayerLevel-1, PlayerLevel ) // call the PlayerLevelChanged hook and pass player, old level and new level.
 
 		local RemainingXP = (TotalXP-self:getMaxXP())
 		if(LevelSystemConfiguration.ContinueXP) then
@@ -57,11 +57,9 @@ function meta:addXP(amount, notify, carryOver)
 
 end
 
-function meta:AddXP(amount, notify)
+function meta:AddXP(amount, notify) // Helper function
 	self:addXP(amount, notify)
-	// -_-
 end
-
 
 function meta:getLevel()
 	return self:getDarkRPVar('level')
@@ -105,7 +103,6 @@ function meta:hasLevel(level)
 	return ((self:getDarkRPVar('level')) >= level)
 end
 
-// Please do not remove or edit this:
 concommand.Add("levels", function(ply)
 	DarkRP.notify(ply,0,10,"Leveling System by @vrondakis")
 end)
