@@ -31,11 +31,11 @@ If you want to add required levels to jobs or entities or anything like that, ad
 
 ![Leveling](http://i.imgur.com/sIputUy.png)
 
-It’s exactly the same for an entity, vehicle or shipment or anything.
+It’s exactly the same for an entity, vehicle or shipment or anything. If everything breaks after doing this, you probably missed a comma.
 
 If you want to add/edit printers, change settings or anything like that, edit /addons/darkrpmodification/lua/darkrp_modules/sh_config.lua
 
-You can change most things from that file, and also enable a lot of cool stuff
+You can change most things from that file, and also enable a lot of cool stuff. (That includes HUD positions, stop asking!)
 
 
 ULX Support:
