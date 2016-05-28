@@ -57,9 +57,7 @@ function meta:addXP(amount, notify, carryOver)
 
 end
 
-function meta:AddXP(amount, notify) // Helper function
-	self:addXP(amount, notify)
-end
+meta.AddXP = meta.addXP
 
 function meta:getLevel()
 	return self:getDarkRPVar('level')
