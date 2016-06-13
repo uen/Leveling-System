@@ -168,10 +168,12 @@ hook.Add("loadCustomDarkRPItems", "manolis:MVLevels:CustomLoad", function()
 			error(v)
 			ErrorCount = ErrorCount + 1
 		end
+		
+
 
 		if not(ErrorCount==0) then return false end
-			
-		DarkRP.createEntity(v.Name,{
+		
+		local t = {
 			ent = "vrondakis_printer",
 			model = v.Model,
 			category = v.Category,
@@ -194,7 +196,15 @@ hook.Add("loadCustomDarkRPItems", "manolis:MVLevels:CustomLoad", function()
 			vrondakisPrinterTime = LevelSystemConfiguration.PrinterTime,
 			vrondakisIsBuyerRetarded = LevelSystemConfiguration.KeepThisToTrue,
 			vrondakisEpileptic = LevelSystemConfiguration.Epilepsy
-		})
+		}
+		
+		if(v.DParams) then
+			for k,v in pairs(v.DParams) do
+				t[k] = v	
+			end
+		end
+			
+		DarkRP.createEntity(v.Name,t)
 
 	end
 
