@@ -92,9 +92,7 @@ local function HUDPaint()
 	surface.DrawTexturedRect( ScrW()/2-371, 0,  742,46)
 
 	// Render the text
-	draw.DrawText(percent2 ..'%', "HeadBar", ScrW()/2,7,(LevelSystemConfiguration.XPTextColor or Color(255,255,255,255)), TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER)
-	draw.SimpleText('Level: ' ..(LocalPlayer():getDarkRPVar('level') or 0), "LevelPrompt", LevelSystemConfiguration.LevelTextPos[1],ScrH()-LevelSystemConfiguration.LevelTextPos[2],((Color(0,0,0,255))), TEXT_ALIGN_LEFT, TEXT_ALIGN_LEFT)
-	draw.SimpleText('Level: ' ..(LocalPlayer():getDarkRPVar('level') or 0), "LevelPrompt", LevelSystemConfiguration.LevelTextPos[1]+1,ScrH()-LevelSystemConfiguration.LevelTextPos[2]-1,(LevelSystemConfiguration.LevelColor or (Color(0,0,0,255))), TEXT_ALIGN_LEFT, TEXT_ALIGN_LEFT)
+	draw.DrawText('Level '..(LocalPlayer():getDarkRPVar('level') or 0)..' - '..percent2 ..'%', "HeadBar", ScrW()/2,7,(LevelSystemConfiguration.XPTextColor or Color(255,255,255,255)), TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER)
 
 	DrawDisplay()
 end
