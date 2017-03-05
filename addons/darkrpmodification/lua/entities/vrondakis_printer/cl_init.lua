@@ -23,9 +23,9 @@ function ENT:Draw()
 	owner = (IsValid(owner) and owner:Nick()) or DarkRP.getPhrase("unknown")
 	local amount = 'Unknown'
 	if(self:GetNWInt('MaxConfig') == 0) then
-		amount = (self:GetNWInt('MoneyAmount')..'$')
+		amount = DarkRP.formatMoney(self:GetNWInt('MoneyAmount'))
 	else
-		amount = (self:GetNWInt('MoneyAmount')..'$ / '..(self:GetNWInt('MaxConfig')*self:GetNWInt('MoneyPerPrint'))..'$')
+		amount = (DarkRP.formatMoney(self:GetNWInt('MoneyAmount'))..' / '..DarkRP.formatMoney(self:GetNWInt('MaxConfig')*self:GetNWInt('MoneyPerPrint')))
 	end
 
 	surface.SetFont("HUDNumber5")
