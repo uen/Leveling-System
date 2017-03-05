@@ -143,7 +143,7 @@ function ENT:Use(activator,caller)
 						activator:addXP(self.StoredXP,true)
 					end
 					self:SetNWInt('MoneyAmount', 0)
-					DarkRP.notify(activator,0,4,'You got '..self.StoredXP..'XP and '..self.StoredMoney..'$ from this printer.')
+					DarkRP.notify(activator,0,4,'You got '..self.StoredXP..'XP and '..DarkRP.formatMoney(self.StoredMoney)..' from this printer.')
 					self.StoredMoney = 0
 					self.StoredXP = 0
 
@@ -152,7 +152,7 @@ function ENT:Use(activator,caller)
 
 					if not (self.StoredXP==0) then
 						local xpAdded = activator:addXP(self.StoredXP,true)
-						DarkRP.notify(activator,0,4,'You got '..xpAdded..'XP and '..self.StoredMoney..'$ from this printer.')
+						DarkRP.notify(activator,0,4,'You got '..xpAdded..'XP and '..DarkRP.formatMoney(self.StoredMoney)..' from this printer.')
 						self.StoredXP = 0
 					end
 
