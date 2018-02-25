@@ -80,19 +80,19 @@ local function HUDPaint()
 	percent2 = math.Clamp(percent2, 0, 99) //Make sure it doesn't round past 100%
 
 	surface.SetDrawColor(0,0,0,200)
-	surface.DrawRect(ScrW()/2-300,0,580,25)
+	surface.DrawRect(ScrW()/2-300,(LevelSystemConfiguration.XPBarYPos or 0),580,25)
 
 	// Draw the XP Bar before the texture
 	surface.SetDrawColor(LevelSystemConfiguration.LevelBarColor[1],LevelSystemConfiguration.LevelBarColor[2],LevelSystemConfiguration.LevelBarColor[3],255)
-	surface.DrawRect(ScrW()/2-300,0,580*drawXP,25)
+	surface.DrawRect(ScrW()/2-300,(LevelSystemConfiguration.XPBarYPos or 0),580*drawXP,25)
 
 	//Render the texture
 	surface.SetMaterial(xp_bar)
 	surface.SetDrawColor(255,255,255,255)
-	surface.DrawTexturedRect( ScrW()/2-371, 0,  742,46)
+	surface.DrawTexturedRect( ScrW()/2-371, 0+(LevelSystemConfiguration.XPBarYPos or 0),  742,46)
 
 	// Render the text
-	draw.DrawText('Level '..(LocalPlayer():getDarkRPVar('level') or 0)..' - '..percent2 ..'%', "HeadBar", ScrW()/2,7,(LevelSystemConfiguration.XPTextColor or Color(255,255,255,255)), TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER)
+	draw.DrawText('Level '..(LocalPlayer():getDarkRPVar('level') or 0)..' - '..percent2 ..'%', "HeadBar", ScrW()/2,7+(LevelSystemConfiguration.XPBarYPos or 0),(LevelSystemConfiguration.XPTextColor or Color(255,255,255,255)), TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER)
 
 	DrawDisplay()
 end
