@@ -1,7 +1,7 @@
 DarkRP Leveling System
 ======================
 For DarkRP 2.5.0 and above. Adds leveling functionality and allows you to limit item purchasing based on a players level.
-
+Console command for reset all level/XP player. - "rcon lua_run MySQLite.query("DELETE FROM darkrp_levels WHERE 1")" or "lua_run MySQLite.query("DELETE FROM darkrp_levels WHERE 1")"
 
 Features
 -------
