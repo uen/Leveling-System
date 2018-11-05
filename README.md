@@ -24,6 +24,8 @@ Installation
 -------
 Drag and drop all 3 folders inside this folder into your servers garrysmod folder. The folders should merge with your current ones.
 
+You'll also need a MySQLite module from FPtje: https://github.com/FPtje/MySQLite
+
 
 Level Requirements
 --------
