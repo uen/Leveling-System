@@ -19,19 +19,33 @@ LevelSystemConfiguration.GreenAllBars = true // Are the green bars at the bottom
 
 LevelSystemConfiguration.KillModule = true // Give XP + Money for kills! // Next 2 settings control this.
 LevelSystemConfiguration.Friendly = true // Only take away money / give XP if the killer is a lower level/same level than the victim. (Recommended:true)
-LevelSystemConfiguration.TakeAwayMoneyAmount = 100 // How much money to take away from players when they are killed and add to the killer. You can change this to 0 if none. The XP amount is dynamic.
+LevelSystemConfiguration.TakeAwayMoneyAmount = 0 // How much money to take away from players when they are killed and add to the killer. You can change this to 0 if none. The XP amount is dynamic.
 
 LevelSystemConfiguration.NPCXP = true // Give XP when an NPC is killed?
 LevelSystemConfiguration.NPCXPAmount = 10 // Amount of XP to give when an NPC is killed
 
 LevelSystemConfiguration.TimerModule = true // Give XP to everybody every howeverlong
-LevelSystemConfiguration.Timertime = 100 // How much time (in seconds) until everybody gets given XP
-LevelSystemConfiguration.TimerXPAmount = 100 // How much XP to give each time it goes off
-LevelSystemConfiguration.YourServerName = "on the server" // The notifcation text ish. "You got 100XP for playing on the server."
+LevelSystemConfiguration.Timertime = 120 // How much time (in seconds) until everybody gets given XP
+LevelSystemConfiguration.TimerXPAmount = 50 // How much XP to give each time it goes off
+LevelSystemConfiguration.TimerXPAmountVip = 100 // How much XP to give for vip players each time it goes off
+LevelSystemConfiguration.TimerXPVipGroups = "vip" // The vip groups
+LevelSystemConfiguration.YourServerName = "" // The notifcation text ish. "You got 100XP for playing on the server."
 
-LevelSystemConfiguration.XPMult = 1 // How hard it is to level up. 2 would require twice as much XP, ect.
+LevelSystemConfiguration.XPMult = 2 // How hard it is to level up. 2 would require twice as much XP, ect.
 LevelSystemConfiguration.MaxLevel = 99 // The max level
 LevelSystemConfiguration.ContinueXP = false // If remaining XP continues over to next levels. I recommend this to be false. Seriously. What if a level 1 gets 99999999 XP somehow? He is level 99 so quickly.
+
+//Language settings
+LevelSystemConfiguration.LangBuyEntity = 'Vous n\'avez pas le bon level pour acheter ça!' // error message when someone can't buy an entity
+LevelSystemConfiguration.LangTakeJob = 'Vous n\'avez pas le bon level pour avoir ce job!' // error message when someone can't take a job
+LevelSystemConfiguration.LangKillNotify = { 'Vous avez reçu ', xpgot, 'XP et ', Lmoney, ' pour avoir tué ', Lvictim } // Notification to the killer when he kill someone (vars: xpgot, Lmoney, Lvictim)
+LevelSystemConfiguration.LangKillNotify2 = { 'Vous avez reçu ', xpgot, 'XP pour avoir tué ', Lvictim } // Notification to the killer when he kill someone (vars: xpgot, Lmoney, Lvictim)
+LevelSystemConfiguration.LangKillNotify3 = { 'Vous avez tué ', Lvictim } // Notification to the killer when he kill someone (vars: xpgot, Lmoney, Lvictim)
+LevelSystemConfiguration.LangKillNPC = { 'Vous avez reçu ', XP, 'XP pour avoir tué un NPC.' } // Notification to the killer when he kill a npc (vars: XP)
+LevelSystemConfiguration.LangDeath = { 'Vous êtes mort et avez perdu ', Lmoney, '!' } // Notification to the victim when he lost money on death (vars: Lmoney)
+LevelSystemConfiguration.LangPlayOn = { 'Vous avez reçu ', XP, 'XP Pour avoir joué sur ', LevelSystemConfiguration.YourServerName } // Notification to everyone when they gain xp by the timer (vars: XP)
+LevelSystemConfiguration.LangRecieveXP = { 'Vous avez reçu ', amount, ' XP!' } // Notification to the player when he recieve xp (vars: ammount)
+LevelSystemConfiguration.LangReachLevel = { Lname , ' a atteint le niveau ', PlayerLevel, '!' } // Notification to everyone when someone reach a level (vars: Lname)
 
 //Printer settings
 LevelSystemConfiguration.PrinterSound = true // Give the printers sounds?
@@ -44,7 +58,6 @@ LevelSystemConfiguration.Epilepsy = true // If printers flash different colors w
 
 
 
-
 /*Template Code/*
 local Printer= {} // Leave this line
 Printer.Name = 'Your Printer Name'
@@ -54,98 +67,25 @@ Printer.XPPerPrint = 10 // How much XP to give a player every time they print.
 Printer.MoneyPerPrint = 50 // How much money to give a player every time they print.
 Printer.Color = Color(255,255,255,255) // The color of the printer. Setting it to (255,255,255,255) will make it the normal prop color.
 Printer.Model = 'models/props_lab/reciever01b.mdl' // The model of the printer. To find the path of a model, right click it in the spawn menu and click "Copy to Clipboard"
-Printer.Prestige = 0 // The prestige you have to be to buy the printer. Only works with the prestige DLC.
+Printer.Prestige = 0 // The prestige you have to be to buy the printer. Only works with the prestige DLC on Gmodstore.
 Printer.Allowed = {} // Same as DarkRP .allowed
 table.insert(Printers,Printer) // Leave this line
 */
 
 // Default printers:
+// they have been deleted since they were not working, they will be back in a few updates
 
-local Printer={}
-Printer.Name = 'Regular Printer'
-Printer.Type = 'regularprinter'
-Printer.XPPerPrint = 65
-Printer.MoneyPerPrint = 100
-Printer.Color = Color(255,255,255,255)
-Printer.Model = 'models/props_lab/reciever01b.mdl'
-Printer.Price = 1000
-Printer.Level = 1
-Printer.Prestige = 0
-
-table.insert(Printers,Printer)
-
-local Printer={}
-Printer.Name = 'Golden Money Printer'
-Printer.Type = 'goldenprinter'
-Printer.XPPerPrint = 300
-Printer.MoneyPerPrint = 300
-Printer.Color = Color(255,215,0)
-Printer.Model = 'models/props_lab/reciever01b.mdl'
-Printer.Price = 3000
-Printer.Level = 10
-Printer.Prestige = 0
-table.insert(Printers,Printer)
-
-local Printer={}
-Printer.Name = 'Ruby Money Printer'
-Printer.Type = 'rubyprinter'
-Printer.XPPerPrint = 1069
-Printer.MoneyPerPrint = 1200
-Printer.Color = Color(255,0,0)
-Printer.Model = 'models/props_lab/reciever01a.mdl'
-Printer.Price = 5000
-Printer.Level = 20
-Printer.Prestige = 0
-table.insert(Printers,Printer)
-
-local Printer={}
-Printer.Name = 'Platinum Money Printer'
-Printer.Type = 'platprinter'
-Printer.XPPerPrint = 1800
-Printer.MoneyPerPrint = 1500
-Printer.Color = Color(255,255,255)
-Printer.Model = 'models/props_c17/consolebox03a.mdl'
-Printer.Price = 10000
-Printer.Level = 30
-Printer.Prestige = 0
-table.insert(Printers,Printer)
-
-local Printer={}
-Printer.Name = 'Diamond Money Printer'
-Printer.Type = 'diamondprinter'
-Printer.XPPerPrint = 2500
-Printer.MoneyPerPrint = 5000
-Printer.Color = Color(135,200,250)
-Printer.Model = 'models/props_c17/consolebox01a.mdl'
-Printer.Price = 50000
-Printer.Level = 40
-Printer.Prestige = 0
-table.insert(Printers,Printer)
+// Default xp books:
+// they have been deleted since they were not working, they will be back in a few updates
 
 
-local Printer={}
-Printer.Name = 'Emerald Money Printer'
-Printer.Type = 'emeraldprinter'
-Printer.XPPerPrint = 3550
-Printer.MoneyPerPrint = 10000
-Printer.Color = Color(0,100,0)
-Printer.Model = 'models/props_c17/consolebox01a.mdl'
-Printer.Price = 100000
-Printer.Level = 50
-Printer.Prestige = 0
-table.insert(Printers,Printer)
 
-local Printer={}
-Printer.Name = 'Unubtainium Money Printer'
-Printer.Type = 'unubprinter'
-Printer.XPPerPrint = 3500
-Printer.MoneyPerPrint = 15000
-Printer.Color = Color(255,255,255)
-Printer.Model = 'models/props_lab/harddrive01.mdl'
-Printer.Price = 120000
-Printer.Level = 60
-Printer.Prestige = 0
-table.insert(Printers,Printer)
+
+
+
+
+
+
 
 
 // Ignore everything under this line.
@@ -216,7 +156,3 @@ end)
 DarkRP.registerDarkRPVar("xp", net.WriteDouble, net.ReadDouble)
 DarkRP.registerDarkRPVar("level", net.WriteDouble, net.ReadDouble)
 DarkRP.registerDarkRPVar("prestige", net.WriteDouble, net.ReadDouble)
-
-
-
-

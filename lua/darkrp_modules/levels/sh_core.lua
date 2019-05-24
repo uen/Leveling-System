@@ -3,7 +3,7 @@ if SERVER then
 function checkLevel(ply,entity)
 	if(entity.level) then
 		if not((ply:getDarkRPVar('level') or 0) >= (entity.level)) then
-			DarkRP.notify(ply,1,2,'You\'re not the right level to buy this!')
+			DarkRP.notify(ply,1,2, LevelSystemConfiguration.LangBuyEntity )
 			return false,true
 		end
 	end
@@ -21,11 +21,10 @@ hook.Add('playerCanChangeTeam', 'manolis:MVLevels:playerTeamChange', function(pl
 	// This one requires a little extra work
 	job = RPExtraTeams[jobno]
 	if (job.level) then
-			
-			if not ((ply:getDarkRPVar('level') or 0) >= (job.level)) then
-				DarkRP.notify(ply, 1, 2, 'You\'re not the right level to become this!')
-				return false, true
-			end
+		if not ((ply:getDarkRPVar('level') or 0) >= (job.level)) then
+			DarkRP.notify(ply, 1, 2, LevelSystemConfiguration.LangTakeJob )
+			return false, true
+		end
 	end
 end)
 
@@ -169,9 +168,4 @@ function PlayerInitialSpawn(ply)
 	end
 end
 
-hook.Add('PlayerInitialSpawn', 'manolis:MVLevels:PlayerSpawnB',PlayerInitialSpawn)
-
-
-
-
-
+hook.Add('PlayerInitialSpawn', 'manolis:MVLevels:PlayerSpawnB', function(ply) timer.Simple( 1, function () PlayerInitialSpawn(ply) end) end)

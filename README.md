@@ -1,6 +1,6 @@
 DarkRP Leveling System
 ======================
-For DarkRP 2.5.0 and above. Adds leveling functionality and allows you to limit item purchasing based on a players level.
+For DarkRP 2.7.0 and above. Adds leveling functionality and allows you to limit item purchasing based on a players level.
 
 
 Features
@@ -17,12 +17,12 @@ Features
 
 **ULX Support** - Allows you to set levels and add/remove XP with ULX (optional)
 
-**Huge Configuration** - This script is VERY easy to customize. You can change everything from one file.  
+**Huge Configuration** - This script is VERY easy to customize. You can change everything from one file.
 
 
 Installation
 -------
-Drag and drop all 3 folders inside this folder into your servers garrysmod folder. The folders should merge with your current ones.
+Drag and drop in garrysmod/addons/
 
 
 Level Requirements
@@ -40,8 +40,6 @@ You can change most things from that file, and also enable a lot of cool stuff. 
 
 ULX Support:
 ---------------------
-If you want ULX support, go here:http://pastebin.com/raw.php?i=ywki03me
-
-Make a file called levels.lua in /addons/ULX/lua/ulx/modules/sh/ and put everything inside that. Then restart the server. If you don’t have ULX then you can’t set levels unless you make your own script or edit the database. 
+Everything inculded in, just do !menu
 
 
