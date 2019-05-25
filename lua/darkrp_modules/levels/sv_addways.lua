@@ -49,6 +49,19 @@ local time = LevelSystemConfiguration.Timertime
 timer.Create( "PlayXP", time,0,function()
 	if(LevelSystemConfiguration.TimerModule) then
 		for k,v in pairs(player.GetAll()) do 
+			local XP = v:addXP(LevelSystemConfiguration.TimerXPAmount, true)
+			if(XP) then
+				DarkRP.notify(v,0,4,LevelSystemConfiguration.LangPlayOn) 
+			end
+		end
+	end
+end)
+
+/* -- broken for vips
+local time = LevelSystemConfiguration.Timertime
+timer.Create( "PlayXP", time,0,function()
+	if(LevelSystemConfiguration.TimerModule) then
+		for k,v in pairs(player.GetAll()) do 
 			if string.find(v:GetUserGroup(), LevelSystemConfiguration.TimerXPVipGroups) then
 				local XP = v:addXP(LevelSystemConfiguration.TimerXPAmountVip, true)
 			else
@@ -59,4 +72,4 @@ timer.Create( "PlayXP", time,0,function()
 			end
 		end
 	end
-end)
+end)*/
