@@ -4,6 +4,7 @@
 
 LevelSystemConfiguration = {} // Ignore
 Printers = {} // Ignore
+Books = {} // Ignore
 
 
 LevelSystemConfiguration.EnableHUD = true // Is the HUD enabled?
@@ -46,6 +47,7 @@ LevelSystemConfiguration.LangDeath = { 'Vous êtes mort et avez perdu ', money, 
 LevelSystemConfiguration.LangPlayOn = { 'Vous avez reçu ', XP, 'XP Pour avoir joué sur ', LevelSystemConfiguration.YourServerName } // Notification to everyone when they gain xp by the timer (vars: XP)
 LevelSystemConfiguration.LangRecieveXP = { 'Vous avez reçu ', amount, ' XP!' } // Notification to the player when he recieve xp (vars: ammount)
 LevelSystemConfiguration.LangReachLevel = { name , ' a atteint le niveau ', PlayerLevel, '!' } // Notification to everyone when someone reach a level (vars: name)
+LevelSystemConfiguration.LangBookNotify = { 'You got ', xp, 'XP for using ', bookname, '!' } // Notification to the player when he use a book (vars: xp, bookname)
 
 //Printer settings
 LevelSystemConfiguration.PrinterSound = true // Give the printers sounds?
@@ -56,9 +58,12 @@ LevelSystemConfiguration.PrinterTime = 120 // How long it takes printers to prin
 LevelSystemConfiguration.KeepThisToTrue = true // Can players collect from printers that are 5 levels above their level? (Recommended: false)
 LevelSystemConfiguration.Epilepsy = true // If printers flash different colors when they have money in them.
 
+//Book settings
+LevelSystemConfiguration.BookMax = 4 // How many Books of a certain type a player can own at any one time
+LevelSystemConfiguration.BookOnTouch = true // Consume the book on touch?
 
 
-/*Template Code/*
+/*Template Code for printers/*
 local Printer= {} // Leave this line
 Printer.Name = 'Your Printer Name'
 Printer.Type = 'yourprintername' // A UNIQUE identifier STRING, can be anything. NO SPACES! The player does not see this.
@@ -157,8 +162,53 @@ Printer.Level = 60
 Printer.Prestige = 0
 table.insert(Printers,Printer)
 
+/*Template Code for books/*
+local Book= {} // Leave this line
+Book.Name = 'Your Book Name'
+Book.Type = 'yourbookname' // A UNIQUE identifier STRING, can be anything. NO SPACES! The player does not see this.
+Book.Category = 'Books' // The category of the Book (See http://wiki.darkrp.com/index.php/DarkRP:Categories)
+Book.Color = Color(255,255,255,255) // The color of the Book. Setting it to (255,255,255,255) will make it the normal prop color.
+Book.Model = 'models/props_lab/binderblue.mdl' // The model of the Book. To find the path of a model, right click it in the spawn menu and click "Copy to Clipboard"
+Book.Prestige = 0 // The prestige you have to be to buy the Book. Only works with the prestige DLC on Gmodstore.
+Book.Allowed = {} // Same as DarkRP .allowed
+table.insert(Books,Book) // Leave this line
+*/
+
 // Default xp books:
-// they have been deleted since they were not working, they will be back in a few updates
+local Book={}
+Book.Name = 'Small Book'
+Book.Type = 'smallbook'
+Book.Color = Color(255,255,255)
+Book.Model = 'models/props_lab/binderblue.mdl'
+Book.Price = 10
+Book.XP = 500
+Book.Level = 1
+Book.Prestige = 0
+table.insert(Books,Book)
+
+local Book={}
+Book.Name = 'Medium Book'
+Book.Type = 'mediumbook'
+Book.Color = Color(255,255,255)
+Book.Model = 'models/props_lab/binderblue.mdl'
+Book.Price = 10
+Book.XP = 2000
+Book.Level = 1
+Book.Prestige = 0
+table.insert(Books,Book)
+
+local Book={}
+Book.Name = 'Big Book'
+Book.Type = 'bigbook'
+Book.Color = Color(255,255,255)
+Book.Model = 'models/props_lab/binderblue.mdl'
+Book.Price = 10
+Book.XP = 5000
+Book.Level = 1
+Book.Prestige = 0
+table.insert(Books,Book)
+
+
 
 
 
@@ -218,8 +268,61 @@ hook.Add("loadCustomDarkRPItems", "manolis:MVLevels:CustomLoad", function()
 			vrondakisOverheat = LevelSystemConfiguration.PrinterOverheat,
 			PrinterMaxP = LevelSystemConfiguration.PrinterMaxP,
 			vrondakisPrinterTime = LevelSystemConfiguration.PrinterTime,
-			vrondakisIsBuyerRetarded = LevelSystemConfiguration.KeepThisToTrue,
-			vrondakisEpileptic = LevelSystemConfiguration.Epilepsy
+			vrondakisIsBuyerRetarded = LevelSystemConfiguration.PrinterKeepThisToTrue,
+			vrondakisEpileptic = LevelSystemConfiguration.PrinterEpilepsy
+		}
+		
+		if(v.DParams) then
+			for k,v in pairs(v.DParams) do
+				t[k] = v	
+			end
+		end
+			
+		DarkRP.createEntity(v.Name,t)
+
+	end
+	
+	
+	
+	
+	
+	for k,v in pairs(Books) do
+		local Errors = {}
+		if not type(v.Name) == 'string' then table.insert(Errors, 'The name of a book is INVALID!') end
+		if not type(v.Type) == 'string' then table.insert(Errors, 'The type of a book is INVALID!') end
+		if not type(v.Color) == 'table' then table.insert(Errors, 'The color of a book is INVALID!') end
+		if not type(v.Model) == 'string' then table.insert(Errors, 'The model of a book is INVALID!') end
+		if not type(v.Price) == 'number' then table.insert(Errors, 'The price of a book is INVALID!') end
+		if not type(v.XP) == 'number' then table.insert(Errors, 'The xp ammount of a book is INVALID!') end
+		if not type(v.Category) == 'string' then v.Category='' end
+		if not type(v.Level) == 'number' then table.insert(Errors, 'The level of a book is INVALID!') end
+		local ErrorCount = 0
+		for k,v in pairs(Errors) do
+			error(v)
+			ErrorCount = ErrorCount + 1
+		end
+		
+
+
+		if not(ErrorCount==0) then return false end
+		
+		local t = {
+			ent = "vrondakis_book",
+			model = v.Model,
+			category = v.Category,
+			price = v.Price,
+			xp = v.XP,
+			prestige = (v.Prestige or 0),
+			book = true,
+			level = v.Level,
+			max = LevelSystemConfiguration.BookMax,
+			cmd = 'buyvrondakis'..v.Type..'book',
+			allowed = v.Allowed,
+			vrondakisName = v.Name,
+			vrondakisType = v.Type,
+			vrondakisColor = v.Color,
+			vrondakisModel = v.Model,
+			customCheck = (v.CustomCheck or function() return true end),
 		}
 		
 		if(v.DParams) then
