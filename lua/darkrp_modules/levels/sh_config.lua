@@ -2,79 +2,81 @@
 // Configuration file  //
 /////////////////////////
 
-LevelSystemConfiguration = {} // Ignore
-Printers = {} // Ignore
-Books = {} // Ignore
+LevelSystemConfiguration = {} -- Ignore
+Printers = {} -- Ignore
+Books = {} -- Ignore
 
 
-LevelSystemConfiguration.EnableHUD = true // Is the HUD enabled?
-LevelSystemConfiguration.LevelColor = Color(255,255,255,255) // The color of the "Level: 1" HUD element. White looks best. (This setting is nullified if you have the prestige system)
-LevelSystemConfiguration.XPTextColor = Color(255,255,255,255) // The color of the XP percentage HUD element.
-LevelSystemConfiguration.LevelBarColor = {6,116,255} // The color of the XP bar. (Sorry this one is different. It is still {R,G,B})
-LevelSystemConfiguration.LevelTextPos = {1.5, 180.0} // The position of the LevelText. Y starts from bottom. Fiddle with it
-LevelSystemConfiguration.XPBarYPos = 0 // Y position of the XP bar
-LevelSystemConfiguration.DisplayLevel = true // Show player levels when you look at them
+LevelSystemConfiguration.EnableBar = true -- Is the XP Bar enabled?
+LevelSystemConfiguration.XPTextColor = Color(255,255,255,255) -- The color of the XP percentage HUD element.
+LevelSystemConfiguration.LevelBarColor = {6,116,255} -- The color of the XP bar. (Sorry this one is different. It is still {R,G,B})
+LevelSystemConfiguration.XPBarYPos = 0 -- Y position of the XP bar
+LevelSystemConfiguration.LevelText = true -- Enable the white text on left bottom?
+LevelSystemConfiguration.LevelColor = Color(255,255,255,255) -- The color of the "Level: 1" HUD element. White looks best. (This setting is nullified if you have the prestige system)
+LevelSystemConfiguration.LevelTextPos = {1.5, 180.0} -- The position of the LevelText. Y starts from bottom. Fiddle with it
+LevelSystemConfiguration.DisplayLevel = true -- Show player levels when you look at them
 
-LevelSystemConfiguration.GreenJobBars = true // Are the green bars at the bottom of jobs enabled? KEEP THIS TRUE!
-LevelSystemConfiguration.GreenAllBars = true // Are the green bars at the bottom of everything but jobs enabled? Recommended(true)
+LevelSystemConfiguration.GreenJobBars = true -- Are the green bars at the bottom of jobs enabled? KEEP THIS TRUE!
+LevelSystemConfiguration.GreenAllBars = true -- Are the green bars at the bottom of everything but jobs enabled? Recommended(true)
 
-LevelSystemConfiguration.KillModule = true // Give XP + Money for kills! // Next 2 settings control this.
-LevelSystemConfiguration.Friendly = true // Only take away money / give XP if the killer is a lower level/same level than the victim. (Recommended:true)
-LevelSystemConfiguration.TakeAwayMoneyAmount = 100 // How much money to take away from players when they are killed and add to the killer. You can change this to 0 if none. The XP amount is dynamic.
+LevelSystemConfiguration.KillModule = true -- Give XP + Money for kills! -- Next 2 settings control this.
+LevelSystemConfiguration.Friendly = true -- Only take away money / give XP if the killer is a lower level/same level than the victim. (Recommended:true)
+LevelSystemConfiguration.TakeAwayMoneyAmount = 100 -- How much money to take away from players when they are killed and add to the killer. You can change this to 0 if none. The XP amount is dynamic.
 
-LevelSystemConfiguration.NPCXP = true // Give XP when an NPC is killed?
-LevelSystemConfiguration.NPCXPAmount = 10 // Amount of XP to give when an NPC is killed
+LevelSystemConfiguration.NPCXP = true -- Give XP when an NPC is killed?
+LevelSystemConfiguration.NPCXPAmount = 10 -- Amount of XP to give when an NPC is killed
 
-LevelSystemConfiguration.TimerModule = true // Give XP to everybody every howeverlong
-LevelSystemConfiguration.Timertime = 120 // How much time (in seconds) until everybody gets given XP
-LevelSystemConfiguration.TimerXPAmount = 50 // How much XP to give each time it goes off
-LevelSystemConfiguration.TimerXPAmountVip = 100 // How much XP to give for vip players each time it goes off
-LevelSystemConfiguration.TimerXPVipGroups = "vip" // The vip groups
-LevelSystemConfiguration.YourServerName = "" // The notifcation text ish. "You got 100XP for playing on the server."
+LevelSystemConfiguration.TimerModule = true -- Give XP to everybody every howeverlong
+LevelSystemConfiguration.Timertime = 120 -- How much time (in seconds) until everybody gets given XP
+LevelSystemConfiguration.TimerXPAmount = 50 -- How much XP to give each time it goes off
+-- vip options currently disabled until next update (broken)
+--LevelSystemConfiguration.TimerXPAmountVip = 100 -- How much XP to give for vip players each time it goes off
+--LevelSystemConfiguration.TimerXPVipGroups = "vip" -- The vip groups
+LevelSystemConfiguration.YourServerName = "le serveur." -- The notifcation text ish. "You got 100XP for playing on the server."
 
-LevelSystemConfiguration.XPMult = 1 // How hard it is to level up. 2 would require twice as much XP, ect.
-LevelSystemConfiguration.MaxLevel = 99 // The max level
-LevelSystemConfiguration.ContinueXP = false // If remaining XP continues over to next levels. I recommend this to be false. Seriously. What if a level 1 gets 99999999 XP somehow? He is level 99 so quickly.
+LevelSystemConfiguration.XPMult = 1 -- How hard it is to level up. 2 would require twice as much XP, ect.
+LevelSystemConfiguration.MaxLevel = 99 -- The max level
+LevelSystemConfiguration.ContinueXP = false -- If remaining XP continues over to next levels. I recommend this to be false. Seriously. What if a level 1 gets 99999999 XP somehow? He is level 99 so quickly.
 
 //Language settings
-LevelSystemConfiguration.LangBuyEntity = 'Vous n\'avez pas le bon level pour acheter ça!' // error message when someone can't buy an entity
-LevelSystemConfiguration.LangTakeJob = 'Vous n\'avez pas le bon level pour avoir ce job!' // error message when someone can't take a job
-LevelSystemConfiguration.LangKillNotify = { 'Vous avez reçu ', xpgot, 'XP et ', money, ' pour avoir tué ', victim } // Notification to the killer when he kill someone (vars: xpgot, money, victim)
-LevelSystemConfiguration.LangKillNotify2 = { 'Vous avez reçu ', xpgot, 'XP pour avoir tué ', victim } // Notification to the killer when he kill someone (vars: xpgot, money, victim)
-LevelSystemConfiguration.LangKillNotify3 = { 'Vous avez tué ', victim } // Notification to the killer when he kill someone (vars: xpgot, money, victim)
-LevelSystemConfiguration.LangKillNPC = { 'Vous avez reçu ', XP, 'XP pour avoir tué un NPC.' } // Notification to the killer when he kill a npc (vars: XP)
-LevelSystemConfiguration.LangDeath = { 'Vous êtes mort et avez perdu ', money, '!' } // Notification to the victim when he lost money on death (vars: money)
-LevelSystemConfiguration.LangPlayOn = { 'Vous avez reçu ', XP, 'XP Pour avoir joué sur ', LevelSystemConfiguration.YourServerName } // Notification to everyone when they gain xp by the timer (vars: XP)
-LevelSystemConfiguration.LangRecieveXP = { 'Vous avez reçu ', amount, ' XP!' } // Notification to the player when he recieve xp (vars: ammount)
-LevelSystemConfiguration.LangReachLevel = { name , ' a atteint le niveau ', PlayerLevel, '!' } // Notification to everyone when someone reach a level (vars: name)
-LevelSystemConfiguration.LangBookNotify = { 'You got ', xp, 'XP for using ', bookname, '!' } // Notification to the player when he use a book (vars: xp, bookname)
+LevelSystemConfiguration.LangBuyEntity = "Vous n\'avez pas le bon level pour acheter ça!" -- Error message when someone can't buy an entity
+LevelSystemConfiguration.LangTakeJob = "Vous n\'avez pas le bon level pour avoir ce job!" -- Error message when someone can't take a job
+LevelSystemConfiguration.LangKillNotify = "Vous avez reçu %s XP et %s pour avoir tué %s" -- Notification to the killer when he kill someone (vars: xpgot, money, victim)
+LevelSystemConfiguration.LangKillNotify2 = "Vous avez reçu %s XP pour avoir tué %s" -- Notification to the killer when he kill someone (vars: xpgot, money, victim)
+LevelSystemConfiguration.LangKillNotify3 = "Vous avez tué %s" -- Notification to the killer when he kill someone (vars: xpgot, money, victim)
+LevelSystemConfiguration.LangKillNPC = "Vous avez reçu %s XP pour avoir tué un NPC." -- Notification to the killer when he kill a npc (vars: XP)
+LevelSystemConfiguration.LangDeath = "Vous êtes mort et avez perdu %s!" -- Notification to the victim when he lost money on death (vars: money)
+LevelSystemConfiguration.LangPlayOn = "Vous avez reçu %s XP Pour avoir joué sur %s" -- Notification to everyone when they gain xp by the timer (vars: XP, servername)
+LevelSystemConfiguration.LangRecieveXP = "Vous avez reçu %s XP!" -- Notification to the player when he recieve xp (vars: ammount)
+LevelSystemConfiguration.LangReachLevel = "%s a atteint le niveau %s!" -- Notification to everyone when someone reach a level (vars: name, PlayerLevel)
+LevelSystemConfiguration.LangBookNotify = "Vous avez reçu %s XP pour avoir utilisé un livre %s!" -- Notification to the player when he use a book (vars: xp, bookname)
 
 //Printer settings
-LevelSystemConfiguration.PrinterSound = true // Give the printers sounds?
-LevelSystemConfiguration.PrinterMaxP = 4 // How many times a printer can print before stopping. Change this to 0 if you want infine.
-LevelSystemConfiguration.PrinterMax = 4 // How many printers of a certain type a player can own at any one time
-LevelSystemConfiguration.PrinterOverheat = false // Can printers overheat?
-LevelSystemConfiguration.PrinterTime = 120 // How long it takes printers to print
-LevelSystemConfiguration.KeepThisToTrue = true // Can players collect from printers that are 5 levels above their level? (Recommended: false)
-LevelSystemConfiguration.Epilepsy = true // If printers flash different colors when they have money in them.
+LevelSystemConfiguration.PrinterSound = true -- Give the printers sounds?
+LevelSystemConfiguration.PrinterMaxP = 4 -- How many times a printer can print before stopping. Change this to 0 if you want infine.
+LevelSystemConfiguration.PrinterMax = 4 -- How many printers of a certain type a player can own at any one time
+LevelSystemConfiguration.PrinterOverheat = false -- Can printers overheat?
+LevelSystemConfiguration.PrinterTime = 120 -- How long it takes printers to print
+LevelSystemConfiguration.KeepThisToTrue = true -- Can players collect from printers that are 5 levels above their level? (Recommended: false)
+LevelSystemConfiguration.Epilepsy = true -- If printers flash different colors when they have money in them.
 
 //Book settings
-LevelSystemConfiguration.BookMax = 4 // How many Books of a certain type a player can own at any one time
-LevelSystemConfiguration.BookOnTouch = true // Consume the book on touch?
+LevelSystemConfiguration.BookMax = 4 -- How many Books of a certain type a player can own at any one time
+LevelSystemConfiguration.BookOnTouch = true -- Consume the book on touch?
 
 
 /*Template Code for printers/*
-local Printer= {} // Leave this line
+local Printer= {} -- Leave this line
 Printer.Name = 'Your Printer Name'
-Printer.Type = 'yourprintername' // A UNIQUE identifier STRING, can be anything. NO SPACES! The player does not see this.
-Printer.Category = 'printers' // The category of the printer (See http://wiki.darkrp.com/index.php/DarkRP:Categories)
-Printer.XPPerPrint = 10 // How much XP to give a player every time they print.
-Printer.MoneyPerPrint = 50 // How much money to give a player every time they print.
-Printer.Color = Color(255,255,255,255) // The color of the printer. Setting it to (255,255,255,255) will make it the normal prop color.
-Printer.Model = 'models/props_lab/reciever01b.mdl' // The model of the printer. To find the path of a model, right click it in the spawn menu and click "Copy to Clipboard"
-Printer.Prestige = 0 // The prestige you have to be to buy the printer. Only works with the prestige DLC on Gmodstore.
-Printer.Allowed = {} // Same as DarkRP .allowed
-table.insert(Printers,Printer) // Leave this line
+Printer.Type = 'yourprintername' -- A UNIQUE identifier STRING, can be anything. NO SPACES! The player does not see this.
+Printer.Category = 'printers' -- The category of the printer (See http:--wiki.darkrp.com/index.php/DarkRP:Categories)
+Printer.XPPerPrint = 10 -- How much XP to give a player every time they print.
+Printer.MoneyPerPrint = 50 -- How much money to give a player every time they print.
+Printer.Color = Color(255,255,255,255) -- The color of the printer. Setting it to (255,255,255,255) will make it the normal prop color.
+Printer.Model = 'models/props_lab/reciever01b.mdl' -- The model of the printer. To find the path of a model, right click it in the spawn menu and click "Copy to Clipboard"
+Printer.Prestige = 0 -- The prestige you have to be to buy the printer. Only works with the prestige DLC on Gmodstore.
+Printer.Allowed = {} -- Same as DarkRP .allowed
+table.insert(Printers,Printer) -- Leave this line
 */
 
 // Default printers:
@@ -163,15 +165,15 @@ Printer.Prestige = 0
 table.insert(Printers,Printer)
 
 /*Template Code for books/*
-local Book= {} // Leave this line
+local Book= {} -- Leave this line
 Book.Name = 'Your Book Name'
-Book.Type = 'yourbookname' // A UNIQUE identifier STRING, can be anything. NO SPACES! The player does not see this.
-Book.Category = 'Books' // The category of the Book (See http://wiki.darkrp.com/index.php/DarkRP:Categories)
-Book.Color = Color(255,255,255,255) // The color of the Book. Setting it to (255,255,255,255) will make it the normal prop color.
-Book.Model = 'models/props_lab/binderblue.mdl' // The model of the Book. To find the path of a model, right click it in the spawn menu and click "Copy to Clipboard"
-Book.Prestige = 0 // The prestige you have to be to buy the Book. Only works with the prestige DLC on Gmodstore.
-Book.Allowed = {} // Same as DarkRP .allowed
-table.insert(Books,Book) // Leave this line
+Book.Type = 'yourbookname' -- A UNIQUE identifier STRING, can be anything. NO SPACES! The player does not see this.
+Book.Category = 'Books' -- The category of the Book (See http:--wiki.darkrp.com/index.php/DarkRP:Categories)
+Book.Color = Color(255,255,255,255) -- The color of the Book. Setting it to (255,255,255,255) will make it the normal prop color.
+Book.Model = 'models/props_lab/binderblue.mdl' -- The model of the Book. To find the path of a model, right click it in the spawn menu and click "Copy to Clipboard"
+Book.Prestige = 0 -- The prestige you have to be to buy the Book. Only works with the prestige DLC on Gmodstore.
+Book.Allowed = {} -- Same as DarkRP .allowed
+table.insert(Books,Book) -- Leave this line
 */
 
 // Default xp books:

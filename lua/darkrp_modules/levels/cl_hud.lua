@@ -66,7 +66,7 @@ local OldXP = 0
 local xp_bar = Material("vrondakis/xp_bar.png","noclamp smooth")
 local function HUDPaint()
 	if not LevelSystemConfiguration then return end
-	if not LevelSystemConfiguration.EnableHUD then return end
+	if LevelSystemConfiguration.EnableBar then
 	local PlayerLevel = LocalPlayer():getDarkRPVar('level')
 	local PlayerXP = LocalPlayer():getDarkRPVar('xp')
 	
@@ -93,7 +93,13 @@ local function HUDPaint()
 
 	// Render the text
 	draw.DrawText('Level '..(LocalPlayer():getDarkRPVar('level') or 0)..' - '..percent2 ..'%', "HeadBar", ScrW()/2,7+(LevelSystemConfiguration.XPBarYPos or 0),(LevelSystemConfiguration.XPTextColor or Color(255,255,255,255)), TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER)
-
+	end
+	
+	if LevelSystemConfiguration.LevelText then
+	draw.SimpleText('Level: ' ..(LocalPlayer():getDarkRPVar('level') or 0), "LevelPrompt", LevelSystemConfiguration.LevelTextPos[1],ScrH()-LevelSystemConfiguration.LevelTextPos[2],((Color(0,0,0,255))), TEXT_ALIGN_LEFT, TEXT_ALIGN_LEFT)
+	draw.SimpleText('Level: ' ..(LocalPlayer():getDarkRPVar('level') or 0), "LevelPrompt", LevelSystemConfiguration.LevelTextPos[1]+1,ScrH()-LevelSystemConfiguration.LevelTextPos[2]-1,(LevelSystemConfiguration.LevelColor or (Color(0,0,0,255))), TEXT_ALIGN_LEFT, TEXT_ALIGN_LEFT)
+	end
+	
 	DrawDisplay()
 end
 hook.Add("HUDPaint", "manolis:MVLevels:HUDPaintA", HUDPaint) // IS THAT UNIQUE ENOUGH FOR YOU, FUCKING GMOD HOOKING BULLSHIT.

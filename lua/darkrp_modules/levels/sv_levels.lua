@@ -25,7 +25,7 @@ function meta:addXP(amount, notify, carryOver)
 	end
 
 	if not(notify) then
-		DarkRP.notify(self,0,4,LevelSystemConfiguration.LangRecieveXP)
+		DarkRP.notify(self,0,4, string.format( LevelSystemConfiguration.LangRecieveXP, amount ))
 	end
 	
 	local TotalXP = PlayerXP + amount
@@ -33,7 +33,7 @@ function meta:addXP(amount, notify, carryOver)
 	if(TotalXP>=self:getMaxXP()) then // Level up!
 		PlayerLevel = PlayerLevel + 1
 		local name = self:Name()
-		DarkRP.notifyAll(0,3,LevelSystemConfiguration.LangReachLevel)
+		DarkRP.notifyAll(0,3, string.format( LevelSystemConfiguration.LangReachLevel, name, PlayerLevel ))
 		hook.Call( "PlayerLevelChanged", nil, self, PlayerLevel-1, PlayerLevel ) // call the PlayerLevelChanged hook and pass player, old level and new level.
 
 		local RemainingXP = (TotalXP-self:getMaxXP())

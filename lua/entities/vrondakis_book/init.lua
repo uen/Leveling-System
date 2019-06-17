@@ -29,7 +29,7 @@ function ENT:Touch(entity)
 		local xp = self.DarkRPItem.xp
 		local bookname = self.DarkRPItem.vrondakisName
 		entity:addXP( xp, true)
-		DarkRP.notify(entity, 0,4,LevelSystemConfiguration.LangBookNotify)
+		DarkRP.notify(entity, 0,4, string.format( LevelSystemConfiguration.LangBookNotify, xp, bookname ))
 		self:Remove()
 	end
 end

@@ -8,18 +8,18 @@ function PlayerDeath(victim, weapon, killer)
 						if((killer:getDarkRPVar('level') or 1)<=(victim:getDarkRPVar('level') or 1)) then
 								local xpgot=killer:addXP(10*(victim:getDarkRPVar('level') or 1), true)
 								killer:addMoney(LevelSystemConfiguration.TakeAwayMoneyAmount)
-								DarkRP.notify(killer, 0,4,LevelSystemConfiguration.LangKillNotify)
+								DarkRP.notify(killer, 0,4, string.format( LevelSystemConfiguration.LangKillNotify, xpgot, money, victim ))
 								if(victim:canAfford(LevelSystemConfiguration.TakeAwayMoneyAmount)) then
 									victim:addMoney(-LevelSystemConfiguration.TakeAwayMoneyAmount)
-									DarkRP.notify(victim, 0,4,LevelSystemConfiguration.LangDeath)					
+									DarkRP.notify(victim, 0,4, string.format( LevelSystemConfiguration.LangDeath, money ))					
 								end
 						else 
-							DarkRP.notify(killer,0,4,LevelSystemConfiguration.LangKillNotify2)
+							DarkRP.notify(killer,0,4, string.format( LevelSystemConfiguration.LangKillNotify2, xpgot, victim ))
 						end
 					else
 						local xpgot = killer:addXP(10*(victim:getDarkRPVar('level') or 1),true)
 						killer:addMoney(LevelSystemConfiguration.TakeAwayMoneyAmount)
-						DarkRP.notify(killer, 0,4,LevelSystemConfiguration.LangKillNotify3)
+						DarkRP.notify(killer, 0,4, string.format( LevelSystemConfiguration.LangKillNotify3, victim ))
 					end
 						
 				end
@@ -36,7 +36,7 @@ function NPCDeath(npc, killer,weapon)
 			if(killer:IsPlayer()) then
 				local XP = killer:addXP(npc:GetVar("GiveXP") or LevelSystemConfiguration.NPCXPAmount, true)
 				if(XP) then
-					DarkRP.notify(killer, 0,4,LevelSystemConfiguration.LangKillNPC)
+					DarkRP.notify(killer, 0,4, string.format( LevelSystemConfiguration.LangKillNPC, XP ))
 				end
 			end
 		end
@@ -51,7 +51,8 @@ timer.Create( "PlayXP", time,0,function()
 		for k,v in pairs(player.GetAll()) do 
 			local XP = v:addXP(LevelSystemConfiguration.TimerXPAmount, true)
 			if(XP) then
-				DarkRP.notify(v,0,4,LevelSystemConfiguration.LangPlayOn) 
+				local servername = LevelSystemConfiguration.YourServerName
+				DarkRP.notify(v,0,4, string.format( LevelSystemConfiguration.LangPlayOn, XP, servername ))
 			end
 		end
 	end
@@ -68,7 +69,8 @@ timer.Create( "PlayXP", time,0,function()
 				local XP = v:addXP(LevelSystemConfiguration.TimerXPAmount, true)
 			end
 			if(XP) then
-				DarkRP.notify(v,0,4,LevelSystemConfiguration.LangPlayOn) 
+				local servername = LevelSystemConfiguration.YourServerName
+				DarkRP.notify(v,0,4, string.format( LevelSystemConfiguration.LangPlayOn, XP, servername )) 
 			end
 		end
 	end
