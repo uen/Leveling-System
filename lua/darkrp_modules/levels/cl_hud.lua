@@ -66,11 +66,9 @@ local OldXP = 0
 local xp_bar = Material("vrondakis/xp_bar.png","noclamp smooth")
 local function HUDPaint()
 	if not LevelSystemConfiguration then return end
-	if LevelSystemConfiguration.EnableBar then
 	local PlayerLevel = LocalPlayer():getDarkRPVar('level')
 	local PlayerXP = LocalPlayer():getDarkRPVar('xp')
 	
-	// Draw the XP Bar
 	local percent = ((PlayerXP or 0)/(((10+(((PlayerLevel or 1)*((PlayerLevel or 1)+1)*90))))*LevelSystemConfiguration.XPMult)) // Gets the accurate level up percentage
 	
 	local drawXP = Lerp(8*FrameTime(),OldXP,percent)
@@ -78,7 +76,9 @@ local function HUDPaint()
 	local percent2 = percent*100
 	percent2 = math.Round(percent2)
 	percent2 = math.Clamp(percent2, 0, 99) //Make sure it doesn't round past 100%
-
+	
+	if LevelSystemConfiguration.EnableBar then
+	// Draw the XP Bar
 	surface.SetDrawColor(0,0,0,200)
 	surface.DrawRect(ScrW()/2-300,(LevelSystemConfiguration.XPBarYPos or 0),580,25)
 
@@ -90,14 +90,16 @@ local function HUDPaint()
 	surface.SetMaterial(xp_bar)
 	surface.SetDrawColor(255,255,255,255)
 	surface.DrawTexturedRect( ScrW()/2-371, 0+(LevelSystemConfiguration.XPBarYPos or 0),  742,46)
-
+	end
+	
 	// Render the text
-	draw.DrawText('Level '..(LocalPlayer():getDarkRPVar('level') or 0)..' - '..percent2 ..'%', "HeadBar", ScrW()/2,7+(LevelSystemConfiguration.XPBarYPos or 0),(LevelSystemConfiguration.XPTextColor or Color(255,255,255,255)), TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER)
+	if LevelSystemConfiguration.BarText then
+		draw.DrawText('Level '..(LocalPlayer():getDarkRPVar('level') or 0)..' - '..percent2 ..'%', "HeadBar", ScrW()/2,7+(LevelSystemConfiguration.XPBarYPos or 0),(LevelSystemConfiguration.XPTextColor or Color(255,255,255,255)), TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER)
 	end
 	
 	if LevelSystemConfiguration.LevelText then
-	draw.SimpleText('Level: ' ..(LocalPlayer():getDarkRPVar('level') or 0), "LevelPrompt", LevelSystemConfiguration.LevelTextPos[1],ScrH()-LevelSystemConfiguration.LevelTextPos[2],((Color(0,0,0,255))), TEXT_ALIGN_LEFT, TEXT_ALIGN_LEFT)
-	draw.SimpleText('Level: ' ..(LocalPlayer():getDarkRPVar('level') or 0), "LevelPrompt", LevelSystemConfiguration.LevelTextPos[1]+1,ScrH()-LevelSystemConfiguration.LevelTextPos[2]-1,(LevelSystemConfiguration.LevelColor or (Color(0,0,0,255))), TEXT_ALIGN_LEFT, TEXT_ALIGN_LEFT)
+		draw.SimpleText('Level: ' ..(LocalPlayer():getDarkRPVar('level') or 0), "LevelPrompt", LevelSystemConfiguration.LevelTextPos[1],ScrH()-LevelSystemConfiguration.LevelTextPos[2],((Color(0,0,0,255))), TEXT_ALIGN_LEFT, TEXT_ALIGN_LEFT)
+		draw.SimpleText('Level: ' ..(LocalPlayer():getDarkRPVar('level') or 0), "LevelPrompt", LevelSystemConfiguration.LevelTextPos[1]+1,ScrH()-LevelSystemConfiguration.LevelTextPos[2]-1,(LevelSystemConfiguration.LevelColor or (Color(0,0,0,255))), TEXT_ALIGN_LEFT, TEXT_ALIGN_LEFT)
 	end
 	
 	DrawDisplay()

@@ -8,6 +8,7 @@ Books = {} -- Ignore
 
 
 LevelSystemConfiguration.EnableBar = true -- Is the XP Bar enabled?
+LevelSystemConfiguration.BarText = true -- Is the bar text enabled?
 LevelSystemConfiguration.XPTextColor = Color(255,255,255,255) -- The color of the XP percentage HUD element.
 LevelSystemConfiguration.LevelBarColor = {6,116,255} -- The color of the XP bar. (Sorry this one is different. It is still {R,G,B})
 LevelSystemConfiguration.XPBarYPos = 0 -- Y position of the XP bar
