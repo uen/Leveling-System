@@ -42,15 +42,15 @@ LevelSystemConfiguration.ContinueXP = false -- If remaining XP continues over to
 //Language settings
 LevelSystemConfiguration.LangBuyEntity = "Vous n\'avez pas le bon level pour acheter ça!" -- Error message when someone can't buy an entity
 LevelSystemConfiguration.LangTakeJob = "Vous n\'avez pas le bon level pour avoir ce job!" -- Error message when someone can't take a job
-LevelSystemConfiguration.LangKillNotify = "Vous avez reçu %s XP et %s pour avoir tué %s" -- Notification to the killer when he kill someone (vars: xpgot, money, victim)
-LevelSystemConfiguration.LangKillNotify2 = "Vous avez reçu %s XP pour avoir tué %s" -- Notification to the killer when he kill someone (vars: xpgot, money, victim)
-LevelSystemConfiguration.LangKillNotify3 = "Vous avez tué %s" -- Notification to the killer when he kill someone (vars: xpgot, money, victim)
+LevelSystemConfiguration.LangKillNotify = "Vous avez reçu %s XP et %s pour avoir tué %s" -- Notification to the killer when he kill someone (vars: XP, money, victime)
+LevelSystemConfiguration.LangKillNotify2 = "Vous avez reçu %s XP pour avoir tué %s" -- Notification to the killer when he kill someone (vars: XP, victime)
+LevelSystemConfiguration.LangKillNotify3 = "Vous avez tué %s" -- Notification to the killer when he kill someone (vars: victime)
 LevelSystemConfiguration.LangKillNPC = "Vous avez reçu %s XP pour avoir tué un NPC." -- Notification to the killer when he kill a npc (vars: XP)
 LevelSystemConfiguration.LangDeath = "Vous êtes mort et avez perdu %s!" -- Notification to the victim when he lost money on death (vars: money)
 LevelSystemConfiguration.LangPlayOn = "Vous avez reçu %s XP Pour avoir joué sur %s" -- Notification to everyone when they gain xp by the timer (vars: XP, servername)
 LevelSystemConfiguration.LangRecieveXP = "Vous avez reçu %s XP!" -- Notification to the player when he recieve xp (vars: ammount)
 LevelSystemConfiguration.LangReachLevel = "%s a atteint le niveau %s!" -- Notification to everyone when someone reach a level (vars: name, PlayerLevel)
-LevelSystemConfiguration.LangBookNotify = "Vous avez reçu %s XP pour avoir utilisé un livre %s!" -- Notification to the player when he use a book (vars: xp, bookname)
+LevelSystemConfiguration.LangBookNotify = "Vous avez reçu %s XP pour avoir utilisé un livre %s!" -- Notification to the player when he use a book (vars: XP, bookname)
 
 //Printer settings
 LevelSystemConfiguration.PrinterSound = true -- Give the printers sounds?

@@ -16,9 +16,9 @@ function ENT:Initialize()
     end
 
 function ENT:Use( activator, caller )
-	local xp = self.DarkRPItem.xp
+	local XP = self.DarkRPItem.xp
 	local bookname = self.DarkRPItem.vrondakisName
-    activator:addXP( xp, true)
+    activator:addXP( XP, true)
 	DarkRP.notify(activator, 0,4,LevelSystemConfiguration.LangBookNotify)
 	self:Remove()
 end
@@ -26,10 +26,10 @@ end
 function ENT:Touch(entity)
 	if LevelSystemConfiguration.BookOnTouch then
 		if (!entity:IsPlayer()) then return end
-		local xp = self.DarkRPItem.xp
+		local XP = self.DarkRPItem.xp
 		local bookname = self.DarkRPItem.vrondakisName
-		entity:addXP( xp, true)
-		DarkRP.notify(entity, 0,4, string.format( LevelSystemConfiguration.LangBookNotify, xp, bookname ))
+		entity:addXP( XP, true)
+		DarkRP.notify(entity, 0,4, string.format( LevelSystemConfiguration.LangBookNotify, XP, bookname ))
 		self:Remove()
 	end
 end
