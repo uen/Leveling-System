@@ -102,6 +102,6 @@ function meta:hasLevel(level)
 	return ((self:getDarkRPVar('level')) >= level)
 end
 
-concommand.Add("levels", function(ply)
-	DarkRP.notify(ply,0,10,"Leveling System by @vrondakis")
+concommand.Add("level", function(ply)
+	DarkRP.notify(ply,0,10,"Leveling System by @vrondakis for Darkrp 2.7")
 end)

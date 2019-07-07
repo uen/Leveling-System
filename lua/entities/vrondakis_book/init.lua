@@ -19,7 +19,7 @@ function ENT:Use( activator, caller )
 	local XP = self.DarkRPItem.xp
 	local bookname = self.DarkRPItem.vrondakisName
     activator:addXP( XP, true)
-	DarkRP.notify(activator, 0,4,LevelSystemConfiguration.LangBookNotify)
+	DarkRP.notify(activator, 0,4, string.format( LevelSystemConfiguration.LangBookNotify, XP, bookname ))
 	self:Remove()
 end
 
