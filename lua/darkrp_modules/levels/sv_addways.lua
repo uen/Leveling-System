@@ -49,10 +49,20 @@ local time = LevelSystemConfiguration.Timertime
 timer.Create( "PlayXP", time,0,function()
 	if(LevelSystemConfiguration.TimerModule) then
 		for k,v in pairs(player.GetAll()) do 
-			local XP = v:addXP(LevelSystemConfiguration.TimerXPAmount, true)
-			if(XP) then
-				local servername = LevelSystemConfiguration.YourServerName
-				DarkRP.notify(v,0,4, string.format( LevelSystemConfiguration.LangPlayOn, XP, servername ))
+			if GetConVar("aafk_enabled"):GetBool() == true then
+				if v:GetNWBool( "aafk_away" ) == false then
+				local XP = v:addXP(LevelSystemConfiguration.TimerXPAmount, true)
+				if(XP) then
+					local servername = LevelSystemConfiguration.YourServerName
+					DarkRP.notify(v,0,4, string.format( LevelSystemConfiguration.LangPlayOn, XP, servername ))
+				end
+				end
+			else
+				local XP = v:addXP(LevelSystemConfiguration.TimerXPAmount, true)
+				if(XP) then
+					local servername = LevelSystemConfiguration.YourServerName
+					DarkRP.notify(v,0,4, string.format( LevelSystemConfiguration.LangPlayOn, XP, servername ))
+				end
 			end
 		end
 	end
