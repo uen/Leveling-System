@@ -30,10 +30,8 @@ LevelSystemConfiguration.NPCXPAmount = 10 -- Amount of XP to give when an NPC is
 LevelSystemConfiguration.TimerModule = true -- Give XP to everybody every howeverlong
 LevelSystemConfiguration.Timertime = 120 -- How much time (in seconds) until everybody gets given XP
 LevelSystemConfiguration.TimerXPAmount = 50 -- How much XP to give each time it goes off
--- vip options currently disabled until next update (broken)
---LevelSystemConfiguration.TimerXPAmountVip = 100 -- How much XP to give for vip players each time it goes off
---LevelSystemConfiguration.TimerXPVipGroups = "vip" -- The vip groups
-LevelSystemConfiguration.YourServerName = "le serveur." -- The notifcation text ish. "You got 100XP for playing on the server."
+LevelSystemConfiguration.TimerXPAmountVip = 100 -- How much XP to give for vip players each time it goes off
+LevelSystemConfiguration.TimerXPVipGroups = {"vip", "premium"} -- The vip groups
 
 LevelSystemConfiguration.XPMult = 1 -- How hard it is to level up. 2 would require twice as much XP, ect.
 LevelSystemConfiguration.MaxLevel = 99 -- The max level
@@ -47,7 +45,7 @@ LevelSystemConfiguration.LangKillNotify2 = "Vous avez reçu %s XP pour avoir tu�
 LevelSystemConfiguration.LangKillNotify3 = "Vous avez tué %s" -- Notification to the killer when he kill someone (vars: victime)
 LevelSystemConfiguration.LangKillNPC = "Vous avez reçu %s XP pour avoir tué un NPC." -- Notification to the killer when he kill a npc (vars: XP)
 LevelSystemConfiguration.LangDeath = "Vous êtes mort et avez perdu %s!" -- Notification to the victim when he lost money on death (vars: money)
-LevelSystemConfiguration.LangPlayOn = "Vous avez reçu %s XP Pour avoir joué sur %s" -- Notification to everyone when they gain xp by the timer (vars: XP, servername)
+LevelSystemConfiguration.LangPlayOn = "Vous avez reçu %s XP Pour avoir joué sur le serveur." -- Notification to everyone when they gain xp by the timer (vars: XP)
 LevelSystemConfiguration.LangRecieveXP = "Vous avez reçu %s XP!" -- Notification to the player when he recieve xp (vars: ammount)
 LevelSystemConfiguration.LangReachLevel = "%s a atteint le niveau %s!" -- Notification to everyone when someone reach a level (vars: name, PlayerLevel)
 LevelSystemConfiguration.LangBookNotify = "Vous avez reçu %s XP pour avoir utilisé un livre %s!" -- Notification to the player when he use a book (vars: XP, bookname)
