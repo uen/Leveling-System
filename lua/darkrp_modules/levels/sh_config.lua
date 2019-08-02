@@ -38,17 +38,7 @@ LevelSystemConfiguration.MaxLevel = 99 -- The max level
 LevelSystemConfiguration.ContinueXP = false -- If remaining XP continues over to next levels. I recommend this to be false. Seriously. What if a level 1 gets 99999999 XP somehow? He is level 99 so quickly.
 
 //Language settings
-LevelSystemConfiguration.LangBuyEntity = "Vous n\'avez pas le bon level pour acheter ça!" -- Error message when someone can't buy an entity
-LevelSystemConfiguration.LangTakeJob = "Vous n\'avez pas le bon level pour avoir ce job!" -- Error message when someone can't take a job
-LevelSystemConfiguration.LangKillNotify = "Vous avez reçu %s XP et %s pour avoir tué %s" -- Notification to the killer when he kill someone (vars: XP, money, victime)
-LevelSystemConfiguration.LangKillNotify2 = "Vous avez reçu %s XP pour avoir tué %s" -- Notification to the killer when he kill someone (vars: XP, victime)
-LevelSystemConfiguration.LangKillNotify3 = "Vous avez tué %s" -- Notification to the killer when he kill someone (vars: victime)
-LevelSystemConfiguration.LangKillNPC = "Vous avez reçu %s XP pour avoir tué un NPC." -- Notification to the killer when he kill a npc (vars: XP)
-LevelSystemConfiguration.LangDeath = "Vous êtes mort et avez perdu %s!" -- Notification to the victim when he lost money on death (vars: money)
-LevelSystemConfiguration.LangPlayOn = "Vous avez reçu %s XP Pour avoir joué sur le serveur." -- Notification to everyone when they gain xp by the timer (vars: XP)
-LevelSystemConfiguration.LangRecieveXP = "Vous avez reçu %s XP!" -- Notification to the player when he recieve xp (vars: ammount)
-LevelSystemConfiguration.LangReachLevel = "%s a atteint le niveau %s!" -- Notification to everyone when someone reach a level (vars: name, PlayerLevel)
-LevelSystemConfiguration.LangBookNotify = "Vous avez reçu %s XP pour avoir utilisé un livre %s!" -- Notification to the player when he use a book (vars: XP, bookname)
+LevelSystemConfiguration.Language = "en" -- current language of the addon, (available: fr, en)
 
 //Printer settings
 LevelSystemConfiguration.PrinterSound = true -- Give the printers sounds?
@@ -223,7 +213,31 @@ table.insert(Books,Book)
 
 // Ignore everything under this line.
 
-
+if LevelSystemConfiguration.Language =="fr" then
+LevelSystemConfiguration.LangBuyEntity = "Vous n\'avez pas le bon level pour acheter ça!" -- Error message when someone can't buy an entity
+LevelSystemConfiguration.LangTakeJob = "Vous n\'avez pas le bon level pour avoir ce job!" -- Error message when someone can't take a job
+LevelSystemConfiguration.LangKillNotify = "Vous avez reçu %s XP et %s pour avoir tué %s" -- Notification to the killer when he kill someone (vars: XP, money, victime)
+LevelSystemConfiguration.LangKillNotify2 = "Vous avez reçu %s XP pour avoir tué %s" -- Notification to the killer when he kill someone (vars: XP, victime)
+LevelSystemConfiguration.LangKillNotify3 = "Vous avez tué %s" -- Notification to the killer when he kill someone (vars: victime)
+LevelSystemConfiguration.LangKillNPC = "Vous avez reçu %s XP pour avoir tué un NPC." -- Notification to the killer when he kill a npc (vars: XP)
+LevelSystemConfiguration.LangDeath = "Vous êtes mort et avez perdu %s!" -- Notification to the victim when he lost money on death (vars: money)
+LevelSystemConfiguration.LangPlayOn = "Vous avez reçu %s XP Pour avoir joué sur le serveur." -- Notification to everyone when they gain xp by the timer (vars: XP)
+LevelSystemConfiguration.LangRecieveXP = "Vous avez reçu %s XP!" -- Notification to the player when he recieve xp (vars: ammount)
+LevelSystemConfiguration.LangReachLevel = "%s a atteint le niveau %s!" -- Notification to everyone when someone reach a level (vars: name, PlayerLevel)
+LevelSystemConfiguration.LangBookNotify = "Vous avez reçu %s XP pour avoir utilisé un livre %s!" -- Notification to the player when he use a book (vars: XP, bookname)
+else
+LevelSystemConfiguration.LangBuyEntity = "You\'re not the right level to buy this!" -- Error message when someone can't buy an entity
+LevelSystemConfiguration.LangTakeJob = "You\'re not the right level to become this!" -- Error message when someone can't take a job
+LevelSystemConfiguration.LangKillNotify = "You got %s XP and %s for killing %s" -- Notification to the killer when he kill someone (vars: XP, money, victime)
+LevelSystemConfiguration.LangKillNotify2 = "You got %s XP for killing %s" -- Notification to the killer when he kill someone (vars: XP, victime)
+LevelSystemConfiguration.LangKillNotify3 = "You killed %s" -- Notification to the killer when he kill someone (vars: victime)
+LevelSystemConfiguration.LangKillNPC = "You got %s XP for killing an NPC." -- Notification to the killer when he kill a npc (vars: XP)
+LevelSystemConfiguration.LangDeath = "You died and lost %s!" -- Notification to the victim when he lost money on death (vars: money)
+LevelSystemConfiguration.LangPlayOn = "You got %s XP for playing on the server." -- Notification to everyone when they gain xp by the timer (vars: XP)
+LevelSystemConfiguration.LangRecieveXP = "You got %s XP!" -- Notification to the player when he recieve xp (vars: ammount)
+LevelSystemConfiguration.LangReachLevel = "%s has reached level %s!" -- Notification to everyone when someone reach a level (vars: name, PlayerLevel)
+LevelSystemConfiguration.LangBookNotify = "You got %s XP for using the book %s!" -- Notification to the player when he use a book (vars: XP, bookname)
+end
 
 hook.Add("loadCustomDarkRPItems", "manolis:MVLevels:CustomLoad", function()
 
