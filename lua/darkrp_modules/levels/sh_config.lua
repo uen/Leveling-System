@@ -3,8 +3,8 @@
 /////////////////////////
 
 LevelSystemConfiguration = {} -- Ignore
-Printers = {} -- Ignore
-Books = {} -- Ignore
+local Printers = {} -- Ignore
+local Books = {} -- Ignore
 
 
 LevelSystemConfiguration.EnableBar = true -- Is the XP Bar enabled?
