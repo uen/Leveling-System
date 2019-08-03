@@ -6,7 +6,10 @@ LevelSystemConfiguration = {} -- Ignore
 local Printers = {} -- Ignore
 local Books = {} -- Ignore
 
+//Language settings
+LevelSystemConfiguration.Language = "EN" -- (available: FR, EN, PL)
 
+//Hud settings
 LevelSystemConfiguration.EnableBar = true -- Is the XP Bar enabled?
 LevelSystemConfiguration.BarText = true -- Is the bar text enabled?
 LevelSystemConfiguration.XPTextColor = Color(255,255,255,255) -- The color of the XP percentage HUD element.
@@ -16,29 +19,27 @@ LevelSystemConfiguration.LevelText = true -- Enable the white text on left botto
 LevelSystemConfiguration.LevelColor = Color(255,255,255,255) -- The color of the "Level: 1" HUD element. White looks best. (This setting is nullified if you have the prestige system)
 LevelSystemConfiguration.LevelTextPos = {1.5, 180.0} -- The position of the LevelText. Y starts from bottom. Fiddle with it
 LevelSystemConfiguration.DisplayLevel = true -- Show player levels when you look at them
-
 LevelSystemConfiguration.GreenJobBars = true -- Are the green bars at the bottom of jobs enabled? KEEP THIS TRUE!
 LevelSystemConfiguration.GreenAllBars = true -- Are the green bars at the bottom of everything but jobs enabled? Recommended(true)
 
+//Kill settings
 LevelSystemConfiguration.KillModule = true -- Give XP + Money for kills! -- Next 2 settings control this.
 LevelSystemConfiguration.Friendly = true -- Only take away money / give XP if the killer is a lower level/same level than the victim. (Recommended:true)
 LevelSystemConfiguration.TakeAwayMoneyAmount = 100 -- How much money to take away from players when they are killed and add to the killer. You can change this to 0 if none. The XP amount is dynamic.
-
 LevelSystemConfiguration.NPCXP = true -- Give XP when an NPC is killed?
 LevelSystemConfiguration.NPCXPAmount = 10 -- Amount of XP to give when an NPC is killed
 
+//Timer settings
 LevelSystemConfiguration.TimerModule = true -- Give XP to everybody every howeverlong
 LevelSystemConfiguration.Timertime = 120 -- How much time (in seconds) until everybody gets given XP
 LevelSystemConfiguration.TimerXPAmount = 50 -- How much XP to give each time it goes off
 LevelSystemConfiguration.TimerXPAmountVip = 100 -- How much XP to give for vip players each time it goes off
 LevelSystemConfiguration.TimerXPVipGroups = {"vip", "premium"} -- The vip groups
 
+//XP settings
 LevelSystemConfiguration.XPMult = 1 -- How hard it is to level up. 2 would require twice as much XP, ect.
 LevelSystemConfiguration.MaxLevel = 99 -- The max level
 LevelSystemConfiguration.ContinueXP = false -- If remaining XP continues over to next levels. I recommend this to be false. Seriously. What if a level 1 gets 99999999 XP somehow? He is level 99 so quickly.
-
-//Language settings
-LevelSystemConfiguration.Language = "en" -- current language of the addon, (available: fr, en)
 
 //Printer settings
 LevelSystemConfiguration.PrinterSound = true -- Give the printers sounds?
@@ -165,7 +166,7 @@ Book.Allowed = {} -- Same as DarkRP .allowed
 table.insert(Books,Book) -- Leave this line
 */
 
-// Default xp books:
+// Default books:
 local Book={}
 Book.Name = 'Small Book'
 Book.Type = 'smallbook'
@@ -213,7 +214,19 @@ table.insert(Books,Book)
 
 // Ignore everything under this line.
 
-if LevelSystemConfiguration.Language =="fr" then
+
+
+
+
+
+
+
+
+
+
+
+
+if LevelSystemConfiguration.Language =="FR" then
 LevelSystemConfiguration.LangBuyEntity = "Vous n\'avez pas le bon level pour acheter ça!" -- Error message when someone can't buy an entity
 LevelSystemConfiguration.LangTakeJob = "Vous n\'avez pas le bon level pour avoir ce job!" -- Error message when someone can't take a job
 LevelSystemConfiguration.LangKillNotify = "Vous avez reçu %s XP et %s pour avoir tué %s" -- Notification to the killer when he kill someone (vars: XP, money, victime)
@@ -225,6 +238,18 @@ LevelSystemConfiguration.LangPlayOn = "Vous avez reçu %s XP Pour avoir joué su
 LevelSystemConfiguration.LangRecieveXP = "Vous avez reçu %s XP!" -- Notification to the player when he recieve xp (vars: ammount)
 LevelSystemConfiguration.LangReachLevel = "%s a atteint le niveau %s!" -- Notification to everyone when someone reach a level (vars: name, PlayerLevel)
 LevelSystemConfiguration.LangBookNotify = "Vous avez reçu %s XP pour avoir utilisé un livre %s!" -- Notification to the player when he use a book (vars: XP, bookname)
+elseif LevelSystemConfiguration.Language == "PL" then
+LevelSystemConfiguration.LangBuyEntity = "Ty nie masz odpowiedniego poziomu by to kupić!" -- Error message when someone can't buy an entity
+LevelSystemConfiguration.LangTakeJob = "Ty nie masz odpowiedniego poziomu by tym zostać!" -- Error message when someone can't take a job
+LevelSystemConfiguration.LangKillNotify = "Ty masz %s XP i %s za zabicie %s" -- Notification to the killer when he kill someone (vars: XP, money, victime)
+LevelSystemConfiguration.LangKillNotify2 = "Ty masz %s XP za zabicie %s" -- Notification to the killer when he kill someone (vars: XP, victime)
+LevelSystemConfiguration.LangKillNotify3 = "Zabiłeś %s" -- Notification to the killer when he kill someone (vars: victime)
+LevelSystemConfiguration.LangKillNPC = "Ty masz %s XP za zabicie NPC." -- Notification to the killer when he kill a npc (vars: XP)
+LevelSystemConfiguration.LangDeath = "Zmarłeś i straciłeś %s!" -- Notification to the victim when he lost money on death (vars: money)
+LevelSystemConfiguration.LangPlayOn = "Ty masz %s XP za grę na serwerze." -- Notification to everyone when they gain xp by the timer (vars: XP)
+LevelSystemConfiguration.LangRecieveXP = "Ty masz %s XP!" -- Notification to the player when he recieve xp (vars: ammount)
+LevelSystemConfiguration.LangReachLevel = "%s osiągnął poziom %s!" -- Notification to everyone when someone reach a level (vars: name, PlayerLevel)
+LevelSystemConfiguration.LangBookNotify = "Ty masz %s XP za korzystanie z książki %s!" -- Notification to the player when he use a book (vars: XP, bookname)
 else
 LevelSystemConfiguration.LangBuyEntity = "You\'re not the right level to buy this!" -- Error message when someone can't buy an entity
 LevelSystemConfiguration.LangTakeJob = "You\'re not the right level to become this!" -- Error message when someone can't take a job
