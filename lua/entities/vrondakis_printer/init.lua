@@ -33,7 +33,7 @@ function ENT:Initialize()
 	self:SetNWString('PrinterName', (self.DarkRPItem.name or 'Unknown'))
 	self:SetNWInt('MoneyPerPrint', self.DarkRPItem.vrondakisMoneyPerPrint or 0)
 	self:SetNWInt('MoneyAmount', 0)
-	self:SetNWInt('MaxConfig',self.DarkRPItem.PrinterMaxP or 1)
+	self:SetNWInt('MaxConfig',self.DarkRPItem.vrondakisPrinterMaxP or 1)
 
 	self:SetUseType(SIMPLE_USE)
 
@@ -105,7 +105,7 @@ function ENT:CreateMoneybag()
 	if not IsValid(self) or self:IsOnFire() then return end
 
 	local MoneyPos = self:GetPos()
-	if(self.DarkRPItem.vrondakisOverheat) then
+	if(self.DarkRPItem.vrondakisPrinterOverheat) then
 		local overheatchance
 		if GAMEMODE.Config.printeroverheatchance <= 3 then
 			overheatchance = 22
@@ -114,7 +114,7 @@ function ENT:CreateMoneybag()
 		end
 		if math.random(1, overheatchance) == 3 then self:BurstIntoFlames() end
 	end
-	if(self.DarkRPItem.PrinterMaxP == 0) or ((self.StoredMoney+self.DarkRPItem.vrondakisMoneyPerPrint) <= (self.DarkRPItem.vrondakisMoneyPerPrint*self.DarkRPItem.PrinterMaxP)) then
+	if(self.DarkRPItem.vrondakisPrinterMaxP == 0) or ((self.StoredMoney+self.DarkRPItem.vrondakisMoneyPerPrint) <= (self.DarkRPItem.vrondakisMoneyPerPrint*self.DarkRPItem.vrondakisPrinterMaxP)) then
 
 		local amount = self.DarkRPItem.vrondakisMoneyPerPrint
 		local xpamount = self.DarkRPItem.vrondakisXPPerPrint
@@ -133,8 +133,7 @@ function ENT:Use(activator,caller)
 	if(IsValid(activator)) then
 		if(activator:IsPlayer()) then
 			if(self.StoredMoney>0) then
-				if (not(self.DarkRPItem.vrondakisIsBuyerRetarded)) then
-					//Idiot.
+				if (not(self.DarkRPItem.vrondakisPrinterCanCollect)) then
 					if not(self.StoredMoney==0) then
 						activator:addMoney(self.StoredMoney)
 					end
@@ -143,28 +142,24 @@ function ENT:Use(activator,caller)
 						activator:addXP(self.StoredXP,true)
 					end
 					self:SetNWInt('MoneyAmount', 0)
-					DarkRP.notify(activator,0,4,'You got '..self.StoredXP..'XP and '..DarkRP.formatMoney(self.StoredMoney)..' from this printer.')
+					DarkRP.notify(activator,0,4, string.format(LevelSystemConfiguration.LangPrinterUse, self.StoredXP, DarkRP.formatMoney(self.StoredMoney)))
 					self.StoredMoney = 0
 					self.StoredXP = 0
 
 				else
-					if(activator:getDarkRPVar('level')<(self.DarkRPItem.level-5)) then return DarkRP.notify(activator,1 ,4, 'You need to be a higher level to use this!') end
-
-					if not (self.StoredXP==0) then
-						local xpAdded = activator:addXP(self.StoredXP,true)
-						DarkRP.notify(activator,0,4,'You got '..xpAdded..'XP and '..DarkRP.formatMoney(self.StoredMoney)..' from this printer.')
-						self.StoredXP = 0
-					end
+					if(activator:getDarkRPVar('level')<(self.DarkRPItem.level-5)) then return DarkRP.notify(activator,0,4, LevelSystemConfiguration.LangPrinterLevel) end
 
 					if not(self.StoredMoney==0) then
 						activator:addMoney(self.StoredMoney)
-						self.StoredMoney = 0
 					end
 
+					if not (self.StoredXP==0) then
+						activator:addXP(self.StoredXP,true)
+					end
 					self:SetNWInt('MoneyAmount', 0)
-					
-					
-					
+					DarkRP.notify(activator,0,4,string.format(LevelSystemConfiguration.LangPrinterUse, self.StoredXP, DarkRP.formatMoney(self.StoredMoney)))
+					self.StoredMoney = 0
+					self.StoredXP = 0
 				end
 			end
 			
@@ -178,7 +173,7 @@ function ENT:Think()
 		self:Remove()
 		return
 	end
-	if(self.DarkRPItem.vrondakisEpileptic) then
+	if(self.DarkRPItem.vrondakisPrinterEpilepsy) then
 		if(self.StoredMoney>0) then
 			//Pick a random color, go to it, then change the color
 			local Rr = math.random(0,255)
