@@ -238,6 +238,8 @@ LevelSystemConfiguration.LangPlayOn = "Vous avez reçu %s XP Pour avoir joué su
 LevelSystemConfiguration.LangRecieveXP = "Vous avez reçu %s XP!" -- Notification to the player when he recieve xp (vars: ammount)
 LevelSystemConfiguration.LangReachLevel = "%s a atteint le niveau %s!" -- Notification to everyone when someone reach a level (vars: name, PlayerLevel)
 LevelSystemConfiguration.LangBookNotify = "Vous avez reçu %s XP pour avoir utilisé un livre %s!" -- Notification to the player when he use a book (vars: XP, bookname)
+LevelSystemConfiguration.LangPrinterUse = "Vous avez reçu %s XP et %s du printer."
+LevelSystemConfiguration.LangPrinterLevel = "Vous devez avoir un plus haut niveau pour utiliser ce printer!"
 elseif LevelSystemConfiguration.Language == "PL" then
 LevelSystemConfiguration.LangBuyEntity = "Ty nie masz odpowiedniego poziomu by to kupić!" -- Error message when someone can't buy an entity
 LevelSystemConfiguration.LangTakeJob = "Ty nie masz odpowiedniego poziomu by tym zostać!" -- Error message when someone can't take a job
@@ -250,6 +252,8 @@ LevelSystemConfiguration.LangPlayOn = "Ty masz %s XP za grę na serwerze." -- No
 LevelSystemConfiguration.LangRecieveXP = "Ty masz %s XP!" -- Notification to the player when he recieve xp (vars: ammount)
 LevelSystemConfiguration.LangReachLevel = "%s osiągnął poziom %s!" -- Notification to everyone when someone reach a level (vars: name, PlayerLevel)
 LevelSystemConfiguration.LangBookNotify = "Ty masz %s XP za korzystanie z książki %s!" -- Notification to the player when he use a book (vars: XP, bookname)
+LevelSystemConfiguration.LangPrinterUse = "Ty masz %s XP i %s z tej drukarki."
+LevelSystemConfiguration.LangPrinterLevel = "Aby móc z tego korzystać, musisz być na wyższym poziomie!"
 else
 LevelSystemConfiguration.LangBuyEntity = "You\'re not the right level to buy this!" -- Error message when someone can't buy an entity
 LevelSystemConfiguration.LangTakeJob = "You\'re not the right level to become this!" -- Error message when someone can't take a job
@@ -262,6 +266,8 @@ LevelSystemConfiguration.LangPlayOn = "You got %s XP for playing on the server."
 LevelSystemConfiguration.LangRecieveXP = "You got %s XP!" -- Notification to the player when he recieve xp (vars: ammount)
 LevelSystemConfiguration.LangReachLevel = "%s has reached level %s!" -- Notification to everyone when someone reach a level (vars: name, PlayerLevel)
 LevelSystemConfiguration.LangBookNotify = "You got %s XP for using the book %s!" -- Notification to the player when he use a book (vars: XP, bookname)
+LevelSystemConfiguration.LangPrinterUse = "You got %s XP and %s from this printer."
+LevelSystemConfiguration.LangPrinterLevel = "You need to be a higher level to use this!"
 end
 
 hook.Add("loadCustomDarkRPItems", "manolis:MVLevels:CustomLoad", function()
