@@ -47,8 +47,8 @@ LevelSystemConfiguration.PrinterMaxP = 4 -- How many times a printer can print b
 LevelSystemConfiguration.PrinterMax = 4 -- How many printers of a certain type a player can own at any one time
 LevelSystemConfiguration.PrinterOverheat = false -- Can printers overheat?
 LevelSystemConfiguration.PrinterTime = 120 -- How long it takes printers to print
-LevelSystemConfiguration.KeepThisToTrue = true -- Can players collect from printers that are 5 levels above their level? (Recommended: false)
-LevelSystemConfiguration.Epilepsy = true -- If printers flash different colors when they have money in them.
+LevelSystemConfiguration.PrinterCanCollect = true -- Can players collect from printers that are 5 levels above their level? (Recommended: false)
+LevelSystemConfiguration.PrinterEpilepsy = true -- If printers flash different colors when they have money in them.
 
 //Book settings
 LevelSystemConfiguration.BookMax = 4 -- How many Books of a certain type a player can own at any one time
@@ -305,11 +305,11 @@ hook.Add("loadCustomDarkRPItems", "manolis:MVLevels:CustomLoad", function()
 			vrondakisColor = v.Color,
 			vrondakisModel = v.Model,
 			customCheck = (v.CustomCheck or function() return true end),
-			vrondakisOverheat = LevelSystemConfiguration.PrinterOverheat,
-			PrinterMaxP = LevelSystemConfiguration.PrinterMaxP,
+			vrondakisPrinterOverheat = LevelSystemConfiguration.PrinterOverheat,
+			vrondakisPrinterMaxP = LevelSystemConfiguration.PrinterMaxP,
 			vrondakisPrinterTime = LevelSystemConfiguration.PrinterTime,
-			vrondakisIsBuyerRetarded = LevelSystemConfiguration.PrinterKeepThisToTrue,
-			vrondakisEpileptic = LevelSystemConfiguration.PrinterEpilepsy
+			vrondakisPrinterCanCollect = LevelSystemConfiguration.PrinterCanCollect,
+			vrondakisPrinterEpilepsy = LevelSystemConfiguration.PrinterEpilepsy
 		}
 		
 		if(v.DParams) then
