@@ -40,6 +40,7 @@ LevelSystemConfiguration.TimerXPVipGroups = {"vip", "premium"} -- The vip groups
 LevelSystemConfiguration.XPMult = 1 -- How hard it is to level up. 2 would require twice as much XP, ect.
 LevelSystemConfiguration.MaxLevel = 99 -- The max level
 LevelSystemConfiguration.ContinueXP = false -- If remaining XP continues over to next levels. I recommend this to be false. Seriously. What if a level 1 gets 99999999 XP somehow? He is level 99 so quickly.
+LevelSystemConfiguration.BoughtXP = true -- Does the player gain xp from buying something (shipment/entity)
 
 //Printer settings
 LevelSystemConfiguration.PrinterSound = true -- Give the printers sounds?
