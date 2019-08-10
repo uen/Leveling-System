@@ -143,6 +143,9 @@ function ENT:Use(activator,caller)
 					end
 					self:SetNWInt('MoneyAmount', 0)
 					DarkRP.notify(activator,0,4, string.format(LevelSystemConfiguration.LangPrinterUse, self.StoredXP, DarkRP.formatMoney(self.StoredMoney)))
+					if guthlogsystem then
+						guthlogsystem.addLog( "DarkRP Leveling System", "*"..activator:Name().."* got &"..self.StoredXP.."& XP and !"..DarkRP.formatMoney(self.StoredMoney).."! for using ?"..self:Getowning_ent():Name().."? printer" )
+					end
 					self.StoredMoney = 0
 					self.StoredXP = 0
 
@@ -158,6 +161,9 @@ function ENT:Use(activator,caller)
 					end
 					self:SetNWInt('MoneyAmount', 0)
 					DarkRP.notify(activator,0,4,string.format(LevelSystemConfiguration.LangPrinterUse, self.StoredXP, DarkRP.formatMoney(self.StoredMoney)))
+					if guthlogsystem then
+						guthlogsystem.addLog( "DarkRP Leveling System", "*"..activator:Name().."* got &"..self.StoredXP.."& XP and !"..DarkRP.formatMoney(self.StoredMoney).."! for using ?"..self:Getowning_ent():Name().."? printer" )
+					end
 					self.StoredMoney = 0
 					self.StoredXP = 0
 				end

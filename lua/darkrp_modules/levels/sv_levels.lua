@@ -1,5 +1,5 @@
 resource.AddSingleFile('materials/vrondakis/xp_bar.png')
-resource.AddSingleFile('resource/fonts/FrancoisOne.ttf')
+resource.AddSingleFile('resource/fonts/francoisone.ttf')
 local meta = FindMetaTable("Player")
 
 function meta:setLevel(level)
@@ -34,9 +34,9 @@ function meta:addXP(amount, notify, carryOver)
 		PlayerLevel = PlayerLevel + 1
 		local name = self:Name()
 		DarkRP.notifyAll(0,3, string.format( LevelSystemConfiguration.LangReachLevel, name, PlayerLevel ))
-                if guthlogsystem then
-                guthlogsystem.addLog( "DarkRP Leveling System", "*"..name.."* reached level &"..PlayerLevel.."&" )
-                end
+		if guthlogsystem then
+			guthlogsystem.addLog( "DarkRP Leveling System", "*"..name.."* reached level &"..PlayerLevel.."&" )
+		end
 		hook.Call( "PlayerLevelChanged", nil, self, PlayerLevel-1, PlayerLevel ) // call the PlayerLevelChanged hook and pass player, old level and new level.
 
 		local RemainingXP = (TotalXP-self:getMaxXP())

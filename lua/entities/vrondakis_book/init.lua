@@ -20,9 +20,9 @@ function ENT:Use( activator, caller )
 	local bookname = self.DarkRPItem.vrondakisName
     activator:addXP( XP, true)
 	DarkRP.notify(activator, 0,4, string.format( LevelSystemConfiguration.LangBookNotify, XP, bookname ))
-        if guthlogsystem then
-        guthlogsystem.addLog( "DarkRP Leveling System", "*"..activator.."* got &"..XP.."& XP for using ~"..bookname.."~" )
-        end
+	if guthlogsystem then
+		guthlogsystem.addLog( "DarkRP Leveling System", "*"..activator:Name().."* got &"..XP.."& XP for using ?"..bookname.."?" )
+	end
 	self:Remove()
 end
 
@@ -33,6 +33,9 @@ function ENT:Touch(entity)
 		local bookname = self.DarkRPItem.vrondakisName
 		entity:addXP( XP, true)
 		DarkRP.notify(entity, 0,4, string.format( LevelSystemConfiguration.LangBookNotify, XP, bookname ))
+		if guthlogsystem then
+			guthlogsystem.addLog( "DarkRP Leveling System", "*"..entity:Name().."* got &"..XP.."& XP for using ?"..bookname.."?" )
+		end
 		self:Remove()
 	end
 end

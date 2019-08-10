@@ -14,17 +14,6 @@ hook.Add('canBuyShipment', 'manolis:MVLevels:ShipmentBuy', checkLevel)
 hook.Add('canBuyVehicle', 'manolis:MVLevels:VehiclesBuy', checkLevel)
 hook.Add('canBuyCustomEntity', 'manolis:MVLevels:CEntityBuy', checkLevel)
 
-if LevelSystemConfiguration.BoughtXP then
-local function BoughtXP(ply,price)
-	ply:addXP(0.1 * price, true)
-end
-
-hook.Add('playerBoughtPistol', 'manolis:MVLevels:PistolBought', BoughtXP)
-hook.Add('playerBoughtAmmo', 'manolis:MVLevels:AmmoBought', BoughtXP)
-hook.Add('playerBoughtShipment', 'manolis:MVLevels:ShipmentBought', BoughtXP)
-hook.Add('playerBoughtCustomEntity', 'manolis:MVLevels:CEntityBought', BoughtXP)
-end
-
 hook.Add('playerCanChangeTeam', 'manolis:MVLevels:playerTeamChange', function(ply, jobno) 
 	// This one requires a little extra work
 	job = RPExtraTeams[jobno]

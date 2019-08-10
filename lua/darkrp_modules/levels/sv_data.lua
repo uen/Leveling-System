@@ -1,6 +1,7 @@
 // Love Manolis Vrondakis. @vrondakis
-if guthlogsystem then
-guthlogsystem.addCategory( "DarkRP Leveling System", Color(255, 0, 255) )
+
+if (guthlogsystem) then
+	guthlogsystem.addCategory( "DarkRP Leveling System", Color(255, 0, 255) )
 end
 
 function DarkRPInit()	

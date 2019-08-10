@@ -1,4 +1,4 @@
-function PlayerDeath(victim, weapon, killer)
+local function PlayerDeath(victim, weapon, killer)
 	if (LevelSystemConfiguration.KillModule) then
 		if (victim != killer) then -- Not a suicide
 			if (killer:IsPlayer()) then
@@ -10,9 +10,9 @@ function PlayerDeath(victim, weapon, killer)
 					if ((killer:getDarkRPVar('level') or 1) <= (victim:getDarkRPVar('level') or 1)) then
 						killer:addMoney(LevelSystemConfiguration.TakeAwayMoneyAmount)
 						DarkRP.notify(killer, 0,4, string.format( LevelSystemConfiguration.LangKillNotify, XP, money, victime ))
-                                                if guthlogsystem then
-                                                guthlogsystem.addLog( "DarkRP Leveling System", "*"..killer.."* got &"..XP.."& XP and &"..money.."& for killing *"..victime.."*" )
-                                                end
+						if guthlogsystem then
+							guthlogsystem.addLog( "DarkRP Leveling System", "*"..killer.."* got &"..XP.."& XP and &"..money.."& for killing ?"..victime.."?" )
+						end
 
 						if (victim:canAfford(LevelSystemConfiguration.TakeAwayMoneyAmount)) then
 							victim:addMoney(-LevelSystemConfiguration.TakeAwayMoneyAmount)
@@ -20,16 +20,16 @@ function PlayerDeath(victim, weapon, killer)
 						end
 					else 
 						DarkRP.notify(killer,0,4, string.format( LevelSystemConfiguration.LangKillNotify2, XP, victime ))
-                                                if guthlogsystem then
-                                                guthlogsystem.addLog( "DarkRP Leveling System", "*"..killer.."* got &"..XP.."& XP for killing *"..victime.."*" )
-                                                end
+						if guthlogsystem then
+							guthlogsystem.addLog( "DarkRP Leveling System", "*"..killer:Name().."* got &"..XP.."& XP for killing ?"..victime.."?" )
+						end
 					end
 				else
 					killer:addMoney(LevelSystemConfiguration.TakeAwayMoneyAmount)
 					DarkRP.notify(killer, 0,4, string.format( LevelSystemConfiguration.LangKillNotify3, victime ))
-                                        if guthlogsystem then
-                                        guthlogsystem.addLog( "DarkRP Leveling System", "*"..killer.."* killed *"..victime.."* (Friendly mode no XP gain)")
-                                        end
+                    if guthlogsystem then
+						guthlogsystem.addLog( "DarkRP Leveling System", "*"..killer:Name().."* got &0& XP ?"..victime.."? (Friendly mode no XP gain)")
+                    end
 				end
 			end
 		end
@@ -39,16 +39,16 @@ end
 hook.Add( 'PlayerDeath', 'manolis:MVLevels:PlayerDeathBC', PlayerDeath )
 
 
-function NPCDeath(npc, killer,weapon)
+local function NPCDeath(npc, killer,weapon)
 	if (LevelSystemConfiguration.NPCXP) then
 		if (npc != killer) then -- Not a suicide? Somehow.
 			if (killer:IsPlayer()) then
 				local XP = killer:addXP(npc:GetVar('GiveXP') or LevelSystemConfiguration.NPCXPAmount, true)
 				if (XP) then
 					DarkRP.notify(killer, 0,4, string.format( LevelSystemConfiguration.LangKillNPC, XP ))
-                                        if guthlogsystem then
-                                        guthlogsystem.addLog( "DarkRP Leveling System", "*"..killer.."* got &"..XP.."& XP for killing an NPC" )
-                                        end
+                    if guthlogsystem then
+						guthlogsystem.addLog( "DarkRP Leveling System", "*"..killer:Name().."* got &"..XP.."& XP for killing an NPC" )
+                    end
 				end
 			end
 		end
@@ -56,6 +56,22 @@ function NPCDeath(npc, killer,weapon)
 end
 
 hook.Add( 'OnNPCKilled', 'manolis:MVLevels:OnNPCKilledBC', NPCDeath )
+
+
+if (LevelSystemConfiguration.BoughtXP) then
+	local function BoughtXP(ply, ent, price)
+		local XP = 0.1 * ent.price
+		ply:addXP(XP, true)
+		if guthlogsystem then
+			guthlogsystem.addLog( "DarkRP Leveling System", "*"..ply:Name().."* got &"..XP.."& XP for buying ?"..ent.name.."?" )
+		end
+	end
+	
+	hook.Add('playerBoughtPistol', 'manolis:MVLevels:PistolBought', BoughtXP)
+	hook.Add('playerBoughtAmmo', 'manolis:MVLevels:AmmoBought', BoughtXP)
+	hook.Add('playerBoughtShipment', 'manolis:MVLevels:ShipmentBought', BoughtXP)
+	hook.Add('playerBoughtCustomEntity', 'manolis:MVLevels:CEntityBought', BoughtXP)
+end
 
 
 local time = LevelSystemConfiguration.Timertime
@@ -83,8 +99,8 @@ timer.Create( 'PlayXP', time,0,function()
 				end
 			end
 		end
-                if guthlogsystem then
-                guthlogsystem.addLog( "DarkRP Leveling System", "*Everyone* got &"..LevelSystemConfiguration.TimerXPAmount.."& or &"..LevelSystemConfiguration.TimerXPAmountVip.."& XP depending of their rank" )
-                end
+		if guthlogsystem then
+			guthlogsystem.addLog( "DarkRP Leveling System", "*Everyone* got &"..LevelSystemConfiguration.TimerXPAmount.."& or !"..LevelSystemConfiguration.TimerXPAmountVip.."! XP depending of their rank" )
+		end
 	end
 end)
