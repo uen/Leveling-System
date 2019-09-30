@@ -67,6 +67,8 @@ Printer.Color = Color(255,255,255,255) -- The color of the printer. Setting it t
 Printer.Model = 'models/props_lab/reciever01b.mdl' -- The model of the printer. To find the path of a model, right click it in the spawn menu and click "Copy to Clipboard"
 Printer.Prestige = 0 -- The prestige you have to be to buy the printer. Only works with the prestige DLC on Gmodstore.
 Printer.Allowed = {} -- Same as DarkRP .allowed
+Printer.CustomCheck = function(ply) return CLIENT or table.HasValue({"vip"}, ply:GetNWString("usergroup")) end -- Custom check, this one will make the printer vip only
+Printer.CustomCheckFailMsg = "This printer is vip only" -- Message to display if the player can't buy the entity
 table.insert(Printers,Printer) -- Leave this line
 */
 
@@ -164,6 +166,8 @@ Book.Color = Color(255,255,255,255) -- The color of the Book. Setting it to (255
 Book.Model = 'models/props_lab/binderblue.mdl' -- The model of the Book. To find the path of a model, right click it in the spawn menu and click "Copy to Clipboard"
 Book.Prestige = 0 -- The prestige you have to be to buy the Book. Only works with the prestige DLC on Gmodstore.
 Book.Allowed = {} -- Same as DarkRP .allowed
+Book.CustomCheck = function(ply) return CLIENT or table.HasValue({"vip"}, ply:GetNWString("usergroup")) end -- Custom check, this one will make the printer vip only
+Book.CustomCheckFailMsg = "This book is vip only" -- Message to display if the player can't buy the entity
 table.insert(Books,Book) -- Leave this line
 */
 
@@ -183,7 +187,7 @@ local Book={}
 Book.Name = 'Medium Book'
 Book.Type = 'mediumbook'
 Book.Color = Color(255,255,255)
-Book.Model = 'models/props_lab/binderblue.mdl'
+Book.Model = 'models/props_lab/bindergreen.mdl'
 Book.Price = 1000
 Book.XP = 2000
 Book.Level = 1
@@ -194,7 +198,7 @@ local Book={}
 Book.Name = 'Big Book'
 Book.Type = 'bigbook'
 Book.Color = Color(255,255,255)
-Book.Model = 'models/props_lab/binderblue.mdl'
+Book.Model = 'models/props_lab/binderredlabel.mdl'
 Book.Price = 2500
 Book.XP = 5000
 Book.Level = 1
@@ -312,6 +316,7 @@ hook.Add("loadCustomDarkRPItems", "manolis:MVLevels:CustomLoad", function()
 			vrondakisColor = v.Color,
 			vrondakisModel = v.Model,
 			customCheck = (v.CustomCheck or function() return true end),
+		    CustomCheckFailMsg = v.CustomCheckFailMsg,
 			vrondakisPrinterOverheat = LevelSystemConfiguration.PrinterOverheat,
 			vrondakisPrinterMaxP = LevelSystemConfiguration.PrinterMaxP,
 			vrondakisPrinterTime = LevelSystemConfiguration.PrinterTime,
@@ -370,6 +375,7 @@ hook.Add("loadCustomDarkRPItems", "manolis:MVLevels:CustomLoad", function()
 			vrondakisColor = v.Color,
 			vrondakisModel = v.Model,
 			customCheck = (v.CustomCheck or function() return true end),
+		    CustomCheckFailMsg = v.CustomCheckFailMsg,
 		}
 		
 		if(v.DParams) then
