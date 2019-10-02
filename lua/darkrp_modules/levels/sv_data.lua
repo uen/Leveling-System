@@ -43,5 +43,21 @@ function DarkRP.storeXPData(ply, level, xp)
 	MySQLite.query("UPDATE darkrp_levels SET level = " ..MySQLite.SQLStr(level) ..", xp = "..MySQLite.SQLStr(xp).." WHERE uid = "..MySQLite.SQLStr(ply:UniqueID()))
 end
 
+local function resetAllXP(ply, cmd, args)
+    if ply:EntIndex() ~= 0 and not ply:IsSuperAdmin() then return end
+    MySQLite.query("UPDATE darkrp_levels SET level = 1 ;")
+    MySQLite.query("UPDATE darkrp_levels SET xp = 0 ;")
+    for _, v in ipairs(player.GetAll()) do
+        v:setDarkRPVar("level", 1)
+        v:setDarkRPVar("xp", 0)
+    end
+    if ply:IsPlayer() then
+        DarkRP.notifyAll(0, 4, "Levels has been reseted by an administrator")
+    else
+        DarkRP.notifyAll(0, 4, "Levels has been reseted by the console")
+    end
+end
+concommand.Add("rp_resetallxp", resetAllXP)
+
 
 
