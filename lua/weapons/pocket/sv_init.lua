@@ -4,7 +4,7 @@ if not(DarkRP) then return false end
 /*---------------------------------------------------------------------------
 Functions
 ---------------------------------------------------------------------------*/
--- workaround: GetNetworkVars doesn't give entities because the /duplicator/ doesn't want to save entities
+-- workaround: GetNetworkVars doesn't give entities because the /duplicator/ doesn"t want to save entities
 local function getDTVars(ent)
 	if not ent.GetNetworkVars then return nil end
 	local name, value = debug.getupvalue(ent.GetNetworkVars, 1)
