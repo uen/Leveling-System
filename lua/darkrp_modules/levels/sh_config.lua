@@ -68,7 +68,7 @@ Printer.Model = "models/props_lab/reciever01b.mdl" -- The model of the printer. 
 Printer.Prestige = 0 -- The prestige you have to be to buy the printer. Only works with the prestige DLC on Gmodstore.
 Printer.Allowed = {} -- Same as DarkRP .allowed
 Printer.CustomCheck = function(ply) return CLIENT or table.HasValue({"vip"}, ply:GetNWString("usergroup")) end -- Custom check, this one will make the printer vip only
-Printer.CustomCheckFailMsg = "This printer is vip only" -- Message to display if the player can't buy the entity
+Printer.CustomCheckFailMsg = "This printer is vip only" -- Message to display if the player can"t buy the entity
 table.insert(Printers,Printer) -- Leave this line
 */
 
@@ -167,7 +167,7 @@ Book.Model = "models/props_lab/binderblue.mdl" -- The model of the Book. To find
 Book.Prestige = 0 -- The prestige you have to be to buy the Book. Only works with the prestige DLC on Gmodstore.
 Book.Allowed = {} -- Same as DarkRP .allowed
 Book.CustomCheck = function(ply) return CLIENT or table.HasValue({"vip"}, ply:GetNWString("usergroup")) end -- Custom check, this one will make the printer vip only
-Book.CustomCheckFailMsg = "This book is vip only" -- Message to display if the player can't buy the entity
+Book.CustomCheckFailMsg = "This book is vip only" -- Message to display if the player can"t buy the entity
 table.insert(Books,Book) -- Leave this line
 */
 
@@ -301,11 +301,11 @@ hook.Add("loadCustomDarkRPItems", "manolis:MVLevels:CustomLoad", function()
 			error(v)
 			ErrorCount = ErrorCount + 1
 		end
-		
+
 
 
 		if not(ErrorCount==0) then return false end
-		
+
 		local t = {
 			ent = "vrondakis_printer",
 			model = v.Model,
@@ -331,21 +331,21 @@ hook.Add("loadCustomDarkRPItems", "manolis:MVLevels:CustomLoad", function()
 			vrondakisPrinterCanCollect = LevelSystemConfiguration.PrinterCanCollect,
 			vrondakisPrinterEpilepsy = LevelSystemConfiguration.PrinterEpilepsy
 		}
-		
+
 		if(v.DParams) then
 			for k,v in pairs(v.DParams) do
-				t[k] = v	
+				t[k] = v
 			end
 		end
-			
+
 		DarkRP.createEntity(v.Name,t)
 
 	end
-	
-	
-	
-	
-	
+
+
+
+
+
 	for k,v in pairs(Books) do
 		local Errors = {}
 		if not type(v.Name) == "string" then table.insert(Errors, "The name of a book is INVALID!") end
@@ -361,11 +361,11 @@ hook.Add("loadCustomDarkRPItems", "manolis:MVLevels:CustomLoad", function()
 			error(v)
 			ErrorCount = ErrorCount + 1
 		end
-		
+
 
 
 		if not(ErrorCount==0) then return false end
-		
+
 		local t = {
 			ent = "vrondakis_book",
 			model = v.Model,
@@ -385,13 +385,13 @@ hook.Add("loadCustomDarkRPItems", "manolis:MVLevels:CustomLoad", function()
 			customCheck = (v.CustomCheck or function() return true end),
 			CustomCheckFailMsg = v.CustomCheckFailMsg,
 		}
-		
+
 		if(v.DParams) then
 			for k,v in pairs(v.DParams) do
-				t[k] = v	
+				t[k] = v
 			end
 		end
-			
+
 		DarkRP.createEntity(v.Name,t)
 
 	end
