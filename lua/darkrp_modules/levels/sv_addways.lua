@@ -9,24 +9,24 @@ local function PlayerDeath(victim, weapon, killer)
 				if (LevelSystemConfiguration.Friendly) then
 					if ((killer:getDarkRPVar('level') or 1) <= (victim:getDarkRPVar('level') or 1)) then
 						killer:addMoney(LevelSystemConfiguration.TakeAwayMoneyAmount)
-						DarkRP.notify(killer, 0,4, string.format( LevelSystemConfiguration.LangKillNotify, XP, money, victime ))
+						DarkRP.notify(killer, 0,4, DarkRP.getPhrase("lvl_kill_notify", XP, money, victime))
 						if guthlogsystem then
 							guthlogsystem.addLog( "DarkRP Leveling System", "*"..killer.."* got &"..XP.."& XP and &"..money.."& for killing ?"..victime.."?" )
 						end
 
 						if (victim:canAfford(LevelSystemConfiguration.TakeAwayMoneyAmount)) then
 							victim:addMoney(-LevelSystemConfiguration.TakeAwayMoneyAmount)
-							DarkRP.notify(victim, 0,4, string.format( LevelSystemConfiguration.LangDeath, money ))
+							DarkRP.notify(victim, 0,4, DarkRP.getPhrase("lvl_death", money))
 						end
 					else 
-						DarkRP.notify(killer,0,4, string.format( LevelSystemConfiguration.LangKillNotify2, XP, victime ))
+						DarkRP.notify(killer,0,4, DarkRP.getPhrase("lvl_kill_notify2", XP, victime))
 						if guthlogsystem then
 							guthlogsystem.addLog( "DarkRP Leveling System", "*"..killer:Name().."* got &"..XP.."& XP for killing ?"..victime.."?" )
 						end
 					end
 				else
 					killer:addMoney(LevelSystemConfiguration.TakeAwayMoneyAmount)
-					DarkRP.notify(killer, 0,4, string.format( LevelSystemConfiguration.LangKillNotify3, victime ))
+					DarkRP.notify(killer, 0,4, DarkRP.getPhrase("lvl_kill_notify3", victime))
                     if guthlogsystem then
 						guthlogsystem.addLog( "DarkRP Leveling System", "*"..killer:Name().."* got &0& XP ?"..victime.."? (Friendly mode no XP gain)")
                     end
@@ -45,7 +45,7 @@ local function NPCDeath(npc, killer,weapon)
 			if (killer:IsPlayer()) then
 				local XP = killer:addXP(npc:GetVar('GiveXP') or LevelSystemConfiguration.NPCXPAmount, true)
 				if (XP) then
-					DarkRP.notify(killer, 0,4, string.format( LevelSystemConfiguration.LangKillNPC, XP ))
+					DarkRP.notify(killer, 0,4, DarkRP.getPhrase("lvl_kill_npc", XP))
                     if guthlogsystem then
 						guthlogsystem.addLog( "DarkRP Leveling System", "*"..killer:Name().."* got &"..XP.."& XP for killing an NPC" )
                     end
@@ -83,19 +83,19 @@ timer.Create( 'PlayXP', time,0,function()
 					if table.HasValue(LevelSystemConfiguration.TimerXPVipGroups, v:GetNWString('usergroup')) then
 						local XP = v:addXP(LevelSystemConfiguration.TimerXPAmountVip, true)
 						if (XP) then
-							DarkRP.notify(v,0,4, string.format( LevelSystemConfiguration.LangPlayOn, XP ))
+							DarkRP.notify(v,0,4, DarkRP.getPhrase("lvl_play_on", XP))
 						end
 					else
 						local XP = v:addXP(LevelSystemConfiguration.TimerXPAmount, true)
 						if (XP) then
-							DarkRP.notify(v,0,4, string.format( LevelSystemConfiguration.LangPlayOn, XP ))
+							DarkRP.notify(v,0,4, DarkRP.getPhrase("lvl_play_on", XP))
 						end
 					end
 				end
 			else
 				local XP = v:addXP(LevelSystemConfiguration.TimerXPAmount, true)
 				if (XP) then
-					DarkRP.notify(v,0,4, string.format( LevelSystemConfiguration.LangPlayOn, XP ))
+					DarkRP.notify(v,0,4, DarkRP.getPhrase("lvl_play_on", XP))
 				end
 			end
 		end

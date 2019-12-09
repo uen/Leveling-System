@@ -3,7 +3,7 @@ if SERVER then
 function checkLevel(ply,entity)
 	if(entity.level) then
 		if not((ply:getDarkRPVar('level') or 0) >= (entity.level)) then
-			return false, LevelSystemConfiguration.LangBuyEntity
+			return false, DarkRP.getPhrase("lvl_buy_entity")
 		end
 	end
 end
@@ -19,7 +19,7 @@ hook.Add('playerCanChangeTeam', 'manolis:MVLevels:playerTeamChange', function(pl
 	job = RPExtraTeams[jobno]
 	if (job.level) then
 		if not ((ply:getDarkRPVar('level') or 0) >= (job.level)) then
-			return false, LevelSystemConfiguration.LangTakeJob
+			return false, DarkRP.getPhrase("lvl_take_job")
 		end
 	end
 end)

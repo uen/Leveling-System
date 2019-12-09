@@ -52,9 +52,9 @@ local function resetAllXP(ply, cmd, args)
         v:setDarkRPVar("xp", 0)
     end
     if ply:IsPlayer() then
-        DarkRP.notifyAll(0, 4, "Levels has been reseted by an administrator")
+        DarkRP.notifyAll(0, 4, "Levels have been reseted by an administrator")
     else
-        DarkRP.notifyAll(0, 4, "Levels has been reseted by the console")
+        DarkRP.notifyAll(0, 4, "Levels have been reseted by the console")
     end
 end
 concommand.Add("rp_resetallxp", resetAllXP)

@@ -25,7 +25,7 @@ function meta:addXP(amount, notify, carryOver)
 	end
 
 	if not(notify) then
-		DarkRP.notify(self,0,4, string.format( LevelSystemConfiguration.LangRecieveXP, amount ))
+		DarkRP.notify(self,0,4, DarkRP.getPhrase("lvl_recieve_xp", amount))
 	end
 	
 	local TotalXP = PlayerXP + amount
@@ -33,7 +33,7 @@ function meta:addXP(amount, notify, carryOver)
 	if(TotalXP>=self:getMaxXP()) then // Level up!
 		PlayerLevel = PlayerLevel + 1
 		local name = self:Name()
-		DarkRP.notifyAll(0,3, string.format( LevelSystemConfiguration.LangReachLevel, name, PlayerLevel ))
+		DarkRP.notifyAll(0,3, DarkRP.getPhrase("lvl_reach_level", name, PlayerLevel))
 		if guthlogsystem then
 			guthlogsystem.addLog( "DarkRP Leveling System", "*"..name.."* reached level &"..PlayerLevel.."&" )
 		end
