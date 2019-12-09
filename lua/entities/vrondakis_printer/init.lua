@@ -168,7 +168,7 @@ function ENT:Use(activator,caller)
 					self.StoredXP = 0
 				end
 			end
-			
+
 		end
 	end
 end

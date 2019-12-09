@@ -232,8 +232,8 @@ table.insert(Books,Book)
 
 
 local en_language = {
-	lvl_buy_entity = "You\"re not the right level to buy this!", -- Error message when someone can"t buy an entity
-	lvl_take_job = "You\"re not the right level to become this!", -- Error message when someone can"t take a job
+	lvl_buy_entity = "You\'re not the right level to buy this!", -- Error message when someone can't buy an entity
+	lvl_take_job = "You\'re not the right level to become this!", -- Error message when someone can't take a job
 	lvl_kill_notify = "You got %s XP and %s for killing %s", -- Notification to the killer when he kill someone (vars: XP, money, victime)
 	lvl_kill_notify2 = "You got %s XP for killing %s", -- Notification to the killer when he kill someone (vars: XP, victime)
 	lvl_kill_notify3 = "You killed %s", -- Notification to the killer when he kill someone (vars: victime)
@@ -244,13 +244,13 @@ local en_language = {
 	lvl_reach_level = "%s has reached level %s!", -- Notification to everyone when someone reach a level (vars: name, PlayerLevel)
 	lvl_book_notify = "You got %s XP for using the book %s!", -- Notification to the player when he use a book (vars: XP, bookname)
 	lvl_printer_use = "You got %s XP and %s from this printer.",  -- Notification to the player when he use a printer (vars: XP, money)
-	lvl_printer_level = "You need to be a higher level to use this!", -- Notification to the player when he can"t use a printer
+	lvl_printer_level = "You need to be a higher level to use this!", -- Notification to the player when he can't use a printer
 }
 DarkRP.addLanguage("en", en_language)
 
 local fr_language = {
-	lvl_buy_entity = "Vous n\"avez pas le bon level pour acheter ça!",
-	lvl_take_job = "Vous n\"avez pas le bon level pour avoir ce job!",
+	lvl_buy_entity = "Vous n\'avez pas le bon level pour acheter ça!",
+	lvl_take_job = "Vous n\'avez pas le bon level pour avoir ce job!",
 	lvl_kill_notify = "Vous avez reçu %s XP et %s pour avoir tué %s",
 	lvl_kill_notify2 = "Vous avez reçu %s XP pour avoir tué %s",
 	lvl_kill_notify3 = "Vous avez tué %s",
@@ -301,11 +301,11 @@ hook.Add("loadCustomDarkRPItems", "manolis:MVLevels:CustomLoad", function()
 			error(v)
 			ErrorCount = ErrorCount + 1
 		end
-		
+
 
 
 		if not(ErrorCount==0) then return false end
-		
+
 		local t = {
 			ent = "vrondakis_printer",
 			model = v.Model,
@@ -331,21 +331,21 @@ hook.Add("loadCustomDarkRPItems", "manolis:MVLevels:CustomLoad", function()
 			vrondakisPrinterCanCollect = LevelSystemConfiguration.PrinterCanCollect,
 			vrondakisPrinterEpilepsy = LevelSystemConfiguration.PrinterEpilepsy
 		}
-		
+
 		if(v.DParams) then
 			for k,v in pairs(v.DParams) do
-				t[k] = v	
+				t[k] = v
 			end
 		end
-			
+
 		DarkRP.createEntity(v.Name,t)
 
 	end
-	
-	
-	
-	
-	
+
+
+
+
+
 	for k,v in pairs(Books) do
 		local Errors = {}
 		if not type(v.Name) == "string" then table.insert(Errors, "The name of a book is INVALID!") end
@@ -361,11 +361,11 @@ hook.Add("loadCustomDarkRPItems", "manolis:MVLevels:CustomLoad", function()
 			error(v)
 			ErrorCount = ErrorCount + 1
 		end
-		
+
 
 
 		if not(ErrorCount==0) then return false end
-		
+
 		local t = {
 			ent = "vrondakis_book",
 			model = v.Model,
@@ -385,13 +385,13 @@ hook.Add("loadCustomDarkRPItems", "manolis:MVLevels:CustomLoad", function()
 			customCheck = (v.CustomCheck or function() return true end),
 			CustomCheckFailMsg = v.CustomCheckFailMsg,
 		}
-		
+
 		if(v.DParams) then
 			for k,v in pairs(v.DParams) do
-				t[k] = v	
+				t[k] = v
 			end
 		end
-			
+
 		DarkRP.createEntity(v.Name,t)
 
 	end
