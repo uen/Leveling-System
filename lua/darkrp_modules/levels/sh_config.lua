@@ -58,100 +58,100 @@ LevelSystemConfiguration.BookOnTouch = true -- Consume the book on touch?
 
 /*Template Code for printers/*
 local Printer= {} -- Leave this line
-Printer.Name = 'Your Printer Name'
-Printer.Type = 'yourprintername' -- A UNIQUE identifier STRING, can be anything. NO SPACES! The player does not see this.
-Printer.Category = 'printers' -- The category of the printer (See http:--wiki.darkrp.com/index.php/DarkRP:Categories)
+Printer.Name = "Your Printer Name"
+Printer.Type = "yourprintername" -- A UNIQUE identifier STRING, can be anything. NO SPACES! The player does not see this.
+Printer.Category = "printers" -- The category of the printer (See http:--wiki.darkrp.com/index.php/DarkRP:Categories)
 Printer.XPPerPrint = 10 -- How much XP to give a player every time they print.
 Printer.MoneyPerPrint = 50 -- How much money to give a player every time they print.
 Printer.Color = Color(255,255,255,255) -- The color of the printer. Setting it to (255,255,255,255) will make it the normal prop color.
-Printer.Model = 'models/props_lab/reciever01b.mdl' -- The model of the printer. To find the path of a model, right click it in the spawn menu and click "Copy to Clipboard"
+Printer.Model = "models/props_lab/reciever01b.mdl" -- The model of the printer. To find the path of a model, right click it in the spawn menu and click "Copy to Clipboard"
 Printer.Prestige = 0 -- The prestige you have to be to buy the printer. Only works with the prestige DLC on Gmodstore.
 Printer.Allowed = {} -- Same as DarkRP .allowed
 Printer.CustomCheck = function(ply) return CLIENT or table.HasValue({"vip"}, ply:GetNWString("usergroup")) end -- Custom check, this one will make the printer vip only
-Printer.CustomCheckFailMsg = "This printer is vip only" -- Message to display if the player can't buy the entity
+Printer.CustomCheckFailMsg = "This printer is vip only" -- Message to display if the player can"t buy the entity
 table.insert(Printers,Printer) -- Leave this line
 */
 
 // Default printers:
 local Printer={}
-Printer.Name = 'Regular Printer'
-Printer.Type = 'regularprinter'
+Printer.Name = "Regular Printer"
+Printer.Type = "regularprinter"
 Printer.XPPerPrint = 65
 Printer.MoneyPerPrint = 100
 Printer.Color = Color(255,255,255,255)
-Printer.Model = 'models/props_lab/reciever01b.mdl'
+Printer.Model = "models/props_lab/reciever01b.mdl"
 Printer.Price = 1000
 Printer.Level = 1
 Printer.Prestige = 0
 table.insert(Printers,Printer)
 
 local Printer={}
-Printer.Name = 'Golden Money Printer'
-Printer.Type = 'goldenprinter'
+Printer.Name = "Golden Money Printer"
+Printer.Type = "goldenprinter"
 Printer.XPPerPrint = 300
 Printer.MoneyPerPrint = 300
 Printer.Color = Color(255,215,0)
-Printer.Model = 'models/props_lab/reciever01b.mdl'
+Printer.Model = "models/props_lab/reciever01b.mdl"
 Printer.Price = 3000
 Printer.Level = 10
 Printer.Prestige = 0
 table.insert(Printers,Printer)
 
 local Printer={}
-Printer.Name = 'Ruby Money Printer'
-Printer.Type = 'rubyprinter'
+Printer.Name = "Ruby Money Printer"
+Printer.Type = "rubyprinter"
 Printer.XPPerPrint = 1069
 Printer.MoneyPerPrint = 1200
 Printer.Color = Color(255,0,0)
-Printer.Model = 'models/props_lab/reciever01a.mdl'
+Printer.Model = "models/props_lab/reciever01a.mdl"
 Printer.Price = 5000
 Printer.Level = 20
 Printer.Prestige = 0
 table.insert(Printers,Printer)
 
 local Printer={}
-Printer.Name = 'Platinum Money Printer'
-Printer.Type = 'platprinter'
+Printer.Name = "Platinum Money Printer"
+Printer.Type = "platprinter"
 Printer.XPPerPrint = 1800
 Printer.MoneyPerPrint = 1500
 Printer.Color = Color(255,255,255)
-Printer.Model = 'models/props_c17/consolebox03a.mdl'
+Printer.Model = "models/props_c17/consolebox03a.mdl"
 Printer.Price = 10000
 Printer.Level = 30
 Printer.Prestige = 0
 table.insert(Printers,Printer)
 
 local Printer={}
-Printer.Name = 'Diamond Money Printer'
-Printer.Type = 'diamondprinter'
+Printer.Name = "Diamond Money Printer"
+Printer.Type = "diamondprinter"
 Printer.XPPerPrint = 2500
 Printer.MoneyPerPrint = 5000
 Printer.Color = Color(135,200,250)
-Printer.Model = 'models/props_c17/consolebox01a.mdl'
+Printer.Model = "models/props_c17/consolebox01a.mdl"
 Printer.Price = 50000
 Printer.Level = 40
 Printer.Prestige = 0
 table.insert(Printers,Printer)
 
 local Printer={}
-Printer.Name = 'Emerald Money Printer'
-Printer.Type = 'emeraldprinter'
+Printer.Name = "Emerald Money Printer"
+Printer.Type = "emeraldprinter"
 Printer.XPPerPrint = 3550
 Printer.MoneyPerPrint = 10000
 Printer.Color = Color(0,100,0)
-Printer.Model = 'models/props_c17/consolebox01a.mdl'
+Printer.Model = "models/props_c17/consolebox01a.mdl"
 Printer.Price = 100000
 Printer.Level = 50
 Printer.Prestige = 0
 table.insert(Printers,Printer)
 
 local Printer={}
-Printer.Name = 'Unubtainium Money Printer'
-Printer.Type = 'unubprinter'
+Printer.Name = "Unubtainium Money Printer"
+Printer.Type = "unubprinter"
 Printer.XPPerPrint = 3500
 Printer.MoneyPerPrint = 15000
 Printer.Color = Color(255,255,255)
-Printer.Model = 'models/props_lab/harddrive01.mdl'
+Printer.Model = "models/props_lab/harddrive01.mdl"
 Printer.Price = 120000
 Printer.Level = 60
 Printer.Prestige = 0
@@ -159,24 +159,24 @@ table.insert(Printers,Printer)
 
 /*Template Code for books/*
 local Book= {} -- Leave this line
-Book.Name = 'Your Book Name'
-Book.Type = 'yourbookname' -- A UNIQUE identifier STRING, can be anything. NO SPACES! The player does not see this.
-Book.Category = 'Books' -- The category of the Book (See http:--wiki.darkrp.com/index.php/DarkRP:Categories)
+Book.Name = "Your Book Name"
+Book.Type = "yourbookname" -- A UNIQUE identifier STRING, can be anything. NO SPACES! The player does not see this.
+Book.Category = "Books" -- The category of the Book (See http:--wiki.darkrp.com/index.php/DarkRP:Categories)
 Book.Color = Color(255,255,255,255) -- The color of the Book. Setting it to (255,255,255,255) will make it the normal prop color.
-Book.Model = 'models/props_lab/binderblue.mdl' -- The model of the Book. To find the path of a model, right click it in the spawn menu and click "Copy to Clipboard"
+Book.Model = "models/props_lab/binderblue.mdl" -- The model of the Book. To find the path of a model, right click it in the spawn menu and click "Copy to Clipboard"
 Book.Prestige = 0 -- The prestige you have to be to buy the Book. Only works with the prestige DLC on Gmodstore.
 Book.Allowed = {} -- Same as DarkRP .allowed
 Book.CustomCheck = function(ply) return CLIENT or table.HasValue({"vip"}, ply:GetNWString("usergroup")) end -- Custom check, this one will make the printer vip only
-Book.CustomCheckFailMsg = "This book is vip only" -- Message to display if the player can't buy the entity
+Book.CustomCheckFailMsg = "This book is vip only" -- Message to display if the player can"t buy the entity
 table.insert(Books,Book) -- Leave this line
 */
 
 // Default books:
 local Book={}
-Book.Name = 'Small Book'
-Book.Type = 'smallbook'
+Book.Name = "Small Book"
+Book.Type = "smallbook"
 Book.Color = Color(255,255,255)
-Book.Model = 'models/props_lab/binderblue.mdl'
+Book.Model = "models/props_lab/binderblue.mdl"
 Book.Price = 250
 Book.XP = 500
 Book.Level = 1
@@ -184,10 +184,10 @@ Book.Prestige = 0
 table.insert(Books,Book)
 
 local Book={}
-Book.Name = 'Medium Book'
-Book.Type = 'mediumbook'
+Book.Name = "Medium Book"
+Book.Type = "mediumbook"
 Book.Color = Color(255,255,255)
-Book.Model = 'models/props_lab/bindergreen.mdl'
+Book.Model = "models/props_lab/bindergreen.mdl"
 Book.Price = 1000
 Book.XP = 2000
 Book.Level = 1
@@ -195,10 +195,10 @@ Book.Prestige = 0
 table.insert(Books,Book)
 
 local Book={}
-Book.Name = 'Big Book'
-Book.Type = 'bigbook'
+Book.Name = "Big Book"
+Book.Type = "bigbook"
 Book.Color = Color(255,255,255)
-Book.Model = 'models/props_lab/binderredlabel.mdl'
+Book.Model = "models/props_lab/binderredlabel.mdl"
 Book.Price = 2500
 Book.XP = 5000
 Book.Level = 1
@@ -231,63 +231,71 @@ table.insert(Books,Book)
 
 
 
-if LevelSystemConfiguration.Language =="FR" then
-LevelSystemConfiguration.LangBuyEntity = "Vous n\'avez pas le bon level pour acheter ça!" -- Error message when someone can't buy an entity
-LevelSystemConfiguration.LangTakeJob = "Vous n\'avez pas le bon level pour avoir ce job!" -- Error message when someone can't take a job
-LevelSystemConfiguration.LangKillNotify = "Vous avez reçu %s XP et %s pour avoir tué %s" -- Notification to the killer when he kill someone (vars: XP, money, victime)
-LevelSystemConfiguration.LangKillNotify2 = "Vous avez reçu %s XP pour avoir tué %s" -- Notification to the killer when he kill someone (vars: XP, victime)
-LevelSystemConfiguration.LangKillNotify3 = "Vous avez tué %s" -- Notification to the killer when he kill someone (vars: victime)
-LevelSystemConfiguration.LangKillNPC = "Vous avez reçu %s XP pour avoir tué un NPC." -- Notification to the killer when he kill a npc (vars: XP)
-LevelSystemConfiguration.LangDeath = "Vous êtes mort et avez perdu %s!" -- Notification to the victim when he lost money on death (vars: money)
-LevelSystemConfiguration.LangPlayOn = "Vous avez reçu %s XP Pour avoir joué sur le serveur." -- Notification to everyone when they gain xp by the timer (vars: XP)
-LevelSystemConfiguration.LangRecieveXP = "Vous avez reçu %s XP!" -- Notification to the player when he recieve xp (vars: ammount)
-LevelSystemConfiguration.LangReachLevel = "%s a atteint le niveau %s!" -- Notification to everyone when someone reach a level (vars: name, PlayerLevel)
-LevelSystemConfiguration.LangBookNotify = "Vous avez reçu %s XP pour avoir utilisé un livre %s!" -- Notification to the player when he use a book (vars: XP, bookname)
-LevelSystemConfiguration.LangPrinterUse = "Vous avez reçu %s XP et %s du printer."
-LevelSystemConfiguration.LangPrinterLevel = "Vous devez avoir un plus haut niveau pour utiliser ce printer!"
-elseif LevelSystemConfiguration.Language == "PL" then
-LevelSystemConfiguration.LangBuyEntity = "Ty nie masz odpowiedniego poziomu by to kupić!" -- Error message when someone can't buy an entity
-LevelSystemConfiguration.LangTakeJob = "Ty nie masz odpowiedniego poziomu by tym zostać!" -- Error message when someone can't take a job
-LevelSystemConfiguration.LangKillNotify = "Ty masz %s XP i %s za zabicie %s" -- Notification to the killer when he kill someone (vars: XP, money, victime)
-LevelSystemConfiguration.LangKillNotify2 = "Ty masz %s XP za zabicie %s" -- Notification to the killer when he kill someone (vars: XP, victime)
-LevelSystemConfiguration.LangKillNotify3 = "Zabiłeś %s" -- Notification to the killer when he kill someone (vars: victime)
-LevelSystemConfiguration.LangKillNPC = "Ty masz %s XP za zabicie NPC." -- Notification to the killer when he kill a npc (vars: XP)
-LevelSystemConfiguration.LangDeath = "Zmarłeś i straciłeś %s!" -- Notification to the victim when he lost money on death (vars: money)
-LevelSystemConfiguration.LangPlayOn = "Ty masz %s XP za grę na serwerze." -- Notification to everyone when they gain xp by the timer (vars: XP)
-LevelSystemConfiguration.LangRecieveXP = "Ty masz %s XP!" -- Notification to the player when he recieve xp (vars: ammount)
-LevelSystemConfiguration.LangReachLevel = "%s osiągnął poziom %s!" -- Notification to everyone when someone reach a level (vars: name, PlayerLevel)
-LevelSystemConfiguration.LangBookNotify = "Ty masz %s XP za korzystanie z książki %s!" -- Notification to the player when he use a book (vars: XP, bookname)
-LevelSystemConfiguration.LangPrinterUse = "Ty masz %s XP i %s z tej drukarki."
-LevelSystemConfiguration.LangPrinterLevel = "Aby móc z tego korzystać, musisz być na wyższym poziomie!"
-else
-LevelSystemConfiguration.LangBuyEntity = "You\'re not the right level to buy this!" -- Error message when someone can't buy an entity
-LevelSystemConfiguration.LangTakeJob = "You\'re not the right level to become this!" -- Error message when someone can't take a job
-LevelSystemConfiguration.LangKillNotify = "You got %s XP and %s for killing %s" -- Notification to the killer when he kill someone (vars: XP, money, victime)
-LevelSystemConfiguration.LangKillNotify2 = "You got %s XP for killing %s" -- Notification to the killer when he kill someone (vars: XP, victime)
-LevelSystemConfiguration.LangKillNotify3 = "You killed %s" -- Notification to the killer when he kill someone (vars: victime)
-LevelSystemConfiguration.LangKillNPC = "You got %s XP for killing an NPC." -- Notification to the killer when he kill a npc (vars: XP)
-LevelSystemConfiguration.LangDeath = "You died and lost %s!" -- Notification to the victim when he lost money on death (vars: money)
-LevelSystemConfiguration.LangPlayOn = "You got %s XP for playing on the server." -- Notification to everyone when they gain xp by the timer (vars: XP)
-LevelSystemConfiguration.LangRecieveXP = "You got %s XP!" -- Notification to the player when he recieve xp (vars: ammount)
-LevelSystemConfiguration.LangReachLevel = "%s has reached level %s!" -- Notification to everyone when someone reach a level (vars: name, PlayerLevel)
-LevelSystemConfiguration.LangBookNotify = "You got %s XP for using the book %s!" -- Notification to the player when he use a book (vars: XP, bookname)
-LevelSystemConfiguration.LangPrinterUse = "You got %s XP and %s from this printer."
-LevelSystemConfiguration.LangPrinterLevel = "You need to be a higher level to use this!"
-end
+local en_language = {
+	lvl_buy_entity = "You\"re not the right level to buy this!", -- Error message when someone can"t buy an entity
+	lvl_take_job = "You\"re not the right level to become this!", -- Error message when someone can"t take a job
+	lvl_kill_notify = "You got %s XP and %s for killing %s", -- Notification to the killer when he kill someone (vars: XP, money, victime)
+	lvl_kill_notify2 = "You got %s XP for killing %s", -- Notification to the killer when he kill someone (vars: XP, victime)
+	lvl_kill_notify3 = "You killed %s", -- Notification to the killer when he kill someone (vars: victime)
+	lvl_kill_npc = "You got %s XP for killing an NPC.", -- Notification to the killer when he kill a npc (vars: XP)
+	lvl_death = "You died and lost %s!", -- Notification to the victim when he lost money on death (vars: money)
+	lvl_play_on = "You got %s XP for playing on the server.", -- Notification to everyone when they gain xp by the timer (vars: XP)
+	lvl_recieve_xp = "You got %s XP!", -- Notification to the player when he recieve xp (vars: ammount)
+	lvl_reach_level = "%s has reached level %s!", -- Notification to everyone when someone reach a level (vars: name, PlayerLevel)
+	lvl_book_notify = "You got %s XP for using the book %s!", -- Notification to the player when he use a book (vars: XP, bookname)
+	lvl_printer_use = "You got %s XP and %s from this printer.",  -- Notification to the player when he use a printer (vars: XP, money)
+	lvl_printer_level = "You need to be a higher level to use this!", -- Notification to the player when he can"t use a printer
+}
+DarkRP.addLanguage("en", en_language)
+
+local fr_language = {
+	lvl_buy_entity = "Vous n\"avez pas le bon level pour acheter ça!",
+	lvl_take_job = "Vous n\"avez pas le bon level pour avoir ce job!",
+	lvl_kill_notify = "Vous avez reçu %s XP et %s pour avoir tué %s",
+	lvl_kill_notify2 = "Vous avez reçu %s XP pour avoir tué %s",
+	lvl_kill_notify3 = "Vous avez tué %s",
+	lvl_kill_npc = "Vous avez reçu %s XP pour avoir tué un NPC.",
+	lvl_death = "Vous êtes mort et avez perdu %s!",
+	lvl_play_on = "Vous avez reçu %s XP Pour avoir joué sur le serveur.",
+	lvl_recieve_xp = "Vous avez reçu %s XP!",
+	lvl_reach_level = "%s a atteint le niveau %s!",
+	lvl_book_notify = "Vous avez reçu %s XP pour avoir utilisé un livre %s!",
+	lvl_printer_use = "Vous avez reçu %s XP et %s du printer.",
+	lvl_printer_level = "Vous devez avoir un plus haut niveau pour utiliser ce printer!",
+}
+DarkRP.addLanguage("fr", fr_language)
+
+local pl_language = {
+	lvl_buy_entity = "Ty nie masz odpowiedniego poziomu by to kupić!",
+	lvl_take_job = "Ty nie masz odpowiedniego poziomu by tym zostać!",
+	lvl_kill_notify = "Ty masz %s XP i %s za zabicie %s",
+	lvl_kill_notify2 = "Ty masz %s XP za zabicie %s",
+	lvl_kill_notify3 = "Zabiłeś %s",
+	lvl_kill_npc = "Ty masz %s XP za zabicie NPC.",
+	lvl_death = "Zmarłeś i straciłeś %s!",
+	lvl_play_on = "Ty masz %s XP za grę na serwerze.",
+	lvl_recieve_xp = "Ty masz %s XP!",
+	lvl_reach_level = "%s osiągnął poziom %s!",
+	lvl_book_notify = "Ty masz %s XP za korzystanie z książki %s!",
+	lvl_printer_use = "Ty masz %s XP i %s z tej drukarki.",
+	lvl_printer_level = "Aby móc z tego korzystać, musisz być na wyższym poziomie!",
+}
+DarkRP.addLanguage("pl", pl_language)
+
 
 hook.Add("loadCustomDarkRPItems", "manolis:MVLevels:CustomLoad", function()
 
 	for k,v in pairs(Printers) do
 		local Errors = {}
-		if not type(v.Name) == 'string' then table.insert(Errors, 'The name of a printer is INVALID!') end
-		if not type(v.Type) == 'string' then table.insert(Errors, 'The type of a printer is INVALID!') end
-		if not type(v.XPPerPrint) == 'number' then table.insert(Errors, 'The XP of a printer is INVALID!') end
-		if not type(v.MoneyPerPrint) == 'number' then table.insert(Errors, 'The money of a printer is INVALID!') end
-		if not type(v.Color) == 'table' then table.insert(Errors, 'The color of a printer is INVALID!') end
-		if not type(v.Model) == 'string' then table.insert(Errors, 'The model of a printer is INVALID!') end
-		if not type(v.Price) == 'number' then table.insert(Errors, 'The price of a printer is INVALID!') end
-		if not type(v.Category) == 'string' then v.Category='' end
-		if not type(v.Level) == 'number' then table.insert(Errors, 'The level of a printer is INVALID!') end
+		if not type(v.Name) == "string" then table.insert(Errors, "The name of a printer is INVALID!") end
+		if not type(v.Type) == "string" then table.insert(Errors, "The type of a printer is INVALID!") end
+		if not type(v.XPPerPrint) == "number" then table.insert(Errors, "The XP of a printer is INVALID!") end
+		if not type(v.MoneyPerPrint) == "number" then table.insert(Errors, "The money of a printer is INVALID!") end
+		if not type(v.Color) == "table" then table.insert(Errors, "The color of a printer is INVALID!") end
+		if not type(v.Model) == "string" then table.insert(Errors, "The model of a printer is INVALID!") end
+		if not type(v.Price) == "number" then table.insert(Errors, "The price of a printer is INVALID!") end
+		if not type(v.Category) == "string" then v.Category="" end
+		if not type(v.Level) == "number" then table.insert(Errors, "The level of a printer is INVALID!") end
 		local ErrorCount = 0
 		for k,v in pairs(Errors) do
 			error(v)
@@ -307,7 +315,7 @@ hook.Add("loadCustomDarkRPItems", "manolis:MVLevels:CustomLoad", function()
 			printer = true,
 			level = v.Level,
 			max = LevelSystemConfiguration.PrinterMax,
-			cmd = 'buyvrondakis'..v.Type..'printer',
+			cmd = "buyvrondakis"..v.Type.."printer",
 			allowed = v.Allowed,
 			vrondakisName = v.Name,
 			vrondakisType = v.Type,
@@ -316,7 +324,7 @@ hook.Add("loadCustomDarkRPItems", "manolis:MVLevels:CustomLoad", function()
 			vrondakisColor = v.Color,
 			vrondakisModel = v.Model,
 			customCheck = (v.CustomCheck or function() return true end),
-		    CustomCheckFailMsg = v.CustomCheckFailMsg,
+			CustomCheckFailMsg = v.CustomCheckFailMsg,
 			vrondakisPrinterOverheat = LevelSystemConfiguration.PrinterOverheat,
 			vrondakisPrinterMaxP = LevelSystemConfiguration.PrinterMaxP,
 			vrondakisPrinterTime = LevelSystemConfiguration.PrinterTime,
@@ -340,14 +348,14 @@ hook.Add("loadCustomDarkRPItems", "manolis:MVLevels:CustomLoad", function()
 	
 	for k,v in pairs(Books) do
 		local Errors = {}
-		if not type(v.Name) == 'string' then table.insert(Errors, 'The name of a book is INVALID!') end
-		if not type(v.Type) == 'string' then table.insert(Errors, 'The type of a book is INVALID!') end
-		if not type(v.Color) == 'table' then table.insert(Errors, 'The color of a book is INVALID!') end
-		if not type(v.Model) == 'string' then table.insert(Errors, 'The model of a book is INVALID!') end
-		if not type(v.Price) == 'number' then table.insert(Errors, 'The price of a book is INVALID!') end
-		if not type(v.XP) == 'number' then table.insert(Errors, 'The xp ammount of a book is INVALID!') end
-		if not type(v.Category) == 'string' then v.Category='' end
-		if not type(v.Level) == 'number' then table.insert(Errors, 'The level of a book is INVALID!') end
+		if not type(v.Name) == "string" then table.insert(Errors, "The name of a book is INVALID!") end
+		if not type(v.Type) == "string" then table.insert(Errors, "The type of a book is INVALID!") end
+		if not type(v.Color) == "table" then table.insert(Errors, "The color of a book is INVALID!") end
+		if not type(v.Model) == "string" then table.insert(Errors, "The model of a book is INVALID!") end
+		if not type(v.Price) == "number" then table.insert(Errors, "The price of a book is INVALID!") end
+		if not type(v.XP) == "number" then table.insert(Errors, "The xp ammount of a book is INVALID!") end
+		if not type(v.Category) == "string" then v.Category="" end
+		if not type(v.Level) == "number" then table.insert(Errors, "The level of a book is INVALID!") end
 		local ErrorCount = 0
 		for k,v in pairs(Errors) do
 			error(v)
@@ -368,14 +376,14 @@ hook.Add("loadCustomDarkRPItems", "manolis:MVLevels:CustomLoad", function()
 			book = true,
 			level = v.Level,
 			max = LevelSystemConfiguration.BookMax,
-			cmd = 'buyvrondakis'..v.Type..'book',
+			cmd = "buyvrondakis"..v.Type.."book",
 			allowed = v.Allowed,
 			vrondakisName = v.Name,
 			vrondakisType = v.Type,
 			vrondakisColor = v.Color,
 			vrondakisModel = v.Model,
 			customCheck = (v.CustomCheck or function() return true end),
-		    CustomCheckFailMsg = v.CustomCheckFailMsg,
+			CustomCheckFailMsg = v.CustomCheckFailMsg,
 		}
 		
 		if(v.DParams) then

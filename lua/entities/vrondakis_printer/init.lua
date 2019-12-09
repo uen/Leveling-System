@@ -30,10 +30,10 @@ function ENT:Initialize()
 		self.sound:PlayEx(1, 100)
 	end
 
-	self:SetNWString('PrinterName', (self.DarkRPItem.name or 'Unknown'))
-	self:SetNWInt('MoneyPerPrint', self.DarkRPItem.vrondakisMoneyPerPrint or 0)
-	self:SetNWInt('MoneyAmount', 0)
-	self:SetNWInt('MaxConfig',self.DarkRPItem.vrondakisPrinterMaxP or 1)
+	self:SetNWString("PrinterName", (self.DarkRPItem.name or "Unknown"))
+	self:SetNWInt("MoneyPerPrint", self.DarkRPItem.vrondakisMoneyPerPrint or 0)
+	self:SetNWInt("MoneyAmount", 0)
+	self:SetNWInt("MaxConfig",self.DarkRPItem.vrondakisPrinterMaxP or 1)
 
 	self:SetUseType(SIMPLE_USE)
 
@@ -121,7 +121,7 @@ function ENT:CreateMoneybag()
 
 		self.StoredMoney = self.StoredMoney + amount
 		self.StoredXP = self.StoredXP + xpamount
-		self:SetNWInt('MoneyAmount', self.StoredMoney)
+		self:SetNWInt("MoneyAmount", self.StoredMoney)
 	end
 
 	self.sparking = false
@@ -141,8 +141,8 @@ function ENT:Use(activator,caller)
 					if not (self.StoredXP==0) then
 						activator:addXP(self.StoredXP,true)
 					end
-					self:SetNWInt('MoneyAmount', 0)
-					DarkRP.notify(activator,0,4, string.format(LevelSystemConfiguration.LangPrinterUse, self.StoredXP, DarkRP.formatMoney(self.StoredMoney)))
+					self:SetNWInt("MoneyAmount", 0)
+					DarkRP.notify(activator,0,4, DarkRP.getPhrase("lvl_printer_use", self.StoredXP, DarkRP.formatMoney(self.StoredMoney)))
 					if guthlogsystem then
 						guthlogsystem.addLog( "DarkRP Leveling System", "*"..activator:Name().."* got &"..self.StoredXP.."& XP and !"..DarkRP.formatMoney(self.StoredMoney).."! for using ?"..self:Getowning_ent():Name().."? printer" )
 					end
@@ -150,7 +150,7 @@ function ENT:Use(activator,caller)
 					self.StoredXP = 0
 
 				else
-					if(activator:getDarkRPVar('level')<(self.DarkRPItem.level-5)) then return DarkRP.notify(activator,0,4, LevelSystemConfiguration.LangPrinterLevel) end
+					if(activator:getDarkRPVar("level")<(self.DarkRPItem.level-5)) then return DarkRP.notify(activator,0,4, DarkRP.getPhrase("lvl_printer_level")) end
 
 					if not(self.StoredMoney==0) then
 						activator:addMoney(self.StoredMoney)
@@ -159,8 +159,8 @@ function ENT:Use(activator,caller)
 					if not (self.StoredXP==0) then
 						activator:addXP(self.StoredXP,true)
 					end
-					self:SetNWInt('MoneyAmount', 0)
-					DarkRP.notify(activator,0,4,string.format(LevelSystemConfiguration.LangPrinterUse, self.StoredXP, DarkRP.formatMoney(self.StoredMoney)))
+					self:SetNWInt("MoneyAmount", 0)
+					DarkRP.notify(activator,0,4, DarkRP.getPhrase("lvl_printer_use", self.StoredXP, DarkRP.formatMoney(self.StoredMoney)))
 					if guthlogsystem then
 						guthlogsystem.addLog( "DarkRP Leveling System", "*"..activator:Name().."* got &"..self.StoredXP.."& XP and !"..DarkRP.formatMoney(self.StoredMoney).."! for using ?"..self:Getowning_ent():Name().."? printer" )
 					end
