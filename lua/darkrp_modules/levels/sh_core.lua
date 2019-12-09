@@ -1,5 +1,5 @@
 // Love Manolis Vrondakis. @vrondakis
-if SERVER then
+if SERVER then 
 function checkLevel(ply,entity)
 	if(entity.level) then
 		if not((ply:getDarkRPVar("level") or 0) >= (entity.level)) then
@@ -14,7 +14,7 @@ hook.Add("canBuyShipment", "manolis:MVLevels:ShipmentBuy", checkLevel)
 hook.Add("canBuyVehicle", "manolis:MVLevels:VehiclesBuy", checkLevel)
 hook.Add("canBuyCustomEntity", "manolis:MVLevels:CEntityBuy", checkLevel)
 
-hook.Add("playerCanChangeTeam", "manolis:MVLevels:playerTeamChange", function(ply, jobno)
+hook.Add("playerCanChangeTeam", "manolis:MVLevels:playerTeamChange", function(ply, jobno) 
 	// This one requires a little extra work
 	job = RPExtraTeams[jobno]
 	if (job.level) then
@@ -70,7 +70,7 @@ end
 
 hook.Add( "InitPostEntity", "manolis:MVLevels:PostEntInit", function()
 	LevelPrompts()
-end)
+end) 
 
 hook.Add( "OnReloaded", "manolis:MVLevels:LuaReloadA", function()
 	LevelPrompts()
@@ -85,7 +85,7 @@ function ButtonColors()
 	timer.Simple(0.1, function()
 
 		if(LevelSystemConfiguration.GreenAllBars) then
-			for k,v in pairs(DarkRPEntities) do
+			for k,v in pairs(DarkRPEntities) do 
 				if v.level then
 					if not((LocalPlayer():getDarkRPVar("level") or 0) >= v.level) then
 						v.buttonColor = Color(100,0,0)
@@ -100,7 +100,7 @@ function ButtonColors()
 		end
 
 		if(LevelSystemConfiguration.GreenJobBars) then
-			for k,v in pairs(RPExtraTeams) do
+			for k,v in pairs(RPExtraTeams) do 
 				if v.level then
 					if not((LocalPlayer():getDarkRPVar("level") or 0) >= v.level) then
 						v.buttonColor = Color(100,0,0)
@@ -115,7 +115,7 @@ function ButtonColors()
 		end
 
 		if(LevelSystemConfiguration.GreenAllBars) then
-			for k,v in pairs(CustomVehicles) do
+			for k,v in pairs(CustomVehicles) do 
 				if v.level then
 					if not((LocalPlayer():getDarkRPVar("level") or 0) >= v.level) then
 						v.buttonColor = Color(100,0,0)
@@ -127,7 +127,7 @@ function ButtonColors()
 				end
 			end
 
-			for k,v in pairs(CustomShipments) do
+			for k,v in pairs(CustomShipments) do 
 				if v.level then
 					if not((LocalPlayer():getDarkRPVar("level") or 0) >= v.level) then
 						v.buttonColor = Color(100,0,0)
@@ -139,7 +139,7 @@ function ButtonColors()
 				end
 			end
 
-			for k,v in pairs(GAMEMODE.AmmoTypes) do
+			for k,v in pairs(GAMEMODE.AmmoTypes) do 
 				if v.level then
 					if not((LocalPlayer():getDarkRPVar("level") or 0) >= v.level) then
 						v.buttonColor = Color(100,0,0)
