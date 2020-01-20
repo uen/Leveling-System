@@ -78,18 +78,18 @@ local function HUDPaint()
 	percent2 = math.Clamp(percent2, 0, 99) //Make sure it doesn't round past 100%
 	
 	if LevelSystemConfiguration.EnableBar then
-	// Draw the XP Bar
-	surface.SetDrawColor(0,0,0,200)
-	surface.DrawRect(ScrW()/2-300,(LevelSystemConfiguration.XPBarYPos or 0),580,25)
+		// Draw the XP Bar
+		surface.SetDrawColor(0,0,0,200)
+		surface.DrawRect(ScrW()/2-300,(LevelSystemConfiguration.XPBarYPos or 0),580,25)
+	
+		// Draw the XP Bar before the texture
+		surface.SetDrawColor(LevelSystemConfiguration.LevelBarColor[1],LevelSystemConfiguration.LevelBarColor[2],LevelSystemConfiguration.LevelBarColor[3],255)
+		surface.DrawRect(ScrW()/2-300,(LevelSystemConfiguration.XPBarYPos or 0),580*drawXP,25)
 
-	// Draw the XP Bar before the texture
-	surface.SetDrawColor(LevelSystemConfiguration.LevelBarColor[1],LevelSystemConfiguration.LevelBarColor[2],LevelSystemConfiguration.LevelBarColor[3],255)
-	surface.DrawRect(ScrW()/2-300,(LevelSystemConfiguration.XPBarYPos or 0),580*drawXP,25)
-
-	//Render the texture
-	surface.SetMaterial(xp_bar)
-	surface.SetDrawColor(255,255,255,255)
-	surface.DrawTexturedRect( ScrW()/2-371, 0+(LevelSystemConfiguration.XPBarYPos or 0),  742,46)
+		//Render the texture
+		surface.SetMaterial(xp_bar)
+		surface.SetDrawColor(255,255,255,255)
+		surface.DrawTexturedRect( ScrW()/2-371, 0+(LevelSystemConfiguration.XPBarYPos or 0),  742,46)
 	end
 	
 	// Render the text

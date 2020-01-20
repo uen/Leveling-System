@@ -6,19 +6,19 @@ function ENT:Initialize()
 	self:SetModel(self.DarkRPItem.model)
 	self:SetColor(self.DarkRPItem.vrondakisColor)
 	
-    self:PhysicsInit( SOLID_VPHYSICS ) 
-    self:SetMoveType( MOVETYPE_VPHYSICS )   
-    self:SetSolid( SOLID_VPHYSICS ) 
-    local phys = self:GetPhysicsObject()
-        if (phys:IsValid()) then
-            phys:Wake()
-        end
-    end
+	self:PhysicsInit( SOLID_VPHYSICS ) 
+	self:SetMoveType( MOVETYPE_VPHYSICS )   
+	self:SetSolid( SOLID_VPHYSICS ) 
+	local phys = self:GetPhysicsObject()
+		if (phys:IsValid()) then
+			phys:Wake()
+		end
+	end
 
 function ENT:Use( activator, caller )
 	local XP = self.DarkRPItem.xp
 	local bookname = self.DarkRPItem.vrondakisName
-    activator:addXP( XP, true)
+	activator:addXP( XP, true)
 	DarkRP.notify(activator, 0,4, DarkRP.getPhrase("lvl_book_notify", XP, bookname))
 	if guthlogsystem then
 		guthlogsystem.addLog( "DarkRP Leveling System", "*"..activator:Name().."* got &"..XP.."& XP for using ?"..bookname.."?" )
