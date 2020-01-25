@@ -2,28 +2,24 @@
 if SERVER then 
 function checkLevel(ply,entity)
 	if(entity.level) then
-		if not((ply:getDarkRPVar('level') or 0) >= (entity.level)) then
-			DarkRP.notify(ply,1,2, LevelSystemConfiguration.LangBuyEntity )
-			return false,true
+		if not((ply:getDarkRPVar("level") or 0) >= (entity.level)) then
+			return false, DarkRP.getPhrase("lvl_buy_entity")
 		end
 	end
 end
 
-hook.Add('canBuyPistol', 'manolis:MVLevels:PistolBuy', checkLevel)
-hook.Add('canBuyAmmo', 'manolis:MVLevels:AmmoBuy', checkLevel)
-hook.Add('canBuyShipment', 'manolis:MVLevels:ShipmentBuy', checkLevel)
-hook.Add('canBuyVehicle', 'manolis:MVLevels:VehiclesBuy', checkLevel)
-hook.Add('canBuyCustomEntity', 'manolis:MVLevels:CEntityBuy', checkLevel)
+hook.Add("canBuyPistol", "manolis:MVLevels:PistolBuy", checkLevel)
+hook.Add("canBuyAmmo", "manolis:MVLevels:AmmoBuy", checkLevel)
+hook.Add("canBuyShipment", "manolis:MVLevels:ShipmentBuy", checkLevel)
+hook.Add("canBuyVehicle", "manolis:MVLevels:VehiclesBuy", checkLevel)
+hook.Add("canBuyCustomEntity", "manolis:MVLevels:CEntityBuy", checkLevel)
 
-
-
-hook.Add('playerCanChangeTeam', 'manolis:MVLevels:playerTeamChange', function(ply, jobno) 
+hook.Add("playerCanChangeTeam", "manolis:MVLevels:playerTeamChange", function(ply, jobno) 
 	// This one requires a little extra work
 	job = RPExtraTeams[jobno]
 	if (job.level) then
-		if not ((ply:getDarkRPVar('level') or 0) >= (job.level)) then
-			DarkRP.notify(ply, 1, 2, LevelSystemConfiguration.LangTakeJob )
-			return false, true
+		if not ((ply:getDarkRPVar("level") or 0) >= (job.level)) then
+			return false, DarkRP.getPhrase("lvl_take_job")
 		end
 	end
 end)
@@ -37,35 +33,35 @@ function LevelPrompts()
 		for k,v in pairs(DarkRPEntities) do
 			v.label = v.name
 			if v.level then
-				v.label = (v.label .. ' - Level '..v.level)
+				v.label = (v.label .. " - Level "..v.level)
 			end
 		end
 
 		for k,v in pairs(RPExtraTeams) do
 			v.label = v.name
 			if v.level then
-				v.label = (v.label .. ' - Level '..v.level)
+				v.label = (v.label .. " - Level "..v.level)
 			end
 		end
 
 		for k,v in pairs(CustomVehicles) do
 			v.label = v.name
 			if v.level then
-				v.label = (v.label .. ' - Level '..v.level)
+				v.label = (v.label .. " - Level "..v.level)
 			end
 		end
 
 		for k,v in pairs(CustomShipments) do
 			v.label = v.name
 			if v.level then
-				v.label = (v.label .. ' - Level '..v.level)
+				v.label = (v.label .. " - Level "..v.level)
 			end
 		end
 
 		for k,v in pairs(GAMEMODE.AmmoTypes) do
 			v.label = v.name
 			if v.level then
-				v.label = (v.label .. ' - Level '..v.level)
+				v.label = (v.label .. " - Level "..v.level)
 			end
 		end
 	end)
@@ -76,7 +72,7 @@ hook.Add( "InitPostEntity", "manolis:MVLevels:PostEntInit", function()
 	LevelPrompts()
 end) 
 
-hook.Add("OnReloaded", "manolis:MVLevels:LuaReloadA", function()
+hook.Add( "OnReloaded", "manolis:MVLevels:LuaReloadA", function()
 	LevelPrompts()
 end)
 
@@ -91,7 +87,7 @@ function ButtonColors()
 		if(LevelSystemConfiguration.GreenAllBars) then
 			for k,v in pairs(DarkRPEntities) do 
 				if v.level then
-					if not((LocalPlayer():getDarkRPVar('level') or 0) >= v.level) then
+					if not((LocalPlayer():getDarkRPVar("level") or 0) >= v.level) then
 						v.buttonColor = Color(100,0,0)
 					else
 						v.buttonColor = Color(0,100,0)
@@ -106,7 +102,7 @@ function ButtonColors()
 		if(LevelSystemConfiguration.GreenJobBars) then
 			for k,v in pairs(RPExtraTeams) do 
 				if v.level then
-					if not((LocalPlayer():getDarkRPVar('level') or 0) >= v.level) then
+					if not((LocalPlayer():getDarkRPVar("level") or 0) >= v.level) then
 						v.buttonColor = Color(100,0,0)
 					else
 						v.buttonColor = Color(0,100,0)
@@ -121,7 +117,7 @@ function ButtonColors()
 		if(LevelSystemConfiguration.GreenAllBars) then
 			for k,v in pairs(CustomVehicles) do 
 				if v.level then
-					if not((LocalPlayer():getDarkRPVar('level') or 0) >= v.level) then
+					if not((LocalPlayer():getDarkRPVar("level") or 0) >= v.level) then
 						v.buttonColor = Color(100,0,0)
 					else
 						v.buttonColor = Color(0,100,0)
@@ -133,7 +129,7 @@ function ButtonColors()
 
 			for k,v in pairs(CustomShipments) do 
 				if v.level then
-					if not((LocalPlayer():getDarkRPVar('level') or 0) >= v.level) then
+					if not((LocalPlayer():getDarkRPVar("level") or 0) >= v.level) then
 						v.buttonColor = Color(100,0,0)
 					else
 						v.buttonColor = Color(0,100,0)
@@ -145,7 +141,7 @@ function ButtonColors()
 
 			for k,v in pairs(GAMEMODE.AmmoTypes) do 
 				if v.level then
-					if not((LocalPlayer():getDarkRPVar('level') or 0) >= v.level) then
+					if not((LocalPlayer():getDarkRPVar("level") or 0) >= v.level) then
 						v.buttonColor = Color(100,0,0)
 					else
 						v.buttonColor = Color(0,100,0)
@@ -157,8 +153,8 @@ function ButtonColors()
 		end
 	end)
 end
-hook.Add('F4MenuTabs', 'manolis:MVLevels:FFourMenuTabs', ButtonColors)
-hook.Add('PlayerLevelChanged', 'manolis:MVLevels:PlayerLevelChangedA', ButtonColors)
+hook.Add("F4MenuTabs", "manolis:MVLevels:FFourMenuTabs", ButtonColors)
+hook.Add("PlayerLevelChanged", "manolis:MVLevels:PlayerLevelChangedA", ButtonColors)
 
 end
 
@@ -168,4 +164,4 @@ function PlayerInitialSpawn(ply)
 	end
 end
 
-hook.Add('PlayerInitialSpawn', 'manolis:MVLevels:PlayerSpawnB', function(ply) timer.Simple( 1, function () PlayerInitialSpawn(ply) end) end)
+hook.Add("PlayerInitialSpawn", "manolis:MVLevels:PlayerSpawnB", function(ply) timer.Simple( 1, function () PlayerInitialSpawn(ply) end) end)

@@ -1,15 +1,15 @@
 include("shared.lua")
 
 
-surface.CreateFont('TargetID', {
-	font = 'Trebuchet MS',
+surface.CreateFont("TargetID", {
+	font = "Trebuchet MS",
 	size = 22,
 	weight = 900,
 	antialias = true,
 })
 function ENT:Initialize()
-	self.PrinterName = self:GetNWString('PrinterName') // Why is self.DarkRPItem not clientside?
-	self.PrinterType = self:GetNWString('PrinterType')
+	self.PrinterName = self:GetNWString("PrinterName") // Why is self.DarkRPItem not clientside?
+	self.PrinterType = self:GetNWString("PrinterType")
 end
 
 
@@ -21,15 +21,15 @@ function ENT:Draw()
 
 	local owner = self:Getowning_ent()
 	owner = (IsValid(owner) and owner:Nick()) or DarkRP.getPhrase("unknown")
-	local amount = 'Unknown'
-	if(self:GetNWInt('MaxConfig') == 0) then
-		amount = DarkRP.formatMoney(self:GetNWInt('MoneyAmount'))
+	local amount = "Unknown"
+	if(self:GetNWInt("MaxConfig") == 0) then
+		amount = DarkRP.formatMoney(self:GetNWInt("MoneyAmount"))
 	else
-		amount = (DarkRP.formatMoney(self:GetNWInt('MoneyAmount'))..' / '..DarkRP.formatMoney(self:GetNWInt('MaxConfig')*self:GetNWInt('MoneyPerPrint')))
+		amount = (DarkRP.formatMoney(self:GetNWInt("MoneyAmount")).." / "..DarkRP.formatMoney(self:GetNWInt("MaxConfig")*self:GetNWInt("MoneyPerPrint")))
 	end
 
 	surface.SetFont("HUDNumber5")
-	local text = self:GetNWString('PrinterName', 'Unknown')
+	local text = self:GetNWString("PrinterName", "Unknown")
 	local TextWidth = surface.GetTextSize(text)
 	local TextWidth2 = surface.GetTextSize(owner)
 	local TextWidth3 = surface.GetTextSize(amount)
