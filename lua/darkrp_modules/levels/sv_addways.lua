@@ -93,9 +93,16 @@ timer.Create( "PlayXP", time,0,function()
 					end
 				end
 			else
-				local XP = v:addXP(LevelSystemConfiguration.TimerXPAmount, true)
-				if (XP) then
-					DarkRP.notify(v,0,4, DarkRP.getPhrase("lvl_play_on", XP))
+				if table.HasValue(LevelSystemConfiguration.TimerXPVipGroups, v:GetNWString("usergroup")) then
+					local XP = v:addXP(LevelSystemConfiguration.TimerXPAmountVip, true)
+					if (XP) then
+						DarkRP.notify(v,0,4, DarkRP.getPhrase("lvl_play_on", XP))
+					end
+				else
+					local XP = v:addXP(LevelSystemConfiguration.TimerXPAmount, true)
+					if (XP) then
+						DarkRP.notify(v,0,4, DarkRP.getPhrase("lvl_play_on", XP))
+					end
 				end
 			end
 		end
