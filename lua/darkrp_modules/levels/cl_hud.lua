@@ -41,8 +41,8 @@ local shouldDraw, players = hook.Call("HUDShouldDraw", GAMEMODE, "DarkRP_EntityD
 					pos.z = pos.z + 10 -- The position we want is a bit above the position of the eyes
 					pos = pos:ToScreen()
 					pos.y = pos.y-20
-					draw.DrawText('Level: '..(ply:getDarkRPVar('level') or 0), "DarkRPHUD2", pos.x+1, pos.y -56, Color(0,0,0,255), 1)
-					draw.DrawText('Level: '..(ply:getDarkRPVar('level') or 0), "DarkRPHUD2", pos.x, pos.y -55, Color(255,255,255,200), 1)
+					draw.DrawText("Level: "..(ply:getDarkRPVar("level") or 0), "DarkRPHUD2", pos.x+1, pos.y -56, Color(0,0,0,255), 1)
+					draw.DrawText("Level: "..(ply:getDarkRPVar("level") or 0), "DarkRPHUD2", pos.x, pos.y -55, Color(255,255,255,200), 1)
 			elseif not GAMEMODE.Config.globalshow and hisPos:Distance(shootPos) < 250 then
 				local pos = hisPos - shootPos
 				local unitPos = pos:GetNormalized()
@@ -53,8 +53,8 @@ local shouldDraw, players = hook.Call("HUDShouldDraw", GAMEMODE, "DarkRP_EntityD
 						pos.z = pos.z + 10 -- The position we want is a bit above the position of the eyes
 						pos = pos:ToScreen()
 						pos.y = pos.y-20
-						draw.DrawText('Level: '..(ply:getDarkRPVar('level') or 0), "DarkRPHUD2", pos.x, pos.y -58, Color(0,0,0,255), 1)
-						draw.DrawText('Level: '..(ply:getDarkRPVar('level') or 0), "DarkRPHUD2", pos.x+1, pos.y -57, Color(255,255,255,200), 1)
+						draw.DrawText("Level: "..(ply:getDarkRPVar("level") or 0), "DarkRPHUD2", pos.x, pos.y -58, Color(0,0,0,255), 1)
+						draw.DrawText("Level: "..(ply:getDarkRPVar("level") or 0), "DarkRPHUD2", pos.x+1, pos.y -57, Color(255,255,255,200), 1)
 			end
 		end
 	end
@@ -66,11 +66,9 @@ local OldXP = 0
 local xp_bar = Material("vrondakis/xp_bar.png","noclamp smooth")
 local function HUDPaint()
 	if not LevelSystemConfiguration then return end
-	if not LevelSystemConfiguration.EnableHUD then return end
-	local PlayerLevel = LocalPlayer():getDarkRPVar('level')
-	local PlayerXP = LocalPlayer():getDarkRPVar('xp')
+	local PlayerLevel = LocalPlayer():getDarkRPVar("level")
+	local PlayerXP = LocalPlayer():getDarkRPVar("xp")
 	
-	// Draw the XP Bar
 	local percent = ((PlayerXP or 0)/(((10+(((PlayerLevel or 1)*((PlayerLevel or 1)+1)*90))))*LevelSystemConfiguration.XPMult)) // Gets the accurate level up percentage
 	
 	local drawXP = Lerp(8*FrameTime(),OldXP,percent)
@@ -78,22 +76,32 @@ local function HUDPaint()
 	local percent2 = percent*100
 	percent2 = math.Round(percent2)
 	percent2 = math.Clamp(percent2, 0, 99) //Make sure it doesn't round past 100%
+	
+	if LevelSystemConfiguration.EnableBar then
+		// Draw the XP Bar
+		surface.SetDrawColor(0,0,0,200)
+		surface.DrawRect(ScrW()/2-300,(LevelSystemConfiguration.XPBarYPos or 0),580,25)
+	
+		// Draw the XP Bar before the texture
+		surface.SetDrawColor(LevelSystemConfiguration.LevelBarColor[1],LevelSystemConfiguration.LevelBarColor[2],LevelSystemConfiguration.LevelBarColor[3],255)
+		surface.DrawRect(ScrW()/2-300,(LevelSystemConfiguration.XPBarYPos or 0),580*drawXP,25)
 
-	surface.SetDrawColor(0,0,0,200)
-	surface.DrawRect(ScrW()/2-300,(LevelSystemConfiguration.XPBarYPos or 0),580,25)
-
-	// Draw the XP Bar before the texture
-	surface.SetDrawColor(LevelSystemConfiguration.LevelBarColor[1],LevelSystemConfiguration.LevelBarColor[2],LevelSystemConfiguration.LevelBarColor[3],255)
-	surface.DrawRect(ScrW()/2-300,(LevelSystemConfiguration.XPBarYPos or 0),580*drawXP,25)
-
-	//Render the texture
-	surface.SetMaterial(xp_bar)
-	surface.SetDrawColor(255,255,255,255)
-	surface.DrawTexturedRect( ScrW()/2-371, 0+(LevelSystemConfiguration.XPBarYPos or 0),  742,46)
-
+		//Render the texture
+		surface.SetMaterial(xp_bar)
+		surface.SetDrawColor(255,255,255,255)
+		surface.DrawTexturedRect( ScrW()/2-371, 0+(LevelSystemConfiguration.XPBarYPos or 0),  742,46)
+	end
+	
 	// Render the text
-	draw.DrawText('Level '..(LocalPlayer():getDarkRPVar('level') or 0)..' - '..percent2 ..'%', "HeadBar", ScrW()/2,7+(LevelSystemConfiguration.XPBarYPos or 0),(LevelSystemConfiguration.XPTextColor or Color(255,255,255,255)), TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER)
-
+	if LevelSystemConfiguration.BarText then
+		draw.DrawText("Level "..(LocalPlayer():getDarkRPVar("level") or 0).." - "..percent2 .."%", "HeadBar", ScrW()/2,7+(LevelSystemConfiguration.XPBarYPos or 0),(LevelSystemConfiguration.XPTextColor or Color(255,255,255,255)), TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER)
+	end
+	
+	if LevelSystemConfiguration.LevelText then
+		draw.SimpleText("Level: " ..(LocalPlayer():getDarkRPVar("level") or 0), "LevelPrompt", LevelSystemConfiguration.LevelTextPos[1],ScrH()-LevelSystemConfiguration.LevelTextPos[2],((Color(0,0,0,255))), TEXT_ALIGN_LEFT, TEXT_ALIGN_LEFT)
+		draw.SimpleText("Level: " ..(LocalPlayer():getDarkRPVar("level") or 0), "LevelPrompt", LevelSystemConfiguration.LevelTextPos[1]+1,ScrH()-LevelSystemConfiguration.LevelTextPos[2]-1,(LevelSystemConfiguration.LevelColor or (Color(0,0,0,255))), TEXT_ALIGN_LEFT, TEXT_ALIGN_LEFT)
+	end
+	
 	DrawDisplay()
 end
 hook.Add("HUDPaint", "manolis:MVLevels:HUDPaintA", HUDPaint) // IS THAT UNIQUE ENOUGH FOR YOU, FUCKING GMOD HOOKING BULLSHIT.
