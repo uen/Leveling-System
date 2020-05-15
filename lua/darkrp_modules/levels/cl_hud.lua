@@ -35,6 +35,8 @@ local shouldDraw, players = hook.Call("HUDShouldDraw", GAMEMODE, "DarkRP_EntityD
 	if(LevelSystemConfiguration.DisplayLevel) then
 		for k, ply in pairs(players or player.GetAll()) do
 			if not ply:Alive() then continue end
+			if ply:GetRenderMode() == RENDERMODE_TRANSALPHA then continue end // player is cloaked (ULX)
+			if ply == LocalPlayer() then continue end
 			local hisPos = ply:GetShootPos()
 			if GAMEMODE.Config.globalshow and ply ~= localplayer then
 					local pos = ply:EyePos()
