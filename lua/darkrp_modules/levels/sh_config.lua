@@ -7,7 +7,7 @@ local Printers = {} -- Ignore
 local Books = {} -- Ignore
 
 //Language settings
-LevelSystemConfiguration.Language = "EN" -- (available: FR, EN, PL)
+LevelSystemConfiguration.Language = "EN" -- (available: FR, EN, PL, RU)
 
 //Hud settings
 LevelSystemConfiguration.EnableBar = true -- Is the XP Bar enabled?
@@ -281,6 +281,23 @@ local pl_language = {
 	lvl_printer_level = "Aby móc z tego korzystać, musisz być na wyższym poziomie!",
 }
 DarkRP.addLanguage("pl", pl_language)
+
+local ru_language = {
+	lvl_buy_entity = "Вы не того уровня, чтобы купить это!",
+	lvl_take_job = "Вы не того уровня для этой работы!",
+	lvl_kill_notify = "Вы получили %s ОП и %s за убийство %s",
+	lvl_kill_notify2 = "Вы получили %s ОП за убийство %s",
+	lvl_kill_notify3 = "Вы убили %s",
+	lvl_kill_npc = "Вы получили %s ОП за убийство NPC.",
+	lvl_death = "Вы умерли и потеряли %s!",
+	lvl_play_on = "Вы получили %s ОП за игру на этом сервере.",
+	lvl_recieve_xp = "Вы получили %s ОП!",
+	lvl_reach_level = "%s достиг уровня %s!",
+	lvl_book_notify = "Вы получили %s ОП за использование книги %s!",
+	lvl_printer_use = "Вы получили %s ОП и %s из принтера.",
+	lvl_printer_level = "Вы должны быть более высокого уровня, чтобы использовать это!",
+}
+DarkRP.addLanguage("ru", ru_language)
 
 
 hook.Add("loadCustomDarkRPItems", "manolis:MVLevels:CustomLoad", function()
