@@ -285,16 +285,16 @@ DarkRP.addLanguage("pl", pl_language)
 local ru_language = {
 	lvl_buy_entity = "Вы не того уровня, чтобы купить это!",
 	lvl_take_job = "Вы не того уровня для этой работы!",
-	lvl_kill_notify = "Вы получили %s ОП и %s за убийство %s",
-	lvl_kill_notify2 = "Вы получили %s ОП за убийство %s",
+	lvl_kill_notify = "Вы получили %s опыта и %s за убийство %s",
+	lvl_kill_notify2 = "Вы получили %s опыта за убийство %s",
 	lvl_kill_notify3 = "Вы убили %s",
-	lvl_kill_npc = "Вы получили %s ОП за убийство NPC.",
+	lvl_kill_npc = "Вы получили %s опыта за убийство NPC.",
 	lvl_death = "Вы умерли и потеряли %s!",
-	lvl_play_on = "Вы получили %s ОП за игру на этом сервере.",
-	lvl_recieve_xp = "Вы получили %s ОП!",
+	lvl_play_on = "Вы получили %s опыта за игру на этом сервере.",
+	lvl_recieve_xp = "Вы получили %s опыта!",
 	lvl_reach_level = "%s достиг уровня %s!",
-	lvl_book_notify = "Вы получили %s ОП за использование книги %s!",
-	lvl_printer_use = "Вы получили %s ОП и %s из принтера.",
+	lvl_book_notify = "Вы получили %s опыта за использование книги %s!",
+	lvl_printer_use = "Вы получили %s опыта и %s из принтера.",
 	lvl_printer_level = "Вы должны быть более высокого уровня, чтобы использовать это!",
 }
 DarkRP.addLanguage("ru", ru_language)
