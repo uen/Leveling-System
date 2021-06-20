@@ -7,7 +7,7 @@ local Printers = {} -- Ignore
 local Books = {} -- Ignore
 
 //Language settings
-LevelSystemConfiguration.Language = "EN" -- (available: FR, EN, PL, RU)
+LevelSystemConfiguration.Language = "EN" -- (available: FR, EN, PL, RU, zh-CN)
 
 //Hud settings
 LevelSystemConfiguration.EnableBar = true -- Is the XP Bar enabled?
@@ -298,6 +298,23 @@ local ru_language = {
 	lvl_printer_level = "Вы должны быть более высокого уровня, чтобы использовать это!",
 }
 DarkRP.addLanguage("ru", ru_language)
+
+local cn_language = {
+	lvl_buy_entity = "你没有足够的等级来购买这个!",
+	lvl_take_job = "你没有足够的等级去就职这个!",
+	lvl_kill_notify = "你获得了 %s XP 和 %s 作为击杀 %s 的奖励",
+	lvl_kill_notify2 = "你获得了 %s XP 作为击杀 %s 的奖励",
+	lvl_kill_notify3 = "你击杀了 %s",
+	lvl_kill_npc = "你获得了 %s XP 作为击杀了一个NPC的奖励.",
+	lvl_death = "你因死亡丢失了 %s!",
+	lvl_play_on = "你获得了 %s XP 作为游玩本服的奖励.",
+	lvl_recieve_xp = "你获得了 %s XP!",
+	lvl_reach_level = "%s 提升到了等级 %s!",
+	lvl_book_notify = "你获得了 %s XP 因为你阅读了书籍： %s",
+	lvl_printer_use = "你从这个印钞机获得了 %s XP 和 %s.",
+	lvl_printer_level = "你需要拥有更高的等级才能使用这个!",
+}
+DarkRP.addLanguage("zh-CN", cn_language)
 
 
 hook.Add("loadCustomDarkRPItems", "manolis:MVLevels:CustomLoad", function()
