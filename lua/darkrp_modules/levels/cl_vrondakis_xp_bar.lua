@@ -63,7 +63,7 @@ function PANEL:Init()
                 text = self.newXP .. " / " .. self.maxXP
             end
             
-            draw.SimpleText(text, "Vrondakis.XPBarText", w / 2, h / 2, Color(210, 210, 210), TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER)
+            draw.SimpleText(text, "Vrondakis.XPBarText", w / 2, h / 2, LevelSystemConfiguration.XPTextColor, TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER)
         end
     end
 end

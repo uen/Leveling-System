@@ -12,11 +12,11 @@ LevelSystemConfiguration.Language = "EN" -- (available: FR, EN, PL, RU, zh-CN)
 //Hud settings
 LevelSystemConfiguration.EnableBar = true -- Is the XP Bar enabled?
 LevelSystemConfiguration.AlternativeBar = false -- Should we use the alternative xp bar? (New look to xp bar)
-LevelSystemConfiguration.AlternativeBarBGColor = XeninUI.Theme.Primary -- What should the main colour of the alternative xp bar be? (This will not change the xp bar itself, go to LevelBarColor for that)
+LevelSystemConfiguration.AlternativeBarBGColor = Color(40, 45, 56) -- What should the main colour of the alternative xp bar be? (This will not change the xp bar itself, go to LevelBarColor for that)
 LevelSystemConfiguration.BarText = true -- Is the bar text enabled?
 LevelSystemConfiguration.BarTextPercentage = true -- Should the bar text be a percentage or specific amount
-LevelSystemConfiguration.XPTextColor = Color(255,255,255,255) -- The color of the XP percentage HUD element.
-LevelSystemConfiguration.LevelBarColor = {XeninUI.Theme.Accent.r,XeninUI.Theme.Accent.g,XeninUI.Theme.Accent.b} -- The color of the XP bar. (Sorry this one is different. It is still {R,G,B})
+LevelSystemConfiguration.XPTextColor = Color(210,210,210,255) -- The color of the XP percentage HUD element.
+LevelSystemConfiguration.LevelBarColor = {41, 128, 185} -- The color of the XP bar. (Sorry this one is different. It is still {R,G,B})
 LevelSystemConfiguration.XPBarYPos = 0 -- Y position of the XP bar
 LevelSystemConfiguration.AlternativeXPBarYPos = 0.85 -- Y position of the alternative XP bar
 LevelSystemConfiguration.LevelText = false -- Enable the white text on left bottom?
