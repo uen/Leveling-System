@@ -21,7 +21,3 @@ Features
 
 **Huge Configuration** - This script is VERY easy to customize. You can change everything from one file.
 
-
-How to use it?
--------
-Everything is explained in our wiki, check out this link > https://github.com/chesiren/DarkRP-Leveling-System-2.7.0/wiki
