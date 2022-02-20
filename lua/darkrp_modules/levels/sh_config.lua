@@ -7,15 +7,19 @@ local Printers = {} -- Ignore
 local Books = {} -- Ignore
 
 //Language settings
-LevelSystemConfiguration.Language = "EN" -- (available: FR, EN, PL)
+LevelSystemConfiguration.Language = "EN" -- (available: FR, EN, PL, RU, zh-CN)
 
 //Hud settings
 LevelSystemConfiguration.EnableBar = true -- Is the XP Bar enabled?
+LevelSystemConfiguration.AlternativeBar = false -- Should we use the alternative xp bar? (New look to xp bar)
+LevelSystemConfiguration.AlternativeBarBGColor = XeninUI.Theme.Primary -- What should the main colour of the alternative xp bar be? (This will not change the xp bar itself, go to LevelBarColor for that)
 LevelSystemConfiguration.BarText = true -- Is the bar text enabled?
+LevelSystemConfiguration.BarTextPercentage = true -- Should the bar text be a percentage or specific amount
 LevelSystemConfiguration.XPTextColor = Color(255,255,255,255) -- The color of the XP percentage HUD element.
-LevelSystemConfiguration.LevelBarColor = {6,116,255} -- The color of the XP bar. (Sorry this one is different. It is still {R,G,B})
+LevelSystemConfiguration.LevelBarColor = {XeninUI.Theme.Accent.r,XeninUI.Theme.Accent.g,XeninUI.Theme.Accent.b} -- The color of the XP bar. (Sorry this one is different. It is still {R,G,B})
 LevelSystemConfiguration.XPBarYPos = 0 -- Y position of the XP bar
-LevelSystemConfiguration.LevelText = true -- Enable the white text on left bottom?
+LevelSystemConfiguration.AlternativeXPBarYPos = 0.85 -- Y position of the alternative XP bar
+LevelSystemConfiguration.LevelText = false -- Enable the white text on left bottom?
 LevelSystemConfiguration.LevelColor = Color(255,255,255,255) -- The color of the "Level: 1" HUD element. White looks best. (This setting is nullified if you have the prestige system)
 LevelSystemConfiguration.LevelTextPos = {1.5, 180.0} -- The position of the LevelText. Y starts from bottom. Fiddle with it
 LevelSystemConfiguration.DisplayLevel = true -- Show player levels when you look at them
@@ -25,20 +29,20 @@ LevelSystemConfiguration.GreenAllBars = true -- Are the green bars at the bottom
 //Kill settings
 LevelSystemConfiguration.KillModule = true -- Give XP + Money for kills! -- Next 2 settings control this.
 LevelSystemConfiguration.Friendly = true -- Only take away money / give XP if the killer is a lower level/same level than the victim. (Recommended:true)
-LevelSystemConfiguration.TakeAwayMoneyAmount = 100 -- How much money to take away from players when they are killed and add to the killer. You can change this to 0 if none. The XP amount is dynamic.
+LevelSystemConfiguration.TakeAwayMoneyAmount = 250 -- How much money to take away from players when they are killed and add to the killer. You can change this to 0 if none. The XP amount is dynamic.
 LevelSystemConfiguration.NPCXP = true -- Give XP when an NPC is killed?
-LevelSystemConfiguration.NPCXPAmount = 10 -- Amount of XP to give when an NPC is killed
+LevelSystemConfiguration.NPCXPAmount = 100 -- Amount of XP to give when an NPC is killed
 
 //Timer settings
-LevelSystemConfiguration.TimerModule = true -- Give XP to everybody every howeverlong
+LevelSystemConfiguration.TimerModule = false -- Give XP to everybody every howeverlong
 LevelSystemConfiguration.Timertime = 120 -- How much time (in seconds) until everybody gets given XP
 LevelSystemConfiguration.TimerXPAmount = 50 -- How much XP to give each time it goes off
 LevelSystemConfiguration.TimerXPAmountVip = 100 -- How much XP to give for vip players each time it goes off
-LevelSystemConfiguration.TimerXPVipGroups = {"vip", "premium"} -- The vip groups
+LevelSystemConfiguration.TimerXPVipGroups = {"vip"} -- The vip groups
 
 //XP settings
 LevelSystemConfiguration.XPMult = 1 -- How hard it is to level up. 2 would require twice as much XP, ect.
-LevelSystemConfiguration.MaxLevel = 99 -- The max level
+LevelSystemConfiguration.MaxLevel = 100 -- The max level
 LevelSystemConfiguration.ContinueXP = false -- If remaining XP continues over to next levels. I recommend this to be false. Seriously. What if a level 1 gets 99999999 XP somehow? He is level 99 so quickly.
 LevelSystemConfiguration.BoughtXP = true -- Does the player gain xp from buying something (shipment/entity)
 
@@ -281,6 +285,40 @@ local pl_language = {
 	lvl_printer_level = "Aby móc z tego korzystać, musisz być na wyższym poziomie!",
 }
 DarkRP.addLanguage("pl", pl_language)
+
+local ru_language = {
+	lvl_buy_entity = "Вы не того уровня, чтобы купить это!",
+	lvl_take_job = "Вы не того уровня для этой работы!",
+	lvl_kill_notify = "Вы получили %s опыта и %s за убийство %s",
+	lvl_kill_notify2 = "Вы получили %s опыта за убийство %s",
+	lvl_kill_notify3 = "Вы убили %s",
+	lvl_kill_npc = "Вы получили %s опыта за убийство NPC.",
+	lvl_death = "Вы умерли и потеряли %s!",
+	lvl_play_on = "Вы получили %s опыта за игру на этом сервере.",
+	lvl_recieve_xp = "Вы получили %s опыта!",
+	lvl_reach_level = "%s достиг уровня %s!",
+	lvl_book_notify = "Вы получили %s опыта за использование книги %s!",
+	lvl_printer_use = "Вы получили %s опыта и %s из принтера.",
+	lvl_printer_level = "Вы должны быть более высокого уровня, чтобы использовать это!",
+}
+DarkRP.addLanguage("ru", ru_language)
+
+local cn_language = {
+	lvl_buy_entity = "你没有足够的等级来购买这个!",
+	lvl_take_job = "你没有足够的等级去就职这个!",
+	lvl_kill_notify = "你获得了 %s XP 和 %s 作为击杀 %s 的奖励",
+	lvl_kill_notify2 = "你获得了 %s XP 作为击杀 %s 的奖励",
+	lvl_kill_notify3 = "你击杀了 %s",
+	lvl_kill_npc = "你获得了 %s XP 作为击杀了一个NPC的奖励.",
+	lvl_death = "你因死亡丢失了 %s!",
+	lvl_play_on = "你获得了 %s XP 作为游玩本服的奖励.",
+	lvl_recieve_xp = "你获得了 %s XP!",
+	lvl_reach_level = "%s 提升到了等级 %s!",
+	lvl_book_notify = "你获得了 %s XP 因为你阅读了书籍： %s",
+	lvl_printer_use = "你从这个印钞机获得了 %s XP 和 %s.",
+	lvl_printer_level = "你需要拥有更高的等级才能使用这个!",
+}
+DarkRP.addLanguage("zh-CN", cn_language)
 
 
 hook.Add("loadCustomDarkRPItems", "manolis:MVLevels:CustomLoad", function()

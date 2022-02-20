@@ -68,35 +68,46 @@ local OldXP = 0
 local xp_bar = Material("vrondakis/xp_bar.png","noclamp smooth")
 local function HUDPaint()
 	if not LevelSystemConfiguration then return end
-	local PlayerLevel = LocalPlayer():getDarkRPVar("level")
-	local PlayerXP = LocalPlayer():getDarkRPVar("xp")
+	local PlayerLevel = LocalPlayer():getDarkRPVar("level") or 1
+	local PlayerXP = LocalPlayer():getDarkRPVar("xp") or 0
+	local MaxPlayerXP = (((10+(((PlayerLevel)*((PlayerLevel)+1)*90))))*LevelSystemConfiguration.XPMult)
 	
-	local percent = ((PlayerXP or 0)/(((10+(((PlayerLevel or 1)*((PlayerLevel or 1)+1)*90))))*LevelSystemConfiguration.XPMult)) // Gets the accurate level up percentage
+	
+	local percent = PlayerXP / MaxPlayerXP // Gets the accurate level up percentage
 	
 	local drawXP = Lerp(8*FrameTime(),OldXP,percent)
 	OldXP = drawXP
-	local percent2 = percent*100
-	percent2 = math.Round(percent2)
-	percent2 = math.Clamp(percent2, 0, 99) //Make sure it doesn't round past 100%
+
+	local xpBarText = ""
 	
-	if LevelSystemConfiguration.EnableBar then
+	if LevelSystemConfiguration.BarTextPercentage then
+		xpBarText = percent * 100
+		xpBarText = math.Round(xpBarText)
+		xpBarText = math.Clamp(xpBarText, 0, 99)
+
+		xpBarText = xpBarText .. "%"
+	else
+		xpBarText = PlayerXP .. " / " .. MaxPlayerXP
+	end
+	
+	if LevelSystemConfiguration.EnableBar and not LevelSystemConfiguration.AlternativeBar then
 		// Draw the XP Bar
 		surface.SetDrawColor(0,0,0,200)
-		surface.DrawRect(ScrW()/2-300,(LevelSystemConfiguration.XPBarYPos or 0),580,25)
+		surface.DrawRect(ScrW()/2-300,ScrH() * (LevelSystemConfiguration.XPBarYPos or 0),580,25)
 	
 		// Draw the XP Bar before the texture
 		surface.SetDrawColor(LevelSystemConfiguration.LevelBarColor[1],LevelSystemConfiguration.LevelBarColor[2],LevelSystemConfiguration.LevelBarColor[3],255)
-		surface.DrawRect(ScrW()/2-300,(LevelSystemConfiguration.XPBarYPos or 0),580*drawXP,25)
+		surface.DrawRect(ScrW()/2-300,ScrH() * (LevelSystemConfiguration.XPBarYPos or 0),580*drawXP,25)
 
 		//Render the texture
 		surface.SetMaterial(xp_bar)
 		surface.SetDrawColor(255,255,255,255)
-		surface.DrawTexturedRect( ScrW()/2-371, 0+(LevelSystemConfiguration.XPBarYPos or 0),  742,46)
+		surface.DrawTexturedRect( ScrW()/2-371, ScrH() * (LevelSystemConfiguration.XPBarYPos or 0),  742,46)
 	end
 	
 	// Render the text
-	if LevelSystemConfiguration.BarText then
-		draw.DrawText("Level "..(LocalPlayer():getDarkRPVar("level") or 0).." - "..percent2 .."%", "HeadBar", ScrW()/2,7+(LevelSystemConfiguration.XPBarYPos or 0),(LevelSystemConfiguration.XPTextColor or Color(255,255,255,255)), TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER)
+	if LevelSystemConfiguration.BarText and not LevelSystemConfiguration.AlternativeBar then
+		draw.DrawText("Level "..(LocalPlayer():getDarkRPVar("level") or 0).." - "..xpBarText, "HeadBar", ScrW()/2,7+(LevelSystemConfiguration.XPBarYPos or 0),(LevelSystemConfiguration.XPTextColor or Color(255,255,255,255)), TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER)
 	end
 	
 	if LevelSystemConfiguration.LevelText then
@@ -108,4 +119,28 @@ local function HUDPaint()
 end
 hook.Add("HUDPaint", "manolis:MVLevels:HUDPaintA", HUDPaint) // IS THAT UNIQUE ENOUGH FOR YOU, FUCKING GMOD HOOKING BULLSHIT.
 
+local function DisplayXPBar()
+	
+end
 
+net.Receive("Vrondakis.ShowXPBar", function()
+	--[[local data = util.Decompress(net.ReadData())
+	data = util.JSONToTable(data)--]]
+	if not LevelSystemConfiguration.EnableBar or not LevelSystemConfiguration.AlternativeBar then return end
+
+	local oldXP = net.ReadInt(20)
+	local newXP = net.ReadInt(20)
+	local maxXP = net.ReadInt(20)
+	local currentLevel = LocalPlayer():getDarkRPVar("level") or 0
+
+	if IsValid(vrondakis_xp_bar) then
+		vrondakis_xp_bar:ResetViewingTime()
+		vrondakis_xp_bar:SetData(oldXP, newXP, maxXP, currentLevel) -- update data
+	else
+		vrondakis_xp_bar = vgui.Create("Vrondakis.XPBar")
+		vrondakis_xp_bar:SetSize(ScrW() * 0.4, ScrH() * 0.095)
+		vrondakis_xp_bar:SetPos(0, ScrH() * LevelSystemConfiguration.AlternativeXPBarYPos)
+		vrondakis_xp_bar:CenterHorizontal()
+		vrondakis_xp_bar:SetData(oldXP, newXP, maxXP, currentLevel)
+	end
+end)

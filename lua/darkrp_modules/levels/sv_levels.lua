@@ -9,6 +9,9 @@ end
 
 function meta:setXP(xp)
 	if not (xp or self:IsPlayer()) then return end
+	local oldXP = self:getXP()
+	
+	hook.Call("PlayerXPChanged", nil, self, oldXP, xp)
 	return self:setDarkRPVar("xp", xp)
 end
 
