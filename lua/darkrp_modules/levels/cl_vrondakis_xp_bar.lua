@@ -19,8 +19,8 @@ function PANEL:Init()
     -- Animiation init
     --self.startBarAnim = 0
 
-    self.viewingTime = 5
-    self:SetViewingTime(self.viewingTime)
+    self.viewingTime = 0
+    --self:SetViewingTime(self.viewingTime)
 
     -- Box area where the level will reside
     
@@ -42,13 +42,13 @@ function PANEL:Init()
     self.xpBar:DockMargin(0, self.levelArea:GetTall() * 1.8, 0, self.levelArea:GetTall() * 1.8)
 
     self.xpBar.Paint = function(me, w, h)
-        draw.RoundedBox(4, 0, 0, w, h, LevelSystemConfiguration.AlternativeBarBGColor)
+        draw.RoundedBoxEx(4, 0, 0, w, h, LevelSystemConfiguration.AlternativeBarBGColor, false, true, false, true)
         
         if not self.oldXP or not self.newXP or not self.maxXP then return end
         
         local xpWidthMultiplier = math.Clamp(self.newXP / self.maxXP, 0, 1)
-        local barColor = Color(LevelSystemConfiguration.LevelBarColor[1],LevelSystemConfiguration.LevelBarColor[2],LevelSystemConfiguration.LevelBarColor[3])
-        draw.RoundedBoxEx(4, 0, 0, w * xpWidthMultiplier, h, barColor, true, false, true, false)
+        local barColor = Color(LevelSystemConfiguration.LevelBarColor.r,LevelSystemConfiguration.LevelBarColor.g,LevelSystemConfiguration.LevelBarColor.b)
+        draw.RoundedBoxEx(4, 0, 0, w * xpWidthMultiplier, h, barColor, false, false, false, false)
 
         if LevelSystemConfiguration.BarText then
             local text = ""
@@ -93,6 +93,8 @@ function PANEL:ResetViewingTime()
 end
 
 function PANEL:Think()
+    if self.viewingTime <= 0 then return end
+    
     if self.removeTime and CurTime() > self.removeTime then
         self:Remove()
     end

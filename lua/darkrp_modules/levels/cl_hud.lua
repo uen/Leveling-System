@@ -96,7 +96,7 @@ local function HUDPaint()
 		surface.DrawRect(ScrW()/2-300,ScrH() * (LevelSystemConfiguration.XPBarYPos or 0),580,25)
 	
 		// Draw the XP Bar before the texture
-		surface.SetDrawColor(LevelSystemConfiguration.LevelBarColor[1],LevelSystemConfiguration.LevelBarColor[2],LevelSystemConfiguration.LevelBarColor[3],255)
+		surface.SetDrawColor(LevelSystemConfiguration.LevelBarColor.r,LevelSystemConfiguration.LevelBarColor.g,LevelSystemConfiguration.LevelBarColor.b,255)
 		surface.DrawRect(ScrW()/2-300,ScrH() * (LevelSystemConfiguration.XPBarYPos or 0),580*drawXP,25)
 
 		//Render the texture
@@ -119,8 +119,14 @@ local function HUDPaint()
 end
 hook.Add("HUDPaint", "manolis:MVLevels:HUDPaintA", HUDPaint) // IS THAT UNIQUE ENOUGH FOR YOU, FUCKING GMOD HOOKING BULLSHIT.
 
-local function DisplayXPBar()
-	
+local function CreateAlternativeXPBar(oldXP, newXP, maxXP, currentLevel)
+	vrondakis_xp_bar = vgui.Create("Vrondakis.XPBar")
+	vrondakis_xp_bar:SetSize(ScrW() * 0.4, ScrH() * 0.095)
+	vrondakis_xp_bar:SetPos(0, ScrH() * LevelSystemConfiguration.AlternativeXPBarYPos)
+	vrondakis_xp_bar:CenterHorizontal()
+	vrondakis_xp_bar:SetData(oldXP, newXP, maxXP, currentLevel)
+
+	return vrondakis_xp_bar
 end
 
 net.Receive("Vrondakis.ShowXPBar", function()
@@ -137,10 +143,26 @@ net.Receive("Vrondakis.ShowXPBar", function()
 		vrondakis_xp_bar:ResetViewingTime()
 		vrondakis_xp_bar:SetData(oldXP, newXP, maxXP, currentLevel) -- update data
 	else
-		vrondakis_xp_bar = vgui.Create("Vrondakis.XPBar")
-		vrondakis_xp_bar:SetSize(ScrW() * 0.4, ScrH() * 0.095)
-		vrondakis_xp_bar:SetPos(0, ScrH() * LevelSystemConfiguration.AlternativeXPBarYPos)
-		vrondakis_xp_bar:CenterHorizontal()
-		vrondakis_xp_bar:SetData(oldXP, newXP, maxXP, currentLevel)
+		local xp_bar = CreateAlternativeXPBar(oldXP, newXP, maxXP, currentLevel)
+		xp_bar:SetViewingTime(5)
+	end
+end)
+
+-- Context menu
+
+hook.Add("ContextMenuOpened", "Vrondakis.show_alternative_xp_bar", function()
+	if not LevelSystemConfiguration.AlternativeBar then return end
+
+	local oldXP = LocalPlayer():getDarkRPVar("xp") or 0
+	local newXP = LocalPlayer():getDarkRPVar("xp") or 0
+	local currentLevel = LocalPlayer():getDarkRPVar("level") or 0
+	local maxXP = (((10+(((currentLevel)*((currentLevel)+1)*90))))*LevelSystemConfiguration.XPMult)
+
+	local xp_bar = CreateAlternativeXPBar(oldXP, newXP, maxXP, currentLevel)
+end)
+
+hook.Add("ContextMenuClosed", "Vrondakis.remove_alternative_xp_bar", function()
+	if LevelSystemConfiguration.AlternativeBar and IsValid(vrondakis_xp_bar) then
+		vrondakis_xp_bar:Remove()
 	end
 end)
