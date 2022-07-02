@@ -57,6 +57,11 @@ function meta:addXP(amount, notify, carryOver)
 		self:setXP(math.max(0,TotalXP))
 
 	end
+	
+	if not carriedOver then
+		hook.Run( "VrondakisLeveling.XPAdded", self, amount )
+	end
+	
 	return (amount or 0)
 
 end
