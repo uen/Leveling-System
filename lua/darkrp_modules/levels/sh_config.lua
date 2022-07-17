@@ -11,11 +11,15 @@ LevelSystemConfiguration.Language = "EN" -- (available: FR, EN, PL, RU, zh-CN)
 
 //Hud settings
 LevelSystemConfiguration.EnableBar = true -- Is the XP Bar enabled?
+LevelSystemConfiguration.AlternativeBar = false -- Should we use the alternative xp bar? (New look to xp bar)
+LevelSystemConfiguration.AlternativeBarBGColor = Color(40, 45, 56) -- What should the main colour of the alternative xp bar be? (This will not change the xp bar itself, go to LevelBarColor for that)
 LevelSystemConfiguration.BarText = true -- Is the bar text enabled?
-LevelSystemConfiguration.XPTextColor = Color(255,255,255,255) -- The color of the XP percentage HUD element.
-LevelSystemConfiguration.LevelBarColor = {6,116,255} -- The color of the XP bar. (Sorry this one is different. It is still {R,G,B})
+LevelSystemConfiguration.BarTextPercentage = true -- Should the bar text be a percentage or specific amount
+LevelSystemConfiguration.XPTextColor = Color(210,210,210,255) -- The color of the XP percentage HUD element.
+LevelSystemConfiguration.LevelBarColor = Color(41, 128, 185) -- The color of the XP bar
 LevelSystemConfiguration.XPBarYPos = 0 -- Y position of the XP bar
-LevelSystemConfiguration.LevelText = true -- Enable the white text on left bottom?
+LevelSystemConfiguration.AlternativeXPBarYPos = 0.85 -- Y position of the alternative XP bar
+LevelSystemConfiguration.LevelText = false -- Enable the white text on left bottom?
 LevelSystemConfiguration.LevelColor = Color(255,255,255,255) -- The color of the "Level: 1" HUD element. White looks best. (This setting is nullified if you have the prestige system)
 LevelSystemConfiguration.LevelTextPos = {1.5, 180.0} -- The position of the LevelText. Y starts from bottom. Fiddle with it
 LevelSystemConfiguration.DisplayLevel = true -- Show player levels when you look at them
@@ -25,20 +29,20 @@ LevelSystemConfiguration.GreenAllBars = true -- Are the green bars at the bottom
 //Kill settings
 LevelSystemConfiguration.KillModule = true -- Give XP + Money for kills! -- Next 2 settings control this.
 LevelSystemConfiguration.Friendly = true -- Only take away money / give XP if the killer is a lower level/same level than the victim. (Recommended:true)
-LevelSystemConfiguration.TakeAwayMoneyAmount = 100 -- How much money to take away from players when they are killed and add to the killer. You can change this to 0 if none. The XP amount is dynamic.
+LevelSystemConfiguration.TakeAwayMoneyAmount = 250 -- How much money to take away from players when they are killed and add to the killer. You can change this to 0 if none. The XP amount is dynamic.
 LevelSystemConfiguration.NPCXP = true -- Give XP when an NPC is killed?
-LevelSystemConfiguration.NPCXPAmount = 10 -- Amount of XP to give when an NPC is killed
+LevelSystemConfiguration.NPCXPAmount = 100 -- Amount of XP to give when an NPC is killed
 
 //Timer settings
-LevelSystemConfiguration.TimerModule = true -- Give XP to everybody every howeverlong
+LevelSystemConfiguration.TimerModule = false -- Give XP to everybody every howeverlong
 LevelSystemConfiguration.Timertime = 120 -- How much time (in seconds) until everybody gets given XP
 LevelSystemConfiguration.TimerXPAmount = 50 -- How much XP to give each time it goes off
 LevelSystemConfiguration.TimerXPAmountVip = 100 -- How much XP to give for vip players each time it goes off
-LevelSystemConfiguration.TimerXPVipGroups = {"vip", "premium"} -- The vip groups
+LevelSystemConfiguration.TimerXPVipGroups = {"vip"} -- The vip groups
 
 //XP settings
 LevelSystemConfiguration.XPMult = 1 -- How hard it is to level up. 2 would require twice as much XP, ect.
-LevelSystemConfiguration.MaxLevel = 99 -- The max level
+LevelSystemConfiguration.MaxLevel = 100 -- The max level
 LevelSystemConfiguration.ContinueXP = false -- If remaining XP continues over to next levels. I recommend this to be false. Seriously. What if a level 1 gets 99999999 XP somehow? He is level 99 so quickly.
 LevelSystemConfiguration.BoughtXP = true -- Does the player gain xp from buying something (shipment/entity)
 
